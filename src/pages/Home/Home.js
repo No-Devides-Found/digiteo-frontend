@@ -4,10 +4,9 @@ import axios from "axios";
 function Home() {
   useEffect(() => {
     axios
-      .post("account/signup/", {
-        username: "user",
-        password: "user",
-        email: "user@user.user",
+      .post("/accounts/dj-rest-auth/login/", {
+        username: "user5",
+        password: "u1234567",
       })
       .then((res) => {
         console.log(res);
