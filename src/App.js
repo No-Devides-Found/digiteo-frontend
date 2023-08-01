@@ -1,14 +1,27 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 
-import { Home } from "./pages";
+import { Home } from "./pages"; 
+import Signin from "./pages/Signin/Signin";
+import Signup from "./pages/Signup/Signup";
+
 
 function App() {
   return (
     <div className="App">
+      {/* <NavBar></NavBar> */}
+      <nav>
+        <Link to="/signin">로그인</Link>  
+        <Link to="/signup">회원가입</Link> 
+        <Link to="/signin">로그아웃</Link> 
+      </nav>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/signin" element={<Signin/>} />
+        <Route path="/signup" element={<Signup/>} />  
       </Routes>
+      
+
     </div>
   );
 }
