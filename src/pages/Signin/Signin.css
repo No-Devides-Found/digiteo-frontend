@@ -1,0 +1,60 @@
+*{
+  margin : 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.signinLeft{
+  background-color: aqua;
+  height: auto;
+
+}
+
+.signinRight{
+  padding : 3rem;
+}
+.titleWrap{
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.inputTitle{
+  font-weight: bold;
+}
+
+.signinWrap{
+  padding: 0 5rem;
+}
+
+
+.signinInput{
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.inputContainer{
+  margin-bottom: 2rem;
+}
+.signinButton{
+  margin-bottom: 3rem;
+}
+
+.inputForm{
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  height: 3rem;
+  border-radius: 4px;
+  border: none;
+  background-color: rgba(255, 165, 0, 0.4);
+
+}
+.inputForm:focus{
+  outline-color: rgb(255, 165, 0);
+}
+
+.css-sghohy-MuiButtonBase-root-MuiButton-root{
+  background-color: unset;
+}
+.signinButton{
+  width: 100%;
+  background-color: #F65D1B;
+}
