@@ -4,6 +4,7 @@ import { EventCarousel, PlayGroundCarousel } from "../../components";
 import { Box, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import stars from "../../assets/Home/stars.svg";
+import rocket from "../../assets/Home/rocket.svg";
 
 function Home() {
   return (
@@ -46,8 +47,7 @@ function Home() {
           position: "relative",
           background: "linear-gradient(180deg, #1A237E, #FFFDE700)",
           width: "100%",
-          height: "30rem", // 임시!
-          py: "6rem",
+          pt: "6rem",
           overflow: "hidden",
         }}
       >
@@ -66,6 +66,11 @@ function Home() {
           src={stars}
           sx={{ position: "absolute", top: "4rem" }}
         />
+        <Box component={"img"} src={rocket} sx={{ width: "20%", mt: "4rem" }} />
+        {/* <Box component={"img"} src={rocket} sx={{ width: "20%" }} />
+        <Box component={"img"} src={rocket} sx={{ width: "20%" }} />
+        <Box component={"img"} src={rocket} sx={{ width: "20%" }} />
+        <Box component={"img"} src={rocket} sx={{ width: "20%" }} /> */}
       </Box>
     </div>
   );
