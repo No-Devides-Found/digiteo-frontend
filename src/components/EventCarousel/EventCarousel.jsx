@@ -1,9 +1,6 @@
 import React from "react";
 import { Box, Grid, Container, Typography } from "@mui/material";
-
 import Carousel from "react-material-ui-carousel";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { styled } from "@mui/material/styles";
 
 const StyledGrid = styled(Grid)({
@@ -62,8 +59,6 @@ function EventCarousel() {
 
   return (
     <Carousel
-      NextIcon={<ArrowForwardIosIcon color="primary" />}
-      PrevIcon={<ArrowBackIosNewIcon color="primary" />}
       cycleNavigation={true}
       navButtonsAlwaysVisible={true}
       autoPlay={true}
