@@ -3,18 +3,17 @@ import Axios from 'axios';
 import "./Signin.css";   
 
 // import styled from 'styled-components';   
-import Link from '@mui/material/Link';
+import {Link} from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { orange , purple } from '@mui/material/colors';
+import { orange , grey } from '@mui/material/colors';
 
 // 컬러 테마 
 const theme = createTheme({
   palette: {
     primary: orange,
-    secondary: purple,
+    secondary: grey,
   },
 });
 
@@ -45,13 +44,16 @@ const Signin = () => {
           localStorage.setItem('token', res.data.key)
           
           window.location.replace('/') // App.js에서 /로 라우팅 필요
-        } else {
+        } 
+        //응답에 key값 없음 = 로그인 실패
+        else {
           setEmail('')
           setPassword('')
           localStorage.clear()
           // setErrors(true)
         }
       })
+      //요청 실패
       .catch(err => {
         console.clear()
         alert('아이디 또는 비밀번호가 일치하지 않습니다')
@@ -76,7 +78,7 @@ const Signin = () => {
       </div>
       <form onSubmit={onSubmit} className="signinWrap" >
 
-        {/* MUI TextField 이용  */}
+        {/* MUI TextField 이용 
         <div className="inputContainer">
           <div className='inputTitle'>이메일 주소</div>
           <div className='inputWrap'>
@@ -102,15 +104,14 @@ const Signin = () => {
                 placeholder='비밀번호를 입력해주세요.'
                 type="password"
                 variant="outlined"
-                required 
-                fullwidth 
+                required
                 name="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 />
               <br/>
           </div>
-        </div>
+        </div> */}
 
         {/* input 태그 이용 - 스타일 적용이 쉬움... */}
         <div className="inputContainer">
@@ -145,15 +146,12 @@ const Signin = () => {
         </div>
 
         <ThemeProvider theme={theme}>
-        <Button  type="submit" className='signinButton' variant="contained" 
-        >
-          로그인
-        </Button> 
-        <Button color="secondary" type="submit" className='signinButton' variant="contained" 
-        >
-          로그인
-        </Button>
-
+          <Button  type="submit" className='signinButton' variant="contained">
+            로그인
+          </Button> 
+          <Button href="/signup" color="secondary"  className='signinButton' variant="contained">
+            회원가입
+          </Button>
         </ThemeProvider>
       </form>
 

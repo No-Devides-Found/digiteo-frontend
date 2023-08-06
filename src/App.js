@@ -5,7 +5,6 @@ import { Home } from "./pages";
 import Signin from "./pages/Signin/Signin";
 import Signup from "./pages/Signup/Signup";
 
-
 function App() {
   return (
     <div className="App">
