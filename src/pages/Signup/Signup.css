@@ -6,6 +6,12 @@
 .signupWrap{
   margin: 3rem 6rem;
 }
+.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed{
+  color: #FF5722; 
+}
+.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active{
+  color:#d2c019;
+}
 
 .essential{
   color:orange;

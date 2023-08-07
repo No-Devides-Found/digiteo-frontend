@@ -1,4 +1,5 @@
 import React from 'react';
+import Grid from '@mui/material/Grid';
 
 const Step1Content = ({nickname, setNickname, 
                       email, setEmail,
@@ -7,7 +8,7 @@ const Step1Content = ({nickname, setNickname,
 
 
   return (
-    <div>
+    <Grid>
       {/* <h1>Step 1의 내용: 이곳에는 Step 1의 내용이 표시됩니다.</h1> */}
       <div className="inputContainer">
           <div className='inputTitle'>닉네임<span className="essential">{" "}{'('}필수{')'}</span></div>
@@ -79,7 +80,7 @@ const Step1Content = ({nickname, setNickname,
         </div>
 
 
-    </div>
+    </Grid>
   );
 };
 

@@ -3,7 +3,7 @@
 import React,{useState} from "react";
 import Axios from 'axios';
 
-
+import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -22,7 +22,7 @@ const steps = ["", "", ""];
 
 
 function Signup() {
-  
+
   // 하위 컴포넌트에서 입력받을 회원가입 정보
   const [nickname, setNickname] = useState('')  //닉네임
   const [email, setEmail] = useState('')  //이메일
@@ -37,19 +37,26 @@ function Signup() {
   const [grade, setGrade] = useState('')
   const [school, setSchool] = useState('')  //소속
 
-  //비밀번호 검사
+  //required 입력사항 검사
   const checkPage =()=>{
     console.log("check password")
-    if((password!=="" && password2==="" ) || password !== password2){
-      alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.")
-      handleBack();
-    }else if(password === ""){
-      alert("비밀번호를 입력해주세요.")
-      handleBack();
-    }else if(nickname ==="" || email===""){
-      alert("필수값을 입력해주세요.")
-      handleBack();
+    if(activeStep === 0){
+      if(nickname==="" || email==="" || password===""){
+        alert("필수값을 입력해주세요.")
+        handleBack();
+      }
     }
+    // if((password!=="" && password2==="" ) || password !== password2){
+    //   alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.")
+    //   handleBack();
+    // }else if(password === ""){
+    //   alert("비밀번호를 입력해주세요.")
+    //   handleBack();
+      
+    // }else if(nickname ==="" || email===""){
+    //   alert("필수값을 입력해주세요.")
+    //   handleBack();
+    // }  
   };  
   
   const onSubmit = () => {
@@ -157,6 +164,9 @@ function Signup() {
 
   //뒤로 가기
   const handleBack = () => {
+    if(activeStep===0){
+      return false;
+    }
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
@@ -169,8 +179,8 @@ function Signup() {
 
   return (
     
-    <div className='signupWrap'>
-      <Box sx={{ width: '100%' }}>
+    <Grid className='signupWrap'>
+      <Box sx={{ width: '80%' , margin:'0 auto'}}>
         <Stepper activeStep={activeStep}>
           {steps.map((label, index) => {
             const stepProps = {};
@@ -232,7 +242,7 @@ function Signup() {
               <Box sx={{ flex: '2 2 auto' }} />
               
 
-              <Button onClick={handleNext}>
+              <Button type="submit" onClick={handleNext}>
                 {activeStep === steps.length - 1 ? '완료' : '다음'}
               </Button>
             </Box>
@@ -240,7 +250,7 @@ function Signup() {
           </React.Fragment>
         )}
       </Box>
-    </div>
+    </Grid>
   );
 }
 
