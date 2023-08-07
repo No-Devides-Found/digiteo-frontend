@@ -2,11 +2,9 @@ import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import {Typography } from "@mui/material";
-import { Button, CardActionArea, CardActions } from '@mui/material';
+import { Typography, Button, CardActionArea, CardActions } from '@mui/material';
 import { styled } from "@mui/material/styles";
-
-import "./Program.css";   
+ 
 
 const StyledCard = styled(Card)({
   margin: "0 1rem", 
@@ -21,6 +19,7 @@ const StyledCard = styled(Card)({
 const StyledCardMedia  = styled(CardMedia)({
   borderRadius: "3rem", 
 })
+
 function Program(props) {
   return (
         <StyledCard sx={{ maxWidth: 345 }}>
