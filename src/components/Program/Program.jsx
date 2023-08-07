@@ -2,7 +2,10 @@ import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import { Typography, Button, CardActionArea, CardActions } from '@mui/material';
+import { Typography,  CardActionArea, CardActions } from '@mui/material';
+import Rating from '@mui/material/Rating';
+import Stack from '@mui/material/Stack';
+
 import { styled } from "@mui/material/styles";
  
 
@@ -42,13 +45,12 @@ function Program(props) {
             </CardContent>
           </CardActionArea>
           <CardActions>
-            <Button size="small" color="primary">
-            {props.button1}
-           
-            </Button>
-            <Button size="small" color="primary">
-            {props.button2}
-            </Button>
+            <Typography>
+              {props.participants}
+            </Typography>
+            <Stack spacing={1}>
+              <Rating name="half-rating-read" defaultValue={props.rating} precision={0.5} readOnly />
+            </Stack>
           </CardActions>
         </StyledCard>
 

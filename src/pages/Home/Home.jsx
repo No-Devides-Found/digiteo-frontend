@@ -14,8 +14,8 @@ const programProps = {
   alt: "썸네일 이미지",
   title: "프로그램 대제목",
   info: "프로그램 설명",
-  button1: "참여 인원",
-  button2: "별점"
+  participants: "참여 인원",
+  rating: "2.5"
 };
 
 
