@@ -15,7 +15,13 @@ function App() {
         <Link to="/signup">회원가입</Link> 
         <Link to="/program">프로그램</Link> 
       </nav>
-      <Program img="" alt="썸네일설명" title="프로그램 대제목" button1="참여인원" button2="별점" />
+      {/* <Program img="/asset/thumbnail.jpg" 
+      alt="썸네일설명" 
+      title="프로그램 대제목" 
+      button1="참여인원" 
+      button2="별점" /> */}
+
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<Signin/>} />
