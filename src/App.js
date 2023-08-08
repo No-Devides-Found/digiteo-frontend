@@ -4,6 +4,8 @@ import { Routes, Route, Link } from "react-router-dom";
 import { Home } from "./pages"; 
 import Signin from "./pages/Signin/Signin";
 import Signup from "./pages/Signup/Signup";
+import PracticeMain from "./pages/Practice/PracticeMain";
+import PracticeList from "./pages/Practice/PracticeList";
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
         <Link to="/">메인홈</Link> 
         <Link to="/signin">로그인</Link>  
         <Link to="/signup">회원가입</Link> 
+        <Link to="/practicehome">창작마루</Link> 
+        <Link to="/practicelist">창작마루목록</Link> 
       </nav>
 
 
@@ -19,6 +23,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<Signin/>} />
         <Route path="/signup" element={<Signup/>} />   
+        <Route path="/practicehome" element={<PracticeMain/>} />   
+        <Route path="/practicelist" element={<PracticeList/>} />
       </Routes>
       
 
