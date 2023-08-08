@@ -39,9 +39,22 @@ function Home() {
           >
             TOP 5
           </Typography>
-          
-          <Grid>
-            <Program {...programProps}/>
+          <Grid container>
+            <Grid item xs>
+              <Program {...programProps}/>
+            </Grid>
+            <Grid item xs>
+              <Program {...programProps}/>
+            </Grid>
+            <Grid item xs>
+              <Program {...programProps}/>
+            </Grid>
+            <Grid item xs>
+              <Program {...programProps}/>
+            </Grid>
+            <Grid item xs>
+              <Program {...programProps}/>
+            </Grid>
           </Grid>
           
         </Box>

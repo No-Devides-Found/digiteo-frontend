@@ -13,11 +13,6 @@ function App() {
         <Link to="/signin">로그인</Link>  
         <Link to="/signup">회원가입</Link> 
       </nav>
-      {/* <Program img="/asset/thumbnail.jpg" 
-      alt="썸네일설명" 
-      title="프로그램 대제목" 
-      button1="참여인원" 
-      button2="별점" /> */}
 
 
       <Routes>
