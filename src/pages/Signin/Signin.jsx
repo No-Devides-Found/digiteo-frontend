@@ -20,8 +20,6 @@ const theme = createTheme({
 
 
 const Signin = () => {
-
-  
   const [email, setEmail] = useState('');   //아이디=이메일로 입력받음
   const [password, setPassword] = useState('');   //비밀번호
   // const [errors, setErrors] = useState(false)  //에러메세지

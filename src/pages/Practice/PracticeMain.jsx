@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+
 import {Box, Grid, Typography, Button, Stack} from "@mui/material";
 import { styled } from "@mui/material/styles";
 
@@ -22,7 +23,10 @@ const StyledButton = styled(Button)({
 
 
 
-function PracticeMain() {
+export default function PracticeMain() {
+  //해당 창작물 페이지로 이동
+
+
   return (
     <MainBox>
       <Grid container>
@@ -34,14 +38,14 @@ function PracticeMain() {
           <Grid container>
             <Grid item xs>
               <Stack direction="row" spacing={2}>
-                <StyledButton variant="contained" href="/">
+                <StyledButton value="vedio" variant="contained" href='/videopractice'>
                   영상창작물
                 </StyledButton>
               </Stack>
             </Grid>
             <Grid item xs>
               <Stack direction="row" spacing={2}>
-                <StyledButton variant="contained" href="#contained-buttons">
+                <StyledButton value="img" variant="contained" href='/imgpractice'>
                   이미지창작물
                 </StyledButton>
               </Stack>
@@ -50,14 +54,14 @@ function PracticeMain() {
           <Grid container>
             <Grid item xs>
               <Stack direction="row" spacing={2}>
-                <StyledButton variant="contained" href="#contained-buttons">
+                <StyledButton value="vedio" variant="contained" href="/voicepractice">
                   음성창작물
                 </StyledButton>
               </Stack>
             </Grid>
             <Grid item xs>
               <Stack direction="row" spacing={2}>
-                <StyledButton variant="contained" href="#contained-buttons">
+                <StyledButton value="text" variant="contained" href='/textractice'>
                   문서창작물
                 </StyledButton>
               </Stack>
@@ -68,5 +72,3 @@ function PracticeMain() {
     </MainBox>
   );
 };
-
-export default PracticeMain;

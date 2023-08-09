@@ -6,7 +6,7 @@ import stars from "../../assets/Home/stars.svg";
 import rocket from "../../assets/Home/rocket.svg";
 import { EventCarousel, PlayGroundCarousel } from "../../components";
 import Program from "../../components/Program/Program"; 
-import PracticeMain from "../Practice/PracticeMain"; 
+// import PracticeMain from "../Practice/PracticeMain"; 
 
 
 //프로그램 컴포넌트 테스트
@@ -25,7 +25,7 @@ function Home() {
     <div>
       홈페이지
       <EventCarousel />
-      <PracticeMain/>
+      
 
       <PlayGroundCarousel />
       <Container sx={{ pb: "4rem" }}>

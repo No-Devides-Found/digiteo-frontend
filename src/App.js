@@ -6,6 +6,11 @@ import Signin from "./pages/Signin/Signin";
 import Signup from "./pages/Signup/Signup";
 import PracticeMain from "./pages/Practice/PracticeMain";
 import PracticeList from "./pages/Practice/PracticeList";
+import ImgPractice from './pages/Practice/ImgPractice';
+import VideoPractice from './pages/Practice/VideoPractice';
+import VoicePractice from './pages/Practice/VoicePractice' ;
+import TextPractice from './pages/Practice/TextPractice';
+
 
 function App() {
   return (
@@ -25,6 +30,11 @@ function App() {
         <Route path="/signup" element={<Signup/>} />   
         <Route path="/practicehome" element={<PracticeMain/>} />   
         <Route path="/practicelist" element={<PracticeList/>} />
+
+        <Route path="/imgpractice" element={<ImgPractice/>} />  
+        <Route path="/videopractice" element={<VideoPractice/>} />  
+        <Route path="/textpractice" element={<TextPractice/>} />  
+        <Route path="/voicepractice" element={<VoicePractice/>} />  
       </Routes>
       
 
