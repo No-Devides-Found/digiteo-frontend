@@ -4,7 +4,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 
 import {
-  EventCarousel,
+  Footer,
   PlayGroundCarousel,
   Program,
   RankingBanner,
@@ -64,6 +64,7 @@ function Home() {
         </Box>
       </Container>
       <RankingBanner />
+      <Footer />
     </div>
   );
 }
