@@ -6,10 +6,11 @@ import Signin from "./pages/Signin/Signin";
 import Signup from "./pages/Signup/Signup";
 import PracticeMain from "./pages/Practice/PracticeMain";
 import PracticeList from "./pages/Practice/PracticeList";
-import ImgPractice from './pages/Practice/ImgPractice';
-import VideoPractice from './pages/Practice/VideoPractice';
-import VoicePractice from './pages/Practice/VoicePractice' ;
-import TextPractice from './pages/Practice/TextPractice';
+
+import ImgPractice from './pages/Practice/pages/ImgPractice';
+import VideoPractice from './pages/Practice/pages/VideoPractice';
+import VoicePractice from './pages/Practice/pages/VoicePractice' ;
+import TextPractice from './pages/Practice/pages/TextPractice';
 
 
 function App() {
