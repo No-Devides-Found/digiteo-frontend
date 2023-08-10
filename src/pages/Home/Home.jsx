@@ -8,6 +8,7 @@ import {
   PlayGroundCarousel,
   Program,
   RankingBanner,
+  RelatedSiteCarousel,
 } from "../../components";
 
 //프로그램 컴포넌트 테스트
@@ -64,6 +65,7 @@ function Home() {
         </Box>
       </Container>
       <RankingBanner />
+      <RelatedSiteCarousel />
       <Footer />
     </div>
   );

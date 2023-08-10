@@ -41,6 +41,7 @@ function RankingBanner() {
         background: "linear-gradient(180deg, #1A237E, #FFFDE700)",
         width: "100%",
         pt: "6rem",
+        mb: "4rem",
       }}
       position={"relative"}
     >
@@ -55,11 +56,12 @@ function RankingBanner() {
         RANKING
       </Typography>
 
-      {/* 여기에 나중에 애니메이션..? */}
+      {/* TODO: 애니메이션 추가 */}
       <Box
         component={"img"}
         src={stars}
         sx={{ position: "absolute", top: "4rem" }}
+        width={"100%"}
       />
 
       <Grid container>
