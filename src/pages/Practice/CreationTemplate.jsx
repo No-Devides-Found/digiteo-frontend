@@ -14,7 +14,7 @@ const Img = styled('img')({
   maxHeight: '100%',
 });
 
-export default function CreationTemplate() {
+export default function CreationTemplate(key) {
   return (
     <Paper
       sx={{
@@ -36,14 +36,14 @@ export default function CreationTemplate() {
           <Grid item xs container  spacing={2}>
             <Grid item xs={12}>
               <Typography gutterBottom component="div">
-                  프로그램 대제목
+                  {key.title}
               </Typography>
             </Grid>
               
             <Grid item xs>
               <Grid container wrap="nowrap" spacing={2}>
                   <Grid item>
-                    <Avatar>W</Avatar>
+                    <Avatar>User</Avatar>
                   </Grid>
                   <Grid item>
                     <Typography noWrap>닉네임</Typography>

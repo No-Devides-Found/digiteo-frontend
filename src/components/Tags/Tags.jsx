@@ -19,7 +19,7 @@ export default function Tags({programs}) {
           renderInput={(params) => ( 
             <TextField {...params} label="프로그램 선택" placeholder="프로그램 선택" />
           )}
-          sx={{ position:'fixed', width: '700px' , margin: '0', }}
+          sx={{ width: '700px' , margin: '0', }}
         />
     </Box>
     

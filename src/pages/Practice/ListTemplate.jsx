@@ -16,12 +16,15 @@ const StyledBox = styled(Box)({
   width: '75rem',
   padding: '2rem 5rem',
 
+
 })
 
 const PostButton = styled(Button)({
   display: 'block',
   margin: '0 auto',
+  width: '10rem',
   backgroundColor:'white',
+  textAlign: 'center'
 })
 const StyledGrid = styled(Grid)({
   margin: '1rem',
@@ -41,6 +44,8 @@ const programs = [
   '프로그램명7', 
 ];
 
+
+
 function ListTemplate () {
   const [searchKeyword, setSearchKeyword ]= useState(''); //검색어
   const [choice, setChoice] = useState(0); //선택 검색 옵션
@@ -54,6 +59,7 @@ function ListTemplate () {
           <Grid item xs={11} md={11} >
            <SearchBar choice={choice} setChoice={setChoice} options={options} searchKeyword={searchKeyword} setSearchKeyword={setSearchKeyword}/>
           </Grid>
+
           <Grid item>
             <StyledGrid container
                   direction="row"
@@ -67,8 +73,6 @@ function ListTemplate () {
               </StyledGrid>
 
             </StyledGrid>
-            
-            
           </Grid>
    
           <Grid item xs={11}>
@@ -76,8 +80,8 @@ function ListTemplate () {
           </Grid>
 
           <StyledGrid item xs={11}>
-            <PostButton type="button">
-              창작물 올리기 버튼
+            <PostButton type="button" href="/postpractice">
+              창작물 올리기
             </PostButton>
           </StyledGrid>
           <PageGrid item xs={11} >

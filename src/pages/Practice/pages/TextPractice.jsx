@@ -1,10 +1,16 @@
 import React from 'react';
+import PracticeNavbar from '../PracticeNavbar';
+import ListTemplate from '../ListTemplate';
 
 function TextPractice() {
-  return (
-    <div>
+  const pageName="text";
 
-    </div>
+  return (
+    <React.Fragment>
+      <PracticeNavbar pageName={pageName}></PracticeNavbar>
+      <ListTemplate />
+      
+    </React.Fragment>
   );
 };
 

@@ -3,11 +3,14 @@ import React from "react";
 import { Box, Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import stars from "../../assets/Home/stars.svg";
-import rocket from "../../assets/Home/rocket.svg";
-import { EventCarousel, PlayGroundCarousel } from "../../components";
-import Program from "../../components/Program/Program"; 
-// import PracticeMain from "../Practice/PracticeMain"; 
 
+import {
+  Footer,
+  PlayGroundCarousel,
+  Program,
+  RankingBanner,
+  RelatedSiteCarousel,
+} from "../../components";
 
 //프로그램 컴포넌트 테스트
 const programProps = {
@@ -16,17 +19,14 @@ const programProps = {
   title: "프로그램 대제목",
   info: "프로그램 설명",
   participants: "참여 인원",
-  rating: "2.5"
+  rating: "2.5",
 };
-
 
 function Home() {
   return (
     <div>
       홈페이지
-      <EventCarousel />
-      
-
+      {/* <EventCarousel /> */}
       <PlayGroundCarousel />
       <Container sx={{ pb: "4rem" }}>
         <Box sx={{ mb: "1rem" }}>
@@ -41,24 +41,10 @@ function Home() {
           >
             TOP 5
           </Typography>
-          <Grid container>
-            <Grid item xs>
-              <Program {...programProps}/>
-            </Grid>
-            <Grid item xs>
-              <Program {...programProps}/>
-            </Grid>
-            <Grid item xs>
-              <Program {...programProps}/>
-            </Grid>
-            <Grid item xs>
-              <Program {...programProps}/>
-            </Grid>
-            <Grid item xs>
-              <Program {...programProps}/>
-            </Grid>
+
+          <Grid>
+            <Program {...programProps} />
           </Grid>
-          
         </Box>
       </Container>
       <Container sx={{ pb: "4rem" }}>
@@ -75,40 +61,13 @@ function Home() {
             신규 업데이트 프로그램
           </Typography>
           <Grid>
-            <Program {...programProps}/>
+            <Program {...programProps} />
           </Grid>
         </Box>
       </Container>
-      <Box
-        sx={{
-          position: "relative",
-          background: "linear-gradient(180deg, #1A237E, #FFFDE700)",
-          width: "100%",
-          pt: "6rem",
-          overflow: "hidden",
-        }}
-      >
-        <Typography
-          variant="h4"
-          textAlign={"center"}
-          fontFamily={"Krona One"}
-          zIndex={1}
-          position={"relative"}
-          color={"white"}
-        >
-          RANKING
-        </Typography>
-        <Box
-          component={"img"}
-          src={stars}
-          sx={{ position: "absolute", top: "4rem" }}
-        />
-        <Box component={"img"} src={rocket} sx={{ width: "20%", mt: "4rem" }} />
-        {/* <Box component={"img"} src={rocket} sx={{ width: "20%" }} />
-        <Box component={"img"} src={rocket} sx={{ width: "20%" }} />
-        <Box component={"img"} src={rocket} sx={{ width: "20%" }} />
-        <Box component={"img"} src={rocket} sx={{ width: "20%" }} /> */}
-      </Box>
+      <RankingBanner />
+      <RelatedSiteCarousel />
+      <Footer />
     </div>
   );
 }

@@ -2,14 +2,26 @@ import React from 'react';
 
 import {Grid} from '@mui/material';
 import { styled } from "@mui/material/styles";
+import PracticeNavbar from '../PracticeNavbar';
+import ListTemplate from '../ListTemplate';
+
 
 
 function ImgPractice() {
+  const pageName="img"; 
+
   return (
-    <div>
+    <React.Fragment>
+      <PracticeNavbar pageName={pageName}></PracticeNavbar>
+      <ListTemplate />
       
-    </div>
+    </React.Fragment>
   );
 };
 
 export default ImgPractice;
+
+
+
+
+
