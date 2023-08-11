@@ -1,12 +1,17 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import {Box, Button, Grid, Container, Typography, TextField, Avatar, Stack} from '@mui/material';
+import {Box, Button, ToggleButton, Grid, Container, Typography, TextField, Avatar, Stack} from '@mui/material';
 import { styled } from "@mui/material/styles";
 import Chips from '../../../components/Chips/Chips';
 
 import Paginations from '../../../components/Paginations/Paginations';
 import Comments from '../../../components/Comments/Comments';
 import CommentsList from './../../../components/Comments/CommentsList';
+import Checkbox from '@mui/material/Checkbox';
+import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
+import Favorite from '@mui/icons-material/Favorite';
+
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 //{ idx, title, tags, createdBy, type, story, review }
 const StyledContainer = styled(Container)({
@@ -95,7 +100,10 @@ function Practice() {
         <StyledContainer>
           <Grid container>
             <Grid item xs>
-              좋아요
+          <div>
+            좋아요<Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
+          </div>
+            
             </Grid>
             <Grid item xs={{float:'right'}}>
               공유하기
