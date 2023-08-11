@@ -1,26 +1,47 @@
 import * as React from 'react';
-import Chip from '@mui/material/Chip';
-import Stack from '@mui/material/Stack';
+import {Box, Chip} from '@mui/material';
 import DoneIcon from '@mui/icons-material/Done';
-import DeleteIcon from '@mui/icons-material/Delete';
+import { styled } from '@mui/material/styles';
+
+
+const ListItem = styled('li')(({ theme }) => ({
+  margin: theme.spacing(0.5),
+}));
 
 export default function Chips() {
-  const handleClick = () => {
-    console.info('You clicked the Chip.');
-  };
+  const [chipData, setChipData] = React.useState([
+    { key: 0, label: '프로그램명1' },
+    { key: 1, label: '프로그램명2' },
+    { key: 2, label: '프로그램명3' },
+    { key: 3, label: '프로그램명4' },
+    { key: 4, label: '프로그램명5' },
+  ]);
 
-  const handleDelete = () => {
-    console.info('You clicked the delete icon.');
-  };
+
 
   return (
-    <Stack direction="row" spacing={1}>
-      <Chip
-        label="Custom delete icon"
-        onClick={handleClick}
-        onDelete={handleDelete}
-        deleteIcon={<DoneIcon />}
-      />
-    </Stack>
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        flexWrap: 'wrap',
+        listStyle: 'none',
+        p: 0.5,
+        m: 0,
+      }}
+      component="ul"
+    >
+      {chipData.map((data) => {
+        return (
+          <ListItem key={data.key}>
+            <Chip
+             // onDelete={<DoneIcon/>}
+              label={data.label}
+             // deleteIcon={<DoneIcon />}
+            />
+          </ListItem>
+        );
+      })}
+    </Box>
   );
 }

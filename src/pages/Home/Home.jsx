@@ -24,8 +24,7 @@ const programProps = {
 
 function Home() {
   return (
-    <div>
-      홈페이지
+    <>
       {/* <EventCarousel /> */}
       <PlayGroundCarousel />
       <Container sx={{ pb: "4rem" }}>
@@ -68,7 +67,7 @@ function Home() {
       <RankingBanner />
       <RelatedSiteCarousel />
       <Footer />
-    </div>
+    </>
   );
 }
 

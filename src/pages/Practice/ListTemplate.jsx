@@ -6,12 +6,13 @@ import { styled } from "@mui/material/styles";
 import Dropdown from '../../components/Dropdown/Dropdown';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Tags from '../../components/Tags/Tags';
+import ChoiceTags from '../../components/Tags/ChoiceTags';
 import Paginations from '../../components/Paginations/Paginations'; 
 
 import CreationTemplate from './CreationTemplate';
 
 const StyledBox = styled(Box)({
-  backgroundColor: 'yellowgreen',
+  backgroundColor: '#FFF5E5',
   margin: '0 auto',
   width: '75rem',
   padding: '2rem 5rem',
@@ -66,7 +67,7 @@ function ListTemplate () {
                   justifyContent="center"
                   alignItems="stretch" >
               <StyledGrid item xs={8}>
-                <Tags programs={programs}/>
+                <ChoiceTags programs={programs}/>
               </StyledGrid>
               <StyledGrid item xs={2}>
                 <Dropdown/>
@@ -74,9 +75,10 @@ function ListTemplate () {
 
             </StyledGrid>
           </Grid>
-   
+
+          {/* 창작물 목록 리스트 */}
           <Grid item xs={11}>
-          <CreationTemplate/>
+            <CreationTemplate/>
           </Grid>
 
           <StyledGrid item xs={11}>

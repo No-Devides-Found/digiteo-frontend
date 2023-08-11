@@ -1,0 +1,23 @@
+import * as React from 'react';
+
+import {Box, Button, FormControl, FormLabel, TextField, IconButton, 
+  Menu,  MenuItem} from '@mui/material'; 
+
+
+
+export default function Comments() {
+  
+  return (
+    <FormControl>
+      <TextField
+        multiline
+        placeholder="댓글을 작성해보세요. (200자 이내)"
+        rows={6}
+        sx={{ width: '40rem' ,}}
+      />
+      <Box display="flex" justifyContent="flex-end">
+        <Button type='submit' sx={{ width: '5rem' }}>올리기</Button>
+      </Box>
+    </FormControl>
+  );
+}

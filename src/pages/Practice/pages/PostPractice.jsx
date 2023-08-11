@@ -29,14 +29,14 @@ const StyledContainer = styled(Container)({
   padding: '2rem',
   marginBottom:'0.5rem',
   height:'fit-content',
-
 });
+
 const Subtitle = styled(Typography)({
   marginBottom: '0.5rem',
   fontSize:'1.1rem',
   fontWeight:'bold',
-
 }); 
+
 const StyledButton = styled(Button)({
   backgroundColor: 'orange',
   width: '10rem',
@@ -56,7 +56,7 @@ function PostPractice () {
   const [practice, setPractice] = useState({
     title: '',
     createdBy: '',
-    tags: '',
+    tags: [],
     type: '',
     file: '',
     story: '',
@@ -66,23 +66,25 @@ function PostPractice () {
   const { title, createdBy,  tags, type, file, story, review } = practice; //비구조화 할당
 
   const onChange = (event) => {
-    const { value, name } = event.target; //event.target에서 name과 value만 가져오기
-    
-    setPractice({
-      ...practice,
-      [name]: value,
-    });
-    console.log(practice.title, practice.type, practice.story);
+    const { value, name } = event.target;
+
+    setPractice((prevPractice) => ({
+      ...prevPractice,
+      [name]: name === 'tags' ? value.split(',') : value,
+  }));
     
   };
 
   const savePractice = async () => {
     console.log(practice)
-    //practice 객체를 보냄
-    await axios.post('/practicelist', practice).then((res) => {
-      alert('등록되었습니다.');
-      navigate('/practicelist/:idx'); 
+    navigate(`/practice`, {
+      state: practice, //전체 'practice'객체 전달
     });
+    //practice 객체를 보냄
+    // await axios.post('/practicelist', practice).then((res) => {
+    //   alert('등록되었습니다.');
+    //   navigate('/practicelist/:idx'); 
+    // });
   };
   //작성 취소
   const backToList = () => {
@@ -98,7 +100,6 @@ function PostPractice () {
     '프로그램명5',
     '프로그램명6',
     '프로그램명7',
-  
   ];
 
   return (
@@ -117,7 +118,7 @@ function PostPractice () {
           
         <StyledContainer>
         <Subtitle variant='subtitle1'>태그</Subtitle>
-        <Tags programs={programs} />
+        <Tags programs={programs} tags={practice.tags} setPractice={setPractice}/>
         </StyledContainer>
         
         <StyledContainer >
