@@ -11,9 +11,10 @@ function App() {
       <NavBar></NavBar>
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="" element={<Home />} />
+        <Route path="signin" element={<Signin />} />
+        <Route path="signup" element={<Signup />} />
+        <Route path="*" element={<p>Path not resolved</p>} />
       </Routes>
     </div>
   );
