@@ -5,6 +5,8 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 
+import { RecoilRoot } from "recoil";
+
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./styles/theme";
@@ -15,7 +17,9 @@ root.render(
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <App />
+        <RecoilRoot>
+          <App />
+        </RecoilRoot>
       </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>
