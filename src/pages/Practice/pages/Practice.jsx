@@ -68,12 +68,13 @@ function Practice() {
           <Grid container spaing={2} >
             <Grid item xs={4}>
               <Stack direction="row" spacing={2}>
-              <Avatar>H</Avatar><Typography>닉네임</Typography>
+                <Avatar>H</Avatar><Typography>닉네임</Typography>
               </Stack>
             </Grid>
             <Grid item xs={8} >
-              <Container component='ul'>
-              <Chips/>
+              {/* 선택된 태그들 */}
+              <Container >
+                <Chips/>
               </Container>
               
             </Grid>

@@ -7,10 +7,7 @@ import PracticeHome from "./pages/Practice/PracticeHome";
 import PracticeList from "./pages/Practice/PracticeList";
 
 import Practice from './pages/Practice/pages/Practice';
-import ImgPractice from './pages/Practice/pages/ImgPractice';
-import VideoPractice from './pages/Practice/pages/VideoPractice';
-import VoicePractice from './pages/Practice/pages/VoicePractice' ;
-import TextPractice from './pages/Practice/pages/TextPractice';
+
 import PostPractice from './pages/Practice/pages/PostPractice';
 import DetailedPractice from './pages/Practice/pages/DetailedPractice';
 
@@ -31,10 +28,7 @@ function App() {
 
         <Route path="/practice" element={<Practice/>} />  
 
-        <Route path="/imgpractice" element={<ImgPractice/>} />  
-        <Route path="/videopractice" element={<VideoPractice/>} />  
-        <Route path="/textpractice" element={<TextPractice/>} />  
-        <Route path="/voicepractice" element={<VoicePractice/>} />
+        
         <Route path="/postpractice" element={<PostPractice/>} />   
         
 

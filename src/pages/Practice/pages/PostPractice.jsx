@@ -112,13 +112,13 @@ function PostPractice () {
       <Box type='form'>
         
         <StyledContainer>
-        <Subtitle variant='subtitle1'>창작물 대제목</Subtitle>
-        <TextField id="outlined-basic" name='title' value={title} onChange={onChange} sx={{width:'100%'}} variant="outlined" placeholder='창작물 대제목을 입력해주세요.'/>
+          <Subtitle variant='subtitle1'>창작물 대제목</Subtitle>
+          <TextField id="outlined-basic" name='title' value={title} onChange={onChange} sx={{width:'100%'}} variant="outlined" placeholder='창작물 대제목을 입력해주세요.'/>
         </StyledContainer>
           
         <StyledContainer>
         <Subtitle variant='subtitle1'>태그</Subtitle>
-        <Tags programs={programs} tags={practice.tags} setPractice={setPractice}/>
+          <Tags programs={programs} tags={practice.tags} setPractice={setPractice}/>
         </StyledContainer>
         
         <StyledContainer >

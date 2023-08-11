@@ -1,11 +1,16 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
+import Chips from '../../components/Chips/Chips';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import ButtonBase from '@mui/material/ButtonBase';
 import Avatar from '@mui/material/Avatar';
-
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import { Button, CardActionArea, CardActions, Stack } from '@mui/material';
+import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 
 const Img = styled('img')({
   margin: 'auto',
@@ -16,48 +21,53 @@ const Img = styled('img')({
 
 export default function CreationTemplate(key) {
   return (
-    <Paper
-      sx={{
-        p: 2,
-        margin: 'auto',
-        maxWidth: 700,
-        flexGrow: 1,
-        backgroundColor: (theme) =>
-          theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-      }}
-    >
-      <Grid container spacing={2}>
-        <Grid item>
-          <ButtonBase sx={{ width: 200, maxHeight:170}}>
-            <Img alt="complex" style={{    width:'200px', height:'150px', objectFit:'cover'}} src="\asset\thumbnail.jpg" />
-          </ButtonBase>
+    <Card sx={{ maxWidth: 800, margin:'0 auto'}}>
+      <Grid container>
+        <Grid item xs={4}>
+          <CardActionArea>
+            <CardMedia
+                  component="img"
+                  height="160"
+                  image="\asset\thumbnail.jpg"
+                  alt="green iguana"
+                />
+          </CardActionArea>
         </Grid>
-        <Grid item xs={12} sm container>
-          <Grid item xs container  spacing={2}>
+        <Grid item xs={8}>
+        <CardContent>
+          <Grid container>
             <Grid item xs={12}>
-              <Typography gutterBottom component="div">
-                  {key.title}
+              <Typography gutterBottom variant="h5" component="div">
+                창작물 대제목
               </Typography>
             </Grid>
-              
-            <Grid item xs>
-              <Grid container wrap="nowrap" spacing={2}>
-                  <Grid item>
-                    <Avatar>User</Avatar>
-                  </Grid>
-                  <Grid item>
-                    <Typography noWrap>닉네임</Typography>
-                  </Grid>
-              </Grid>
+            <Grid item xs={3} style={{maxHeight:'3rem',  marginBottom:'1rem',}}>
+              <Stack direction="row" spacing={2}>
+                <Avatar>H</Avatar><Typography style={{lineHeight:'40px'}}>닉네임</Typography>
+              </Stack>
             </Grid>
-
-            <Grid item XS>
-             
+            <Grid item xs={9} style={{maxHeight: '3rem', overflow:'hidden'}}>
+              <Chips/> 
+            </Grid>
+            <Grid item xs={6}>
+               <Stack direction="row" alignItems="center">
+                  <Typography>좋아요</Typography>{' '}
+                  <FavoriteRoundedIcon style={{color:'red'}}/>
+                  <Typography> ~~~개</Typography>
+                </Stack>
+            </Grid>
+            <Grid item xs={6} style={{textAlign:'right'}} >
+              <Typography variant="body2" color="text.secondary">작성일자 2023.01.01</Typography>
             </Grid>
           </Grid>
- 
+        </CardContent>
+          {/* <CardActions>
+            <Button size="small" color="primary">
+              Share
+            </Button>
+          </CardActions> */}
         </Grid>
       </Grid>
-    </Paper>
+    </Card>
   );
 }

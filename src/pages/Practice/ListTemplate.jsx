@@ -6,7 +6,6 @@ import { styled } from "@mui/material/styles";
 import Dropdown from '../../components/Dropdown/Dropdown';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Tags from '../../components/Tags/Tags';
-import ChoiceTags from '../../components/Tags/ChoiceTags';
 import Paginations from '../../components/Paginations/Paginations'; 
 
 import CreationTemplate from './CreationTemplate';
@@ -16,9 +15,8 @@ const StyledBox = styled(Box)({
   margin: '0 auto',
   width: '75rem',
   padding: '2rem 5rem',
-
-
 })
+
 
 const PostButton = styled(Button)({
   display: 'block',
@@ -28,13 +26,14 @@ const PostButton = styled(Button)({
   textAlign: 'center'
 })
 const StyledGrid = styled(Grid)({
-  margin: '1rem',
+  marginBottom: '1rem',
 })
 const PageGrid = styled(Grid)({
   margin: '0 auto',
 })
 
 const options = ["제목+닉네임", "제목", "닉네임"]
+
 const programs = [
   '프로그램명1',
   '프로그램명2', 
@@ -48,48 +47,40 @@ const programs = [
 
 
 function ListTemplate () {
+  const [practice, setPractice] = useState({
+    title: '',
+    createdBy: '',
+    tags: [],
+    type: '',
+    file: '',
+    story: '',
+    review: '',
+  });
+
+  const { title, createdBy,  tags, type, file, story, review } = practice; //비구조화 할당
+
   const [searchKeyword, setSearchKeyword ]= useState(''); //검색어
   const [choice, setChoice] = useState(0); //선택 검색 옵션
+  // const [tags, setPractice] = useState([]);
 
   return (
       <StyledBox>
-        <Grid  container
-                direction="column"
-                justifyContent="space-around"
-                alignItems="stretch"  >
-          <Grid item xs={11} md={11} >
-           <SearchBar choice={choice} setChoice={setChoice} options={options} searchKeyword={searchKeyword} setSearchKeyword={setSearchKeyword}/>
-          </Grid>
-
-          <Grid item>
-            <StyledGrid container
-                  direction="row"
-                  justifyContent="center"
-                  alignItems="stretch" >
-              <StyledGrid item xs={8}>
-                <ChoiceTags programs={programs}/>
-              </StyledGrid>
-              <StyledGrid item xs={2}>
-                <Dropdown/>
-              </StyledGrid>
-
-            </StyledGrid>
-          </Grid>
-
-          {/* 창작물 목록 리스트 */}
-          <Grid item xs={11}>
-            <CreationTemplate/>
-          </Grid>
-
-          <StyledGrid item xs={11}>
-            <PostButton type="button" href="/postpractice">
-              창작물 올리기
-            </PostButton>
+        <Grid container style={{padding: '0 5rem',}}>
+          <StyledGrid item xs={12}>
+            <SearchBar  choice={choice} setChoice={setChoice} options={options} searchKeyword={searchKeyword} setSearchKeyword={setSearchKeyword}/>
           </StyledGrid>
-          <PageGrid item xs={11} >
-            <Paginations />
-          </PageGrid>
-          
+          <StyledGrid item xs={9}>
+            <Tags  programs={programs} tags={practice.tags} setPractice={setPractice}/>
+          </StyledGrid>
+          <StyledGrid item xs={3} style={{marginBottom:'5rem', float:'right'}}>
+            <Dropdown  />
+          </StyledGrid> 
+          <StyledGrid item xs={12}>
+            <CreationTemplate/>
+          </StyledGrid>
+          <PostButton type="button" href="/postpractice">
+              창작물 올리기
+          </PostButton>
         </Grid>
         
       </StyledBox>

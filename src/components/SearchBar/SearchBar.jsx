@@ -3,66 +3,20 @@ import {Box, Grid, Typography, Button, ButtonGroup, ClickAwayListener, Grow, Pap
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import SearchIcon from '@mui/icons-material/Search';
 
+
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+
+import DirectionsIcon from '@mui/icons-material/Directions';
+
+
 import { styled } from "@mui/material/styles";
 
 
-const Search = styled('div')(({ theme }) => ({
-  display: 'inline-block',
-  
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: "orange",
-  '&:hover': {
-    backgroundColor: "yellow",
-  },
-  marginRight: theme.spacing(2),
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(3),
-    width: '35rem',
-  },
-}));
 
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
 
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '25rem',
-    },
-  },
-}));
-
-
-// 검색 버튼 
-const SearchButton = styled(Button)({
-  height: '100%',
-  position: 'absolute',
-  float: "right", 
-  
-  backgroundColor: "white",
-  '&:hover': {
-    backgroundColor: "red",
-  },
-})
-const StyledButtonGroup = styled(ButtonGroup)({
-})
 //options는 받아오는 검색 정렬 옵션
 
 
@@ -74,20 +28,17 @@ const StyledButtonGroup = styled(ButtonGroup)({
 function SearchBar({options, choice, setChoice, setSearchKeyword, searchKeyword}){
   
   //검색
-
-
   const handleSearchKeyword = (e) => {
     setSearchKeyword(e.target.value);
   }
 
   //검색 버튼 클릭 시 
-  const onClick = (e) => {
+  const clickSearch = (e) => {
     setSearchKeyword(''); //검색창에 입력한 값 지우기
   }
 
   //검색 옵션 
   const [open, setOpen] = useState(false);  //옵션창 열기(true), 닫기(false)
-  
   const anchorRef = React.useRef(null);
 
   //선택한 검색 옵션 (순서대로 인덱스)
@@ -114,14 +65,14 @@ function SearchBar({options, choice, setChoice, setSearchKeyword, searchKeyword}
 
 
   return (
-    <Box>
-      <Grid   container
-              direction="row"
-              justifyContent="center"
-              alignItems="stretch">
-      <Grid item  > 
-      <StyledButtonGroup variant="contained" ref={anchorRef} aria-label="split button">
-          <Button onClick={handleClick}>{options[choice]}</Button>
+    <Box >
+      <Paper
+
+        component="form"
+        sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '100%' , margin:'0 auto'}}
+      >
+        <ButtonGroup sx={{width:'10rem'}} variant="contained" ref={anchorRef} aria-label="split button">
+          <Button sx={{width:'100%'}}onClick={handleClick}>{options[choice]}</Button>
           <Button
             size="small"
             aria-controls={open ? 'split-button-menu' : undefined}
@@ -132,10 +83,10 @@ function SearchBar({options, choice, setChoice, setSearchKeyword, searchKeyword}
           >
             <ArrowDropDownIcon />
           </Button>
-      </StyledButtonGroup>
+      </ButtonGroup>
         <Popper
           sx={{
-            zIndex: 1,
+            zIndex: 5,
           }}
           open={open}
           anchorEl={anchorRef.current}
@@ -169,33 +120,21 @@ function SearchBar({options, choice, setChoice, setSearchKeyword, searchKeyword}
             </Grow>
           )}
         </Popper>
-      </Grid>
-      <Grid item>
-
-      </Grid>
-        <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-        
-            <StyledInputBase
-                    placeholder="찾고싶은 프로그램 제목/내용을 입력하세요."
-                    inputProps={{ 'aria-label': 'search' }}
-                    name="searchKeyword"
-                    value={searchKeyword}
-                    onChange={handleSearchKeyword}
-            />
-          
-          <SearchButton type="submit" onClick={onClick} > 
-                    검색
-          </SearchButton>  
-        </Search>
-        
-</Grid>
-     
-      
-
-
+        <InputBase
+          onChange={handleSearchKeyword}
+          value={searchKeyword}
+          sx={{ ml: 1, flex: 1 }}
+          placeholder="검색어를 입력해주세요."
+          inputProps={{ 'aria-label': 'search google maps' }}
+        />
+        <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
+          <SearchIcon />
+        </IconButton>
+        <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+        <IconButton onClick={clickSearch} color="primary" sx={{ p: '8px' }} aria-label="directions">
+          search
+        </IconButton>
+      </Paper>
     </Box>
          
   );

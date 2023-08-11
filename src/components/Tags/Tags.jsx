@@ -28,7 +28,7 @@ export default function Tags({programs, tags, setPractice}) {
           renderInput={(params) => (
             <TextField {...params} label="프로그램 선택" placeholder="프로그램 선택" />
           )}
-          sx={{ width: '700px', margin: '0' }}
+          sx={{ width: '40rem',  }}
         />
     </Box>
     

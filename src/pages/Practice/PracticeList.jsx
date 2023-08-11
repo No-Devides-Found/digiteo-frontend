@@ -54,37 +54,6 @@ export default function PracticeList() {
   return (
     <React.Fragment>
       <PracticeNavbar page={page} setPage={setPage} pageType={pageType}></PracticeNavbar>
-
-      {/* <ul>
-        {practiceList.map((practice)=>(
-          <li key={practice.idx}>
-            <CreationTemplate practice={practice} />
-          </li>
-          
-        ))}
-      </ul> */}
-      {/* <Container>
-        <Grid container >
-          <Grid item xs={12}>
-          여기 SearchBar <SearchBar/>
-          </Grid>
-          <Grid item xs={8}>
-          여기 태그선택
-          </Grid>
-          <Grid item xs={4}>
-            여기 정렬
-          </Grid>
-          <Grid item xs={12}>
-            여기 리스트 목록
-          </Grid>
-          <Grid item xs={12}>
-            <button onClick={moveToWrite}>창작물 올리기</button>
-          </Grid>
-          <Grid item xs={12}>
-            <Paginations/>
-          </Grid>
-        </Grid>
-      </Container> */}
       
       <ListTemplate/>
       
