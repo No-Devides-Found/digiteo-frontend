@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import "./Signin.css";
+import moment from "moment";
 
 // import styled from 'styled-components';
 import { Link } from "react-router-dom";
@@ -35,11 +36,16 @@ const Signin = () => {
     Axios.post("/accounts/dj-rest-auth/login/", user)
       //POST 요청이 성공적으로 완료 - 서버 응답 처리
       .then((res) => {
-        if (res.data.key) {
-          localStorage.clear();
-          localStorage.setItem("token", res.data.key);
-
-          window.location.replace("/"); // App.js에서 /로 라우팅 필요
+        console.log(res);
+        if (res.data.access) {
+          // localStorage.clear();
+          // 로컬스토리지에 access_token과 만료기한 저장
+          localStorage.setItem("access_token", res.data.access);
+          localStorage.setItem(
+            "access_expiration",
+            moment().add(30, "minute").format("yyyy-MM-DD HH:mm:ss")
+          );
+          window.location.replace("/");
         }
         //응답에 key값 없음 = 로그인 실패
         else {

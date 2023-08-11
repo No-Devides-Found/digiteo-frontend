@@ -1,6 +1,7 @@
 // Signup.jsx
 import React, { useState } from "react";
 import Axios from "axios";
+import moment from "moment";
 import { Grid, Box, Stepper, Step, StepLabel, Button } from "@mui/material";
 import "./Signup.css";
 import Step1Content from "./Step1";
@@ -67,11 +68,15 @@ const Signup = () => {
     Axios.post("/accounts/dj-rest-auth/registration", user)
       .then((res) => {
         console.log(res);
-        if (res.data.key) {
-          localStorage.clear();
-          localStorage.setItem("token", res.data.key);
-          // 사용하려면 App.js에서 /로 라우팅해야 한다
-          //window.location.replace('/')
+        if (res.data.access) {
+          // localStorage.clear();
+          // 로컬스토리지에 access_token과 만료기한 저장
+          localStorage.setItem("access_token", res.data.access);
+          localStorage.setItem(
+            "access_expiration",
+            moment().add(30, "minute").format("yyyy-MM-DD HH:mm:ss")
+          );
+          window.location.replace("/");
         } else {
           setNickname("");
           setEmail("");
