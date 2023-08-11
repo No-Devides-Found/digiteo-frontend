@@ -157,23 +157,50 @@ const Step2Content = ({
               />
             </RadioGroup>
           </Grid>
+
           <Grid item xs>
-            <select
-              className="selectWrap"
-              id="grade"
-              onChange={(e) => {
-                setGrade(e.target.value);
-              }}
-              value={grade}
-            >
-              <option value="0">학년</option>
-              <option value="1">1학년</option>
-              <option value="2">2학년</option>
-              <option value="3">3학년</option>
-              <option value="4">4학년</option>
-              <option value="5">5학년</option>
-              <option value="6">6학년</option>
-            </select>
+            {
+              identity === "none"
+
+              ? 
+                <select
+                  disabled
+                  className="selectWrap"
+                  id="grade"
+                  onChange={(e) => {
+                    setGrade(e.target.value);
+                    
+                  }}
+                  value={grade}
+                >
+                  <option value="0">학년</option>
+                  <option value="1">1학년</option>
+                  <option value="2">2학년</option>
+                  <option value="3">3학년</option>
+                  <option value="4">4학년</option>
+                  <option value="5">5학년</option>
+                  <option value="6">6학년</option>
+                </select>
+             :
+              <select
+                className="selectWrap"
+                id="grade"
+                onChange={(e) => {
+                  setGrade(e.target.value);
+                }}
+                value={grade}
+              >
+                <option value="0">학년</option>
+                <option value="1">1학년</option>
+                <option value="2">2학년</option>
+                <option value="3">3학년</option>
+                <option value="4">4학년</option>
+                <option value="5">5학년</option>
+                <option value="6">6학년</option>
+              </select>
+            
+            }
+            
           </Grid>
         </Grid>
       </div>
