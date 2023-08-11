@@ -72,7 +72,7 @@ function ListTemplate () {
           <StyledGrid item xs={9}>
             <Tags  programs={programs} tags={practice.tags} setPractice={setPractice}/>
           </StyledGrid>
-          <StyledGrid item xs={3} style={{marginBottom:'5rem', float:'right'}}>
+          <StyledGrid item xs={3} style={{marginBottom:'5rem', textAlign:'right'}}>
             <Dropdown  />
           </StyledGrid> 
           <StyledGrid item xs={12}>
