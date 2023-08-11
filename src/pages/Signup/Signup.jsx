@@ -22,8 +22,8 @@ const Signup = () => {
   const [month, setMonth] = useState(String(date.getMonth()).padStart(2, "0")); //월
   const [day, setDay] = useState(String(date.getDate()).padStart(2, "0")); //일
 
-  const [identity, setIdentity] = useState(""); //회원유형
-  const [grade, setGrade] = useState("");
+  const [identity, setIdentity] = useState("none"); //회원유형
+  const [grade, setGrade] = useState("0");
   const [school, setSchool] = useState(""); //소속
 
   //required 입력사항 검사
