@@ -14,7 +14,7 @@ function Header() {
           <Link to="/signin">로그인</Link>
         </Grid>
         <Grid item xs>
-          <Link to="/singup">회원가입</Link>
+          <Link to="/signup">회원가입</Link>
         </Grid>
       </Grid>
     </div>

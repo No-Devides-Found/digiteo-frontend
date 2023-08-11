@@ -1,16 +1,7 @@
 // Signup.jsx
-
 import React, { useState } from "react";
 import Axios from "axios";
-
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import Stepper from "@mui/material/Stepper";
-import Step from "@mui/material/Step";
-import StepLabel from "@mui/material/StepLabel";
-import Button from "@mui/material/Button";
-//import Typography from '@mui/material/Typography';
-
+import { Grid, Box, Stepper, Step, StepLabel, Button } from "@mui/material";
 import "./Signup.css";
 import Step1Content from "./Step1";
 import Step2Content from "./Step2";
@@ -19,19 +10,20 @@ import Step3Content from "./Step3";
 //총 3스텝
 const steps = ["", "", ""];
 
-function Signup() {
+const Signup = () => {
   // 하위 컴포넌트에서 입력받을 회원가입 정보
   const [nickname, setNickname] = useState(""); //닉네임
   const [email, setEmail] = useState(""); //이메일
   const [password, setPassword] = useState(""); //비밀번호
   const [password2, setPassword2] = useState(""); //비밀번호 재확인
 
-  const [year, setYear] = useState(""); //년도
-  const [month, setMonth] = useState(""); //월
-  const [day, setDay] = useState(""); //일
+  const date = new Date(Date.now());
+  const [year, setYear] = useState(String(date.getFullYear())); //년도
+  const [month, setMonth] = useState(String(date.getMonth()).padStart(2, "0")); //월
+  const [day, setDay] = useState(String(date.getDate()).padStart(2, "0")); //일
 
-  const [identity, setIdentity] = useState(""); //회원유형
-  const [grade, setGrade] = useState("");
+  const [identity, setIdentity] = useState("none"); //회원유형
+  const [grade, setGrade] = useState("0");
   const [school, setSchool] = useState(""); //소속
 
   //required 입력사항 검사
@@ -60,19 +52,21 @@ function Signup() {
     console.log("submit");
 
     const user = {
-      nickname: nickname,
       email: email,
-      password: password,
-      year: year,
-      month: month,
-      day: day,
-      identity: identity,
-      grade: grade,
-      school: school,
+      password1: password,
+      password2: password2,
+      profile: {
+        nickname: nickname,
+        birth: `${year}-${month}-${day}`,
+        job: identity,
+        grade: grade,
+        department: school,
+      },
     };
 
-    Axios.post("/api/v1/mall/auth/register/", user)
+    Axios.post("/accounts/dj-rest-auth/registration", user)
       .then((res) => {
+        console.log(res);
         if (res.data.key) {
           localStorage.clear();
           localStorage.setItem("token", res.data.key);
@@ -94,8 +88,8 @@ function Signup() {
         }
       })
       .catch((err) => {
-        console.clear();
-        alert("아이디 혹은 비밀번호가 일치하지 않습니다");
+        console.log(err);
+        // console.clear();
       });
   };
 
@@ -232,7 +226,7 @@ function Signup() {
               </div>
             </div>
 
-            {/* 여기 스텝 */}
+            {/* 스텝 */}
             {renderStepContent(activeStep)}
 
             <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
@@ -255,6 +249,6 @@ function Signup() {
       </Box>
     </Grid>
   );
-}
+};
 
 export default Signup;
