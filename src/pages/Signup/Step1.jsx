@@ -1,18 +1,33 @@
 import React from "react";
-import Grid from "@mui/material/Grid";
-
+import {Container, Tooltip} from "@mui/material";
+import ErrorIcon from '@mui/icons-material/Error';
 export const Step1Content = ({
   nickname,
   setNickname,
-  email,
-  setEmail,
+  email, setEmail, emailMessage, setEmailMessage, isEmail, setIsEmail,
   password,
   setPassword,
   password2,
   setPassword2,
 }) => {
+
+  const onChangeEmail=(e)=>{
+    const currentEmail = e.target.value;
+    setEmail(currentEmail);
+    const emailRegExp = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/ ;   //이메일 정규식 ^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$
+    
+    if (!emailRegExp.test(currentEmail)){
+      setEmailMessage('이메일 조건 충족해주세요!');
+      setIsEmail(false);
+    }else{
+      setEmailMessage('사용 가능한 이메일입니다.');
+      setIsEmail(true);
+    }
+  };
+
+
   return (
-    <Grid>
+    <Container>
       {/* <h1>Step 1의 내용: 이곳에는 Step 1의 내용이 표시됩니다.</h1> */}
       <div className="inputContainer">
         <div className="inputTitle">
@@ -46,10 +61,9 @@ export const Step1Content = ({
           </span>
         </div>
         <div className="inputWrap">
+        <Tooltip title="이메일 조건을 충족해주세요." placement="bottom">
           <input
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
+            onChange={onChangeEmail} 
             value={email}
             className="inputForm"
             placeholder="이메일을 입력해주세요."
@@ -57,7 +71,9 @@ export const Step1Content = ({
             required
             name="email"
           />
+        </Tooltip>
           <br />
+          <div>{emailMessage}</div>
         </div>
       </div>
       <div className="inputContainer">
@@ -106,7 +122,7 @@ export const Step1Content = ({
           <br />
         </div>
       </div>
-    </Grid>
+    </Container>
   );
 };
 

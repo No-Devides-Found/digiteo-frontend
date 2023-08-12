@@ -11,7 +11,7 @@ import Step3Content from "./Step3";
 const steps = ["", "", ""];
 
 const Signup = () => {
-  // 상태 관리 초기값 세팅
+  // 상태 관리 초기값 세팅 - 닉네임, 이메일, 비밀번호, 비밀번호 재확인, 생년월일, 회원유형, 학년
   // 하위 컴포넌트에서 입력받을 회원가입 정보
   const [nickname, setNickname] = useState(""); //닉네임 (필수)
   const [email, setEmail] = useState(""); //이메일 (필수)
@@ -36,12 +36,12 @@ const Signup = () => {
   const [gradeMessage, setGradeMessage] = useState("");
 
   //유효성 검사 세팅
-  const [isEmail, setIsEmail] = useState('');
-  const [isPassword, setIsPassword] = useState('');
-  const [isPassword2, setIsPassword2] = useState('');
-  const [isBirth, setIsBirth] = useState('');
-  const [isIdentity, setIsIdentity] = useState(''); 
-  const [isGrade, setIsGrade] = useState(''); 
+  const [isEmail, setIsEmail] = useState(false);
+  const [isPassword, setIsPassword] = useState(false);
+  const [isPassword2, setIsPassword2] = useState(false);
+  const [isBirth, setIsBirth] = useState(false);
+  const [isIdentity, setIsIdentity] = useState(false); 
+  const [isGrade, setIsGrade] = useState(false); 
 
 
   //required 입력사항 검사
@@ -126,8 +126,14 @@ const Signup = () => {
           <Step1Content
             nickname={nickname}
             setNickname={setNickname}
+           
             email={email}
             setEmail={setEmail}
+            emailMessage={emailMessage}
+            setEmailMessage={setEmailMessage}
+            isEmail={isEmail}
+            setIsEmail={setIsEmail}
+
             password={password}
             setPassword={setPassword}
             password2={password2}
