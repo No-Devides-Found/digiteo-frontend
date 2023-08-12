@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
@@ -10,6 +10,7 @@ import { RecoilRoot } from "recoil";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./styles/theme";
+import { Box, CircularProgress } from "@mui/material";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -18,7 +19,15 @@ root.render(
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <RecoilRoot>
-          <App />
+          <Suspense
+            fallback={
+              <Box sx={{ display: "flex", height: "100%" }}>
+                <CircularProgress />
+              </Box>
+            }
+          >
+            <App />
+          </Suspense>
         </RecoilRoot>
       </ThemeProvider>
     </BrowserRouter>
