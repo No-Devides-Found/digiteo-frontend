@@ -65,14 +65,14 @@ export default function NavBar() {
             <Link to=
             {
               index === 0
-               ? "/"
+               ? ""
                : index === 1
-               ? "/"
+               ? ""
                : index === 2
-               ? "/practicehome"
+               ? "practicehome"
                : index === 3
-               ? "/"
-               : "/"
+               ? ""
+               : ""
             } >
               <NavMenu
                 name={

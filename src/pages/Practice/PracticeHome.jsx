@@ -32,7 +32,7 @@ const TitleTypography = styled(Typography)({
 })
 
 
-export default function PracticeHome() {
+const PracticeHome = () => {
   const navigate = useNavigate();
 
   const onClick=(e)=>{
@@ -85,3 +85,5 @@ export default function PracticeHome() {
     </MainBox>
   ); 
 }
+
+export default PracticeHome;

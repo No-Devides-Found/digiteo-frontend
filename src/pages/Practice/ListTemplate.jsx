@@ -81,6 +81,10 @@ function ListTemplate () {
           <PostButton type="button" href="/postpractice">
               창작물 올리기
           </PostButton>
+          <StyledGrid xs={12} style={{marginTop:'2rem'}}>
+           <Paginations />
+          </StyledGrid>
+          
         </Grid>
         
       </StyledBox>

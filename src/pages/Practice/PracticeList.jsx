@@ -1,18 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import axios from "axios";
 
-import { Link,  Navigate, useNavigate, useLocation , useParams} from 'react-router-dom';
+import { useNavigate, useLocation} from 'react-router-dom';
 
 
 
-import {Box, Grid, Container} from '@mui/material';
 
 import ListTemplate from "./ListTemplate";
-import CreationTemplate from "./CreationTemplate";
-import PracticeNavbar from "./PracticeNavbar";
-import SearchBar from './../../components/SearchBar/SearchBar';
 
-import Paginations from './../../components/Paginations/Paginations';
+import PracticeNavbar from "./PracticeNavbar";
 
 
 
@@ -27,10 +23,6 @@ export default function PracticeList() {
   const [page,setPage]=useState(pageType)
   
   const navigate = useNavigate();
-  
-  const moveToWrite = () => {
-    navigate('/postpractice');
-  };
   
   const [practiceList, setPracticeList] = useState([]);
   // const getPracticeList = async () => {

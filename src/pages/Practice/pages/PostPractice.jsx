@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Autocomplete from '@mui/material/Autocomplete';
+
 import Tags from './../../../components/Tags/Tags'
 
 import { styled } from "@mui/material/styles";
@@ -10,17 +10,13 @@ import { styled } from "@mui/material/styles";
 import { 
   Typography, 
   Input, 
-  InputLabel, 
   TextField, 
-  Grid , Box, 
+  Box, 
   Container, 
   Button,
   Radio,
   RadioGroup,
-  FormLabel,
   FormControlLabel,
-  FormControl,
-  
 } from '@mui/material';
 
 const StyledContainer = styled(Container)({
@@ -77,6 +73,7 @@ function PostPractice () {
 
   const savePractice = async () => {
     console.log(practice)
+    //detailedpractice로 가게 수정해야 함
     navigate(`/practice`, {
       state: practice, //전체 'practice'객체 전달
     });
