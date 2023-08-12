@@ -24,8 +24,8 @@ const Signup = () => {
   const [day, setDay] = useState(String(date.getDate()).padStart(2, "0")); //일 (필수)
 
   const [identity, setIdentity] = useState("none"); //회원유형 (필수)
-  const [grade, setGrade] = useState("0"); 
-  const [school, setSchool] = useState(""); //소속
+  const [grade, setGrade] = useState("0");  //학년 (필수)
+  const [school, setSchool] = useState(""); //소속 (선택)
 
   //오류 메세지 전달을 위한 상태값 세팅
   const [emailMessage, setEmailMessage] = useState("");
@@ -33,6 +33,16 @@ const Signup = () => {
   const [password2Message, setPassword2Message] = useState("");
   const [birthMessage, setBrithMessage] = useState("");
   const [identityMessage, setIdentityMessage] = useState("");
+  const [gradeMessage, setGradeMessage] = useState("");
+
+  //유효성 검사 세팅
+  const [isEmail, setIsEmail] = useState('');
+  const [isPassword, setIsPassword] = useState('');
+  const [isPassword2, setIsPassword2] = useState('');
+  const [isBirth, setIsBirth] = useState('');
+  const [isIdentity, setIsIdentity] = useState(''); 
+  const [isGrade, setIsGrade] = useState(''); 
+
 
   //required 입력사항 검사
   const checkPage = () => {
