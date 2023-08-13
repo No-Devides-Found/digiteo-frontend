@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 
 import { Box, Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
+import stars from "../../assets/Home/stars.svg";
 
 import {
   Footer,

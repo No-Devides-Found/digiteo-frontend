@@ -62,7 +62,18 @@ export default function NavBar() {
       <Grid container>
         {navMenuItems.map((items, index) => (
           <Grid item xs key={index}>
-            <Link to="/">
+            <Link to=
+            {
+              index === 0
+               ? ""
+               : index === 1
+               ? ""
+               : index === 2
+               ? "practicehome"
+               : index === 3
+               ? ""
+               : ""
+            } >
               <NavMenu
                 name={
                   index === 0
