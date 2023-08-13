@@ -5,23 +5,36 @@ import moment from "moment";
 
 // import styled from 'styled-components';
 import { Link } from "react-router-dom";
-import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { orange, grey } from "@mui/material/colors";
+import {Grid, Box, Button, Typography, Container,} from "@mui/material";
+
+import {  styled,  } from "@mui/material/styles";
+import playground from '../../assets/playground.jpg';
 
 // 컬러 테마
-const theme = createTheme({
-  palette: {
-    primary: orange,
-    secondary: grey,
-  },
-});
+const StyledButton = styled(Button)({
+  backgroundColor: 'rgba(246, 93, 27, 0.65)',
+  width: '100%',
+  height:'3rem',
+  display:'block',
+  textAlign:'center',
+  color:'black',
+  // fontWeight:'bold',
+  margin:'0.5rem auto',
+  borderRadius:'0.8rem',
+  '&:hover':{  
+    backgroundColor:'rgba(246, 93, 27, 1)',
+  }
+})
+
+const preventDefault = (event) => event.preventDefault();
 
 const Signin = () => {
   const [email, setEmail] = useState(""); //아이디=이메일로 입력받음
   const [password, setPassword] = useState(""); //비밀번호
   // const [errors, setErrors] = useState(false)  //에러메세지
+
+
+
 
   // 폼 제출 이벤트 처리 - 서버로 사용자 정보를 전송하고 로그인을 처리
   const onSubmit = (e) => {
@@ -64,51 +77,26 @@ const Signin = () => {
       });
   };
 
+
+  const movetoSignup = (e) => {
+
+  }
+
   return (
     <Grid container>
-      <Grid item xs className="signinLeft">
-        이미지 필드 입니다.
+      <Grid item xs={6} sx={{ position:'relative', width:'100%', height: '100vh',  display:'flex', justifyContent:'center'}}>
+        <Container style={{position:'absolute',}}>
+          <img src={playground} alt="playground" style={{  height:'fit-content', width: '25rem', margin:'10rem auto', display:'block'}}/>
+        </Container>
       </Grid>
-      <Grid item xs className="signinRight">
-        <div className="titleWrap">
-          <h1>Digiteo</h1>
-        </div>
-        <form onSubmit={onSubmit} className="signinWrap">
-          {/* MUI TextField 이용 
-        <div className="inputContainer">
-          <div className='inputTitle'>이메일 주소</div>
-          <div className='inputWrap'>
-            <TextField
-                className="signinInput"
-                placeholder='아이디(이메일)를 입력해주세요.'
-                variant="outlined"
-                required
-                name="email"
-                type="email"
-                autoFocus
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                />
-                <br/>
-          </div>
-        </div>
-        <div className="inputContainer">
-          <div className='inputTitle' >비밀번호</div>
-          <div className='inputWrap' >
-            <TextField
-                className="signinInput"
-                placeholder='비밀번호를 입력해주세요.'
-                type="password"
-                variant="outlined"
-                required
-                name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                />
-              <br/>
-          </div>
-        </div> */}
+      
+      <Grid item xs={6} sx={{position:'relative', height: '100vh',padding:'5rem 5rem 2rem 0'}} className="signinRight">
+        <Container style={{position:'absolute', }} >
+          <Typography fontFamily={"Krona One"} fontSize={'2rem'} sx={{margin:'2rem auto' , textAlign:'center'}}>
+            Digiteo
+          </Typography>
 
+        <form onSubmit={onSubmit} className="signinWrap">
           {/* input 태그 이용 - 스타일 적용이 쉬움... */}
           <div className="inputContainer">
             <div className="inputTitle">이메일</div>
@@ -140,35 +128,38 @@ const Signin = () => {
               <br />
             </div>
           </div>
-
-          <ThemeProvider theme={theme}>
-            <Button type="submit" className="signinButton" variant="contained">
+            <StyledButton type="submit" variant="contained">
               로그인
-            </Button>
-            <Button
-              href="/signup"
-              color="secondary"
-              className="signinButton"
-              variant="contained"
-            >
+            </StyledButton>
+            <StyledButton onChange={movetoSignup} style={{backgroundColor:'#E9E9E9'}} variant="contained">
               회원가입
-            </Button>
-          </ThemeProvider>
+            </StyledButton>
         </form>
 
         {/* 하단 부가 기능 */}
-        <Grid container>
-          <Grid item xs>
-            <Link to="">아이디 찾기</Link>
-          </Grid>
-          <Grid item xs>
-            <Link to="">비밀번호 찾기</Link>
-          </Grid>
-          <Grid item xs>
-            <Link to="/signup">회원가입</Link>
-          </Grid>
-        </Grid>
+        <Box onClick={preventDefault}>
+          <Link underline="none" key="1" color="inherit" href="/" >
+            아이디 찾기
+          </Link>
+          {''} | {''}
+          <Link
+            underline="none"
+            key="2"
+            color="inherit"
+            href="/"
+          >
+            비밀번호 찾기
+          </Link>
+
+        </Box>
+        
+              
+
+
+
+        </Container>
       </Grid>
+      
     </Grid>
   );
 };
