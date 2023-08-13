@@ -1,7 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
-import { Home, Signin, Signup, MyPage } from "./pages";
+import { Home, Signin, Signup, Mypage } from "./pages";
 import PracticeHome from "./pages/Practice/PracticeHome";
 import PracticeList from "./pages/Practice/PracticeList";
 import { Header, NavBar } from "./components";
@@ -28,7 +28,7 @@ function App() {
         <Route path="practice" element={<Practice />} />
         <Route path="editpractice" element={<EditPractice />} />
 
-        <Route path="mypage" element={<MyPage />}></Route>
+        <Route path="mypage" element={<Mypage />}></Route>
 
         <Route path="*" element={<p>Path not resolved</p>} />
       </Routes>
