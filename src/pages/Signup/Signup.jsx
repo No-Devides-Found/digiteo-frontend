@@ -1,6 +1,7 @@
 // Signup.jsx
 import React, { useState } from "react";
 import Axios from "axios";
+import moment from "moment";
 import { Grid, Box, Stepper, Step, StepLabel, Button } from "@mui/material";
 import "./Signup.css";
 import Step1Content from "./Step1";
@@ -11,6 +12,11 @@ import Step3Content from "./Step3";
 const steps = ["", "", ""];
 
 const Signup = () => {
+  // 스텝 상태 관리 세팅
+  const [step1Clear, setStep1Clear] = useState(false); 
+  const [step2Clear, setStep2Clear] = useState(false); 
+ // const [stepClear, setStep1Clear] = useState(false); 
+
   // 상태 관리 초기값 세팅 - 닉네임, 이메일, 비밀번호, 비밀번호 재확인, 생년월일, 회원유형, 학년
   // 하위 컴포넌트에서 입력받을 회원가입 정보
   const [nickname, setNickname] = useState(""); //닉네임 (필수)
@@ -28,46 +34,25 @@ const Signup = () => {
   const [school, setSchool] = useState(""); //소속 (선택)
 
   //오류 메세지 전달을 위한 상태값 세팅
+  const [nicknameMessage, setNicknameMessage] = useState(""); //닉네임 (필수)
   const [emailMessage, setEmailMessage] = useState("");
   const [passwordMessage, setPasswordMessage] = useState("");
-  const [password2Message, setPassword2Message] = useState("");
-  const [birthMessage, setBrithMessage] = useState("");
-  const [identityMessage, setIdentityMessage] = useState("");
+  const [password2Message, setPassword2Message] = useState(""); 
+  
   const [gradeMessage, setGradeMessage] = useState("");
 
   //유효성 검사 세팅
+  const [isNickname, setIsNickname] = useState(false);
   const [isEmail, setIsEmail] = useState(false);
   const [isPassword, setIsPassword] = useState(false);
   const [isPassword2, setIsPassword2] = useState(false);
-  const [isBirth, setIsBirth] = useState(false);
+
+  
   const [isIdentity, setIsIdentity] = useState(false); 
   const [isGrade, setIsGrade] = useState(false); 
 
 
-  //required 입력사항 검사
-  const checkPage = () => {
-    console.log("check password");
-
-    if (activeStep === 0) {
-      console.log('this is step 0')
-      if (nickname === "" || email === "" || password === "") {
-        alert("필수값을 입력해주세요.");
-        handleBack();
-      }
-    }
-    // if((password!=="" && password2==="" ) || password !== password2){
-    //   alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.")
-    //   handleBack();
-    // }else if(password === ""){
-    //   alert("비밀번호를 입력해주세요.")
-    //   handleBack();
-
-    // }else if(nickname ==="" || email===""){
-    //   alert("필수값을 입력해주세요.")
-    //   handleBack();
-    // }
-  };
-
+  // 회원가입 완료 - 제출
   const onSubmit = () => {
     console.log("submit");
 
@@ -88,11 +73,15 @@ const Signup = () => {
     Axios.post("/accounts/dj-rest-auth/registration", user)
       .then((res) => {
         console.log(res);
-        if (res.data.key) {
-          localStorage.clear();
-          localStorage.setItem("token", res.data.key);
-          // 사용하려면 App.js에서 /로 라우팅해야 한다
-          //window.location.replace('/') 
+        if (res.data.access) {
+          // localStorage.clear();
+          // 로컬스토리지에 access_token과 만료기한 저장
+          localStorage.setItem("access_token", res.data.access);
+          localStorage.setItem(
+            "access_expiration",
+            moment().add(30, "minute").format("yyyy-MM-DD HH:mm:ss")
+          );
+          window.location.replace("/");
         } else {
           setNickname("");
           setEmail("");
@@ -124,8 +113,14 @@ const Signup = () => {
       case 0:
         return (
           <Step1Content
+            step1Clear={step1Clear}
+            setStep1Clear={setStep1Clear}
             nickname={nickname}
             setNickname={setNickname}
+            nicknameMessage={nicknameMessage}
+            setNicknameMessage={setNicknameMessage}
+            isNickname={isNickname}
+            setIsNickname={setIsNickname}
            
             email={email}
             setEmail={setEmail}
@@ -136,25 +131,40 @@ const Signup = () => {
 
             password={password}
             setPassword={setPassword}
+            passwordMessage={passwordMessage}
+            setPasswordMessage={setPasswordMessage}
+            isPassword={isPassword}
+            setIsPassword={setIsPassword} 
+
+
             password2={password2}
             setPassword2={setPassword2}
+            password2Message={password2Message}
+            setPassword2Message={setPassword2Message}
+            isPassword2={isPassword2}
+            setIsPassword2={setIsPassword2} 
           />
         );
       case 1:
         return (
           <Step2Content
-            year={year}
-            setYear={setYear}
-            month={month}
-            setMonth={setMonth}
-            day={day}
-            setDay={setDay}
-            identity={identity}
-            setIdentity={setIdentity}
-            school={school}
-            setSchool={setSchool}
-            grade={grade}
-            setGrade={setGrade}
+            step2Clear={step2Clear}
+            setStep2Clear={setStep2Clear}
+
+            year={year} setYear={setYear}
+            month={month} setMonth={setMonth}
+            day={day} setDay={setDay}
+  
+            identity={identity} setIdentity={setIdentity}
+        
+            isIdentity={isIdentity} setIsIdentity={setIsIdentity} 
+
+            grade={grade} setGrade={setGrade}
+            gradeMessage={gradeMessage} setGradeMessage={setGradeMessage}
+            isGrade={isGrade} setIsGrade={setIsGrade}
+
+            school={school} setSchool={setSchool}
+            
           />
         );
       case 2:
@@ -170,30 +180,29 @@ const Signup = () => {
   };
 
   // 다음 스텝으로 넘어가는 함수
-  const handleNext = (step) => {
-    if(step === 0){
-      console.log('step0');
-    }
-    let newSkipped = new Set(skipped); //newSkipped === skipped set객체
+  const handleNext = (step) => { 
+    if((!step1Clear && activeStep===0)||(!step2Clear && activeStep===1)){
+      alert("필수값을 입력해주세요")
+    }else{
+      let newSkipped = new Set(skipped);  //newSkipped === skipped set객체
 
-    //현재 step이 skipped 세트(집합)에 포함되는지 확인(이전에 스킵되었는지 확인하는 것)
+      //현재 step이 skipped 세트(집합)에 포함되는지 확인(이전에 스킵되었는지 확인하는 것)
+      if (isStepSkipped(activeStep)) {
+        newSkipped.delete(activeStep);
+      }
+      
+      // "완료" 버튼이 클릭되었는지 확인 (마지막 단계인 경우)
+      if (activeStep === steps.length - 1) {
+        onSubmit(); // onSubmit 함수 호출
+      }
 
-    if (isStepSkipped(activeStep)) {
-      // newSkipped = new Set(newSkipped.values()); //skipped 세트의 복사본을 만들어 newSkipped 변수에 할당
-      // newSkipped.delete(activeStep);
-      newSkipped.deleete(activeStep);
-    }
-    if (activeStep === 0) {
-      checkPage();
-    }
-    // "완료" 버튼이 클릭되었는지 확인 (마지막 단계인 경우)
-    if (activeStep === steps.length - 1) {
-      onSubmit(); // onSubmit 함수 호출
-    }
+      //다음으로 가게 됨
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      setSkipped(newSkipped);
 
-    //현재 step 값
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped(newSkipped);
+    }
+    
+    
   };
 
   //뒤로 가기
@@ -207,7 +216,7 @@ const Signup = () => {
   // 회원가입 완료 후 시작하기 - 일단 메인 홈페이지로
   const handleStart = () => {
     // setActiveStep(0);
-    window.location.replace(""); // App.js에서 /로 라우팅 필요
+    window.location.replace("/"); // App.js에서 /로 라우팅 필요
   };
 
   return (
@@ -242,12 +251,13 @@ const Signup = () => {
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <div className="testing">
+            {/* <div className="testing">
               <div>
                 부모로 오는지 테스트
                 <div>닉네임 : {nickname}</div>
-                <div>이메일 : {email}</div>
-                <div>비밀번호 : {password}</div>
+                <div>이메일 : {email} / 이메일 유효: {isEmail}</div> 
+                <div>비밀번호 : {password} / 이메일 유효:{isPassword} </div> 
+                <div>비밀번호 재확인 : {password2} / 이메일 유효{isPassword2}</div>  
                 <div>년 : {year}</div>
                 <div>월 : {month}</div>
                 <div>일 : {day}</div>
@@ -255,7 +265,7 @@ const Signup = () => {
                 <div>학년 : {grade}</div>
                 <div>소속 : {school}</div>
               </div>
-            </div>
+            </div> */}
 
             {/* 스텝 */}
             {renderStepContent(activeStep)}

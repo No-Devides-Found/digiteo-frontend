@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Box, Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
@@ -12,6 +12,10 @@ import {
   RelatedSiteCarousel,
 } from "../../components";
 
+import Api from "../../api/api";
+import { useRecoilState } from "recoil";
+import { userState } from "../../recoil/user";
+
 //프로그램 컴포넌트 테스트
 const programProps = {
   image: "/asset/thumbnail.jpg",
@@ -23,6 +27,18 @@ const programProps = {
 };
 
 function Home() {
+  const [curUser, setCurUser] = useRecoilState(userState);
+
+  useEffect(() => {
+    const getUserInfo = async () => {
+      const { data } = await Api.get("/accounts/dj-rest-auth/user");
+      console.log(data);
+      setCurUser(data);
+    };
+
+    // getUserInfo();
+  }, []);
+
   return (
     <>
       {/* <EventCarousel /> */}
