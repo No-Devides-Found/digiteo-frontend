@@ -22,8 +22,11 @@ import {
   Input, 
   TextField, 
   Box, 
+
   Container, 
   Button,
+  ToggleButton,
+  ToggleButtonGroup,
   Stack,
   Radio,
   IconButton,
@@ -57,6 +60,14 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 const DetailedYesNo = ({type}) => {
 
+  const [choice, setChoice] = React.useState("yes");  //찬반 선택  //찬반 선택 댓글
+
+  const handleChange = (e) => {  //찬반 선택 세팅
+    setChoice(e.target.value);
+  };
+
+
+
   return (
     <Stack>
       <Grid container spacing={2}>
@@ -77,8 +88,8 @@ const DetailedYesNo = ({type}) => {
         <Grid item xs={6}>
         <Typography variant='subtitle1' gutterBottom>찬성 입장 </Typography>
           <TextField 
-             defaultValue="입력한 반대입장"
-             InputProps={{ readOnly: true }} 
+            defaultValue="입력한 반대입장"
+            InputProps={{ readOnly: true }} 
             style={{width:'100%'}}
             required
             placeholder='찬성측 입장을 적어주세요.'/>  
@@ -92,21 +103,43 @@ const DetailedYesNo = ({type}) => {
             required
             placeholder='반대측 입장을 적어주세요.'/>  
         </Grid>
+
+
         <Grid item xs={12}>
           <Typography variant='subtitle1' gutterBottom>
             내 의견
-            <Button value="yes" >
-              찬성
-            </Button>
-            <Button value="no"  >
-              반대
-            </Button>
+
+            {/* 작성자가 선택한 입장에 따라 selected ,disabled 달라져야 함 */}
+            <ToggleButtonGroup
+              color="primary"
+              value={choice}
+              exclusive
+              onChange={handleChange}
+              aria-label="Platform"  
+              style={{width: '100%'}}    
+            >
+              <ToggleButton value="yes" 
+                selected
+                style={{width: '50%'}}    
+              >
+                찬성
+              </ToggleButton>
+              <ToggleButton value="no" 
+              disabled
+              style={{width: '50%'}}    
+              >
+                반대
+              </ToggleButton>
+            </ToggleButtonGroup>
           </Typography>
           
             <TextField 
+                defaultValue="입력한 반대입장"
+                InputProps={{ readOnly: true }} 
                 style={{width:'100%'}}  
                 required
-                placeholder='이슈에 대한 나의 의견을 적어주세요.'/>  
+                //placeholder='이슈에 대한 나의 의견을 적어주세요.'
+                />  
         </Grid>
        
 

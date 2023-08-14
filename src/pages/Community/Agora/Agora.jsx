@@ -1,16 +1,16 @@
 import React, {useState} from 'react';
 import {  useNavigate } from 'react-router-dom';
-import { Container, Grid , Box, Button, Typography} from '@mui/material';
+import { Container, Grid , Box, Button, ToggleButton, ToggleButtonGroup, Typography} from '@mui/material';
 import { styled } from "@mui/material/styles";
 
 import {LeftList, Chips, Dropdown, AgoraList, Paginations,
   SearchBar, Footer} from '../../../components';
 
-const StyledButton=styled(Button)({
+const StyledToggleButton=styled(ToggleButton)({
   width:'15rem',
   backgroundColor:'orange',
   height:'3rem',
-  margin: '0 1rem',
+  // margin: '0 1rem',
   color:'black'
 })
 
@@ -30,20 +30,25 @@ const programs = [
 
 
 const Agora = () => {
-  const page = 'agora'; 
+  const [page, setPage] = useState("agora"); 
+
   const navigate = useNavigate();
+
   const [searchKeyword, setSearchKeyword ]= useState(''); //검색어
   const [choice, setChoice] = useState(0); //선택 검색 옵션
 
 
 
-  const movetoQA = (e) =>{
-    navigate('/')  //일단 홈으로 가기/ 어디로 가야 하나? 
-  }
+ 
   const postAgora=(e)=>{
     navigate('/postagora')
   }
-  
+
+  //배움터-큐엔에이 토글
+  const handlePage=(e)=>{
+    setPage(e.target.value);
+    console.log(page)
+  }
 
 
 
@@ -57,19 +62,37 @@ const Agora = () => {
           <LeftList page={page}/>
         </Grid>
 
-
-        {/* 나눔터 */}
         <Grid item xs={8} >
           <Box>
             <Typography variant="h4" gutterBottom>배움터</Typography>
           </Box>
           <Box>
-            <StyledButton onClick={movetoQA} style={{backgroundColor:'lightgray'}}>
+          <ToggleButtonGroup
+            color="primary"
+            value={page}
+            exclusive
+            onChange={handlePage}
+            aria-label="Platform"    
+            style={{width:"100%"}}  
+          >
+              <ToggleButton value="qa" style={{width:"50%"}}>
+                Q & A
+              </ToggleButton>
+              <ToggleButton value="agora" style={{width:"50%"}}>
+                배움터
+              </ToggleButton>
+          </ToggleButtonGroup>
+
+            {/* <StyledToggleButton 
+              value="qa"
+            >
               Q & A
-            </StyledButton>
-            <StyledButton>
+            </StyledToggleButton>
+            <StyledToggleButton 
+              value="agora"
+            >
               배움터
-            </StyledButton>
+            </StyledToggleButton> */}
           </Box>
           <Box>
             <SearchBar choice={choice} setChoice={setChoice} 
@@ -92,24 +115,16 @@ const Agora = () => {
         <Grid item xs={12}>
           <AgoraList/>
         </Grid>
+
         <Grid item xs={12}>
           <Button onClick={postAgora} style={{display:'block', margin:'0 auto'}}>글쓰기</Button> 
         </Grid>
+
         <Grid item xs={12}>
-        <Paginations/>
+          <Paginations/>
         </Grid>
       </Grid>
       <Footer/>
-      
-      {/* <Container>
-        <TipList/>
-      </Container> */}
-
-      {/* <Container>
-        <Button onClick={onClick} style={{display:'block', margin:'0 auto'}}>글쓰기</Button> 
-      </Container> */}
-      
-
       
       
 

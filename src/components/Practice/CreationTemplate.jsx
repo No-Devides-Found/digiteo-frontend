@@ -21,8 +21,8 @@ export default function CreationTemplate(key) {
             <CardMedia
                   component="img"
                   height="160"
-                  image="\asset\thumbnail.jpg"
-                  alt="green iguana"
+                  image="\assets\thumbnail.jpg"
+                  alt="썸네일"
                 />
           </CardActionArea>
         </Grid>

@@ -92,6 +92,8 @@ const DetailedAgora = () => {
             ? <span variant="body2">: 찬반</span>
             : <span variant="body2">: 자유</span>
            }
+
+
             <Stack direction="row" style={{justifyContent:'space-between'}}>
               <Stack direction="row">
                 <Typography variant="body2">좋아요</Typography>{' '}
@@ -124,6 +126,8 @@ const DetailedAgora = () => {
           }
         </Grid>
       </Grid>
+
+      
       <Grid container spacing={2} style={{marginTop:"3rem"}}>
         <Grid item xs>
           <Typography >
@@ -143,9 +147,9 @@ const DetailedAgora = () => {
         ? 
         <Grid container spacing={2} style={{justifyContent:'center'}}>
           <Grid item xs={12} style={{textAlign:'center', margin:"2rem"}}>
-            <span>찬성</span>
-            <BorderLinearProgress variant="determinate" value={50} />
-            <span>반대</span>
+            <span style={{textAlign:'left'}}>찬성</span>
+            <BorderLinearProgress variant="determinate" value={50} style={{width:"70%"}} />
+            <span style={{textAlign:'right'}}>반대</span>
           </Grid>
         </Grid>
         : <div></div>
