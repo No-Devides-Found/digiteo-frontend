@@ -10,10 +10,6 @@ import {
 
 import { Button, Grid, Container, Typography, TextField, Avatar, Stack, IconButton} from '@mui/material';
 import { styled } from "@mui/material/styles";
-// import Chips from '../../components/Chips/Chips';
-// import Paginations from '../../components/Paginations/Paginations';
-// import Comments from '../../components/Comments/Comments';
-// import CommentsList from '../../components/Comments/CommentsList';
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import {Favorite} from '@mui/icons-material';
@@ -61,10 +57,14 @@ const Practice = ({idx, title, type, tags, story, review, createdBy}) => {
       <StyledContainer>
         창작물이 들어갈 공간
       </StyledContainer>
+
       <StyledContainer>
         <Subtitle variant='subtitle1'>창작물 소개</Subtitle>
           <Typography variant='subtitle2'>* 창작 스토리 {'('}계기, 과정, 의도{')'}</Typography> 
-            <StyledTextField id='story' name='story' sx={{width:'100%'}}  defaultValue={practice.story} InputProps={{ readOnly: true }} variant='outlined' />
+            <StyledTextField id='story' name='story' sx={{width:'100%'}}  
+            defaultValue={practice.story} 
+            InputProps={{ readOnly: true }} 
+            variant='outlined' />
           
           <Typography variant='subtitle2'>* 후기</Typography> 
           <StyledTextField id='review' name='review'  sx={{width:'100%'}} defaultValue={practice.review} InputProps={{ readOnly: true }} variant='outlined'  />

@@ -3,7 +3,7 @@ import {  useNavigate } from 'react-router-dom';
 import { Container, Grid , Box, Button, Typography} from '@mui/material';
 import { styled } from "@mui/material/styles";
 
-import {LeftList, Chips, Dropdown, TipList, Paginations,
+import {LeftList, Chips, Dropdown, AgoraList, Paginations,
   SearchBar, Footer} from '../../../components';
 
 const StyledButton=styled(Button)({
@@ -90,7 +90,7 @@ const Agora = () => {
         </Grid>
 
         <Grid item xs={12}>
-          <TipList/>
+          <AgoraList/>
         </Grid>
         <Grid item xs={12}>
           <Button onClick={postAgora} style={{display:'block', margin:'0 auto'}}>글쓰기</Button> 

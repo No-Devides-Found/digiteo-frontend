@@ -1,10 +1,10 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
-import { Home, Signin, Signup, 
+import { Home, Signin, Signup, Mypage,
          PracticeHome, PracticeList, PostPractice, DetailedPractice, EditPractice, Practice,
          Tip, PostTip, DetailedTip,
-         Agora, PostAgora } from "./pages";
+         Agora, PostAgora, DetailedAgora } from "./pages";
 
 import { Header, NavBar } from "./components";
 
@@ -19,14 +19,17 @@ function App() {
         <Route path="" element={<Home />} />
         <Route path="signin" element={<Signin />} />
         <Route path="signup" element={<Signup />} />
-        <Route path="*" element={<p>Path not resolved</p>} />
+        {/* 창작마루 */}
+        <Route path="practicehome" element={<PracticeHome />} />
+        <Route path="practicelist" element={<PracticeList />} />
+        <Route path="postpractice" element={<PostPractice />} />
+        <Route path="detailedpractice" element={<DetailedPractice />} />
+        <Route path="practice" element={<Practice />} />
+        <Route path="editpractice" element={<EditPractice />} />
 
-        <Route path="practicehome" element={<PracticeHome/>}/>
-        <Route path="practicelist" element={<PracticeList/>}/>
-        <Route path="postpractice" element={<PostPractice/>}/>
-        <Route path="detailedpractice" element={<DetailedPractice/>}/>
-        <Route path="practice" element={<Practice/>}/>
-        <Route path="editpractice" element={<EditPractice/>}/>
+        <Route path="mypage" element={<Mypage />}></Route>
+
+        <Route path="*" element={<p>Path not resolved</p>} />
 
         <Route path="tip" element={<Tip/>}/>
         <Route path="posttip" element={<PostTip/>}/>
@@ -34,6 +37,7 @@ function App() {
 
         <Route path="agora" element={<Agora/>}/>
         <Route path="postagora" element={<PostAgora/>}/>
+        <Route path="detailedagora" element={<DetailedAgora/>}/>
       </Routes>
     </div>
   );
