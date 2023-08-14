@@ -36,7 +36,7 @@ function Home() {
       setCurUser(data);
     };
 
-    // getUserInfo();
+    getUserInfo();
   }, []);
 
   return (
