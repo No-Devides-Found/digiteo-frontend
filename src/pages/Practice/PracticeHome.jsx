@@ -36,7 +36,7 @@ const PracticeHome = () => {
   const navigate = useNavigate();
 
   const onClick=(e)=>{
-    navigate(`/practicelist?param1=${e.target.value}`); 
+    navigate(`/practicelist?param1=${e.target.value}`);   
   }
 
   //해당 창작물 페이지로 이동
