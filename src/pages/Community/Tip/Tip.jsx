@@ -3,7 +3,7 @@ import {  useNavigate } from 'react-router-dom';
 import { Container, Grid , Box, Button, Typography} from '@mui/material';
 import { styled } from "@mui/material/styles";
 
-import {LeftList, Chips, Dropdown, TipList, Paginations,SearchBar} from '../../../components';
+import {LeftList, Chips, Dropdown, TipList, Paginations,SearchBar, Footer} from '../../../components';
 
 const options = ["제목+닉네임", "제목", "닉네임"]
 
@@ -50,10 +50,7 @@ function Tip (){
             <SearchBar choice={choice} setChoice={setChoice} 
               options={options} 
               searchKeyword={searchKeyword} setSearchKeyword={setSearchKeyword}/>
-          </Box>
-        
-   
-          
+          </Box>          
         </Grid>
 
 
@@ -67,18 +64,28 @@ function Tip (){
           <Dropdown />
         </Grid>
 
-
+        <Grid item xs={12}>
+          <TipList/>
+        </Grid>
+        <Grid item xs={12}>
+          <Button onClick={onClick} style={{display:'block', margin:'0 auto'}}>글쓰기</Button> 
+        </Grid>
+        <Grid item xs={12}>
+        <Paginations/>
+        </Grid>
       </Grid>
-      <Container>
+      <Footer/>
+      
+      {/* <Container>
         <TipList/>
-      </Container>
+      </Container> */}
 
-      <Container>
+      {/* <Container>
         <Button onClick={onClick} style={{display:'block', margin:'0 auto'}}>글쓰기</Button> 
-      </Container>
+      </Container> */}
       
 
-      <Paginations/>
+      
       
 
     </Container>

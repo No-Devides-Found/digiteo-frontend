@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { Home, Signin, Signup, 
          PracticeHome, PracticeList, PostPractice, DetailedPractice, EditPractice, Practice,
          Tip, PostTip, DetailedTip,
-         Agora } from "./pages";
+         Agora, PostAgora } from "./pages";
 
 import { Header, NavBar } from "./components";
 
@@ -33,6 +33,7 @@ function App() {
         <Route path="detailedtip" element={<DetailedTip/>}/>
 
         <Route path="agora" element={<Agora/>}/>
+        <Route path="postagora" element={<PostAgora/>}/>
       </Routes>
     </div>
   );

@@ -52,9 +52,10 @@ const ButtonContainer = styled(Container)({
 function PostPractice () {
 
   const navigate = useNavigate();
+  
   const [practice, setPractice] = useState({
     title: '',
-    createdBy: '',
+    createdBy: '', 
     tags: [],
     type: '',
     file: '',

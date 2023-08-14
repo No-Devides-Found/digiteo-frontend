@@ -73,7 +73,7 @@ function PostTip () {
     
   };
 
-  const savePractice = async () => {
+  const saveTip = async () => {
     console.log(practice)
     //detailedpractice로 가게 수정해야 함
     navigate(`/detailedtip`, {
@@ -112,7 +112,11 @@ function PostTip () {
         
         <StyledContainer>
           <Subtitle variant='subtitle1'>팁 제목</Subtitle>
-          <TextField id="outlined-basic" name='title' value={title} onChange={onChange} sx={{width:'100%'}} variant="outlined" 
+          <TextField 
+          variant="outlined" 
+          name='title' 
+          value={title} 
+          onChange={onChange} sx={{width:'100%'}} 
           placeholder='제목을 입력해주세요.'/>
         </StyledContainer>
           
@@ -137,7 +141,7 @@ function PostTip () {
         </StyledContainer>
 
         <ButtonContainer>
-          <StyledButton type="submit" onClick={savePractice}>등록하기</StyledButton>
+          <StyledButton type="submit" onClick={saveTip}>등록하기</StyledButton>
           <StyledButton type="button" onClick={backToList}>취소하기</StyledButton>
         </ButtonContainer>
         

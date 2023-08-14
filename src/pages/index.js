@@ -15,3 +15,4 @@ export { default as PostTip } from "./Community/Tip/PostTip";
 export { default as DetailedTip } from "./Community/Tip/DetailedTip";  
 
 export { default as Agora } from "./Community/Agora/Agora";     
+export { default as PostAgora } from "./Community/Agora/PostAgora";      
