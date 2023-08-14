@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocation, useNavigate  } from 'react-router-dom';
 
 
-import { Button, Grid, Container, Typography, TextField, Avatar, Stack} from '@mui/material';
+import { Button, Grid, Container, Typography, TextField, Avatar, Stack, IconButton} from '@mui/material';
 import { styled } from "@mui/material/styles";
 import Chips from '../../../components/Chips/Chips';
 
@@ -12,6 +12,7 @@ import CommentsList from './../../../components/Comments/CommentsList';
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
+import ShareIcon from '@mui/icons-material/Share';
 
 const Practice = ({idx, title, type, tags, story, review, createdBy}) => {  
   const location = useLocation();
@@ -69,7 +70,10 @@ const Practice = ({idx, title, type, tags, story, review, createdBy}) => {
             
             </Grid>
             <Grid item xs={{float:'right'}}>
-              공유하기
+            <span>공유하기</span>
+              <IconButton  aria-label="delete" size="large"> 
+               <ShareIcon /> 
+              </IconButton>
             </Grid>
           </Grid>
         </StyledContainer>
