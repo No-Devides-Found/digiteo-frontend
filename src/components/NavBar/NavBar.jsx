@@ -6,9 +6,12 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import { Hidden } from "@mui/material";
+import { HideImage } from "@mui/icons-material";
+
 
 const NavMenu = (props) => {
-  // ... existing code ...
+ 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -21,6 +24,7 @@ const NavMenu = (props) => {
   return (
     <div>
       <Button
+        
         id="basic-button"
         aria-controls={open ? "basic-menu" : undefined}
         aria-haspopup="true"
@@ -30,6 +34,7 @@ const NavMenu = (props) => {
         {props.name}
       </Button>
       <Menu
+        
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
@@ -39,9 +44,10 @@ const NavMenu = (props) => {
         }}
       >
         {props.items.map((item) => (
+          item !== null ?  
           <MenuItem key={item} onClick={handleClose}>
             {item}
-          </MenuItem>
+          </MenuItem> : null
         ))}
       </Menu>
     </div>
@@ -53,7 +59,7 @@ export default function NavBar() {
     ["홍보·이벤트", "정보마당"], // Menu items for "홍보마당"
     ["배움터", "나눔터"], // Menu items for "커뮤니티"
     [null], // Menu items for "창작마루"
-    ["디지터 소개", "이용 가이드", "문의하기", "건의하기"], // Menu items for "소개"
+    // Menu items for "소개"
     [null], // Menu items for "자료실"
   ];
 
@@ -62,18 +68,17 @@ export default function NavBar() {
       <Grid container>
         {navMenuItems.map((items, index) => (
           <Grid item xs key={index}>
-            <Link to=
-            {
-              index === 0
-               ? ""
-               : index === 1
-               ? ""
-               : index === 2
-               ? "practicehome"
-               : index === 3
-               ? ""
-               : ""
-            } >
+            <Link
+              to={
+                index === 0
+                  ? ""
+                  : index === 1
+                  ? ""
+                  : index === 2
+                  ? "practicehome"
+                  : ""
+              }
+            >
               <NavMenu
                 name={
                   index === 0
@@ -82,8 +87,6 @@ export default function NavBar() {
                     ? "커뮤니티"
                     : index === 2
                     ? "창작마루"
-                    : index === 3
-                    ? "소개"
                     : "자료실"
                 }
                 items={items}
@@ -95,3 +98,4 @@ export default function NavBar() {
     </div>
   );
 }
+
