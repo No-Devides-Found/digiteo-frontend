@@ -1,101 +1,104 @@
 import React from "react";
+import { Button, Menu, MenuItem, Grid } from "@mui/material";
+import PopupState, { bindHover, bindMenu } from "material-ui-popup-state";
+import { useNavigate } from "react-router-dom";
 
-import { Link } from "react-router-dom";
-import Grid from "@mui/material/Grid";
+const NavMenu = ({ data }) => {
+  // console.log("pops.items??", props.items.length);
+  // console.log(window.location.pathname);
+  const navigate = useNavigate();
 
-import Button from "@mui/material/Button";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import { Hidden } from "@mui/material";
-import { HideImage } from "@mui/icons-material";
-
-
-const NavMenu = (props) => {
- 
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
+  const onMenuClick = (length, to) => {
+    console.log(length, to);
+    if (length === 0) {
+      navigate(to);
+    }
   };
 
   return (
-    <div>
-      <Button
-        
-        id="basic-button"
-        aria-controls={open ? "basic-menu" : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? "true" : undefined}
-        onClick={handleClick}
-      >
-        {props.name}
-      </Button>
-      <Menu
-        
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          "aria-labelledby": "basic-button",
-        }}
-      >
-        {props.items.map((item) => (
-          item !== null ?  
-          <MenuItem key={item} onClick={handleClose}>
-            {item}
-          </MenuItem> : null
-        ))}
-      </Menu>
-    </div>
+    <PopupState variant="popover" popupId="demo-popup-menu">
+      {(popupState) => (
+        <>
+          <Button
+            variant="contained"
+            {...bindHover(popupState)}
+            style={{
+              color: "#000",
+              backgroundColor: "#FFA000",
+              margin: "2rem 0",
+            }}
+            onClick={() => {
+              onMenuClick(data.items.length, data.to);
+            }}
+          >
+            {data.name}
+          </Button>
+          {data.items.length > 0 ? (
+            <Menu {...bindMenu(popupState)}>
+              {data.items.map((item) => (
+                <MenuItem
+                  onClick={() => {
+                    popupState.close();
+                    navigate(`/${item.to}`);
+                  }}
+                >
+                  {item.title}
+                </MenuItem>
+              ))}
+            </Menu>
+          ) : null}
+        </>
+      )}
+    </PopupState>
   );
 };
 
 export default function NavBar() {
   const navMenuItems = [
-    ["홍보·이벤트", "정보마당"], // Menu items for "홍보마당"
-    ["배움터", "나눔터"], // Menu items for "커뮤니티"
-    [null], // Menu items for "창작마루"
+    {
+      name: "홍보마당",
+      items: [
+        { title: "홍보·이벤트", to: "홍보마당url" },
+        { title: "정보마당", to: "" },
+      ], // Menu items for "홍보마당"
+      to: "",
+    },
+    {
+      name: "커뮤니티",
+      items: [
+        { title: "배움터", to: "" },
+        { title: "나눔터", to: "" },
+      ], // Menu items for "커뮤니티"
+      to: "",
+    },
+    {
+      name: "창작마루",
+      items: [], // Menu items for "커뮤니티"
+      to: "practiceHome",
+    },
     // Menu items for "소개"
-    [null], // Menu items for "자료실"
+    {
+      name: "자료실",
+      items: [], // Menu items for "커뮤니티"
+      to: "",
+    },
   ];
 
   return (
     <div>
-      <Grid container>
-        {navMenuItems.map((items, index) => (
-          <Grid item xs key={index}>
-            <Link
-              to={
-                index === 0
-                  ? ""
-                  : index === 1
-                  ? ""
-                  : index === 2
-                  ? "practicehome"
-                  : ""
-              }
-            >
-              <NavMenu
-                name={
-                  index === 0
-                    ? "홍보마당"
-                    : index === 1
-                    ? "커뮤니티"
-                    : index === 2
-                    ? "창작마루"
-                    : "자료실"
-                }
-                items={items}
-              />
-            </Link>
+      <Grid container justifyContent={"center"}>
+        {navMenuItems.map((item, index) => (
+          <Grid
+            item
+            xs={2}
+            key={index}
+            display={"flex"}
+            justifyContent={"center"}
+          >
+            <NavMenu data={item} />
           </Grid>
         ))}
       </Grid>
     </div>
   );
 }
-
