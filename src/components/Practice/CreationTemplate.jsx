@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
-import Chips from '../../components/Chips/Chips';
+import Chips from '../common/Chips/Chips';
 
 import { Grid, Typography, Avatar, Card, CardMedia, CardContent, CardActionArea, Stack } from '@mui/material';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
@@ -39,8 +39,8 @@ export default function CreationTemplate(key) {
                 <Avatar>H</Avatar><Typography style={{lineHeight:'40px'}}>닉네임</Typography>
               </Stack>
             </Grid>
-            <Grid item xs={9} style={{maxHeight: '3rem', overflow:'hidden'}}>
-              <Chips/> 
+            <Grid item xs={9} style={{maxHeight: '3rem', overflow:'hidden', }}>
+              <Chips style={{justifyContent:'flex-end'}}/> 
             </Grid>
             <Grid item xs={6}>
                <Stack direction="row" alignItems="center">

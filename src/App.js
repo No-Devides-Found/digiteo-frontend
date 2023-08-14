@@ -1,14 +1,13 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
-import { Home, Signin, Signup } from "./pages";
-import  PracticeHome  from "./pages/Practice/PracticeHome";
-import  PracticeList  from "./pages/Practice/PracticeList";
+import { Home, Signin, Signup, 
+         PracticeHome, PracticeList, PostPractice, DetailedPractice, EditPractice, Practice,
+         Tip, PostTip, DetailedTip,
+         Agora } from "./pages";
+
 import { Header, NavBar } from "./components";
-import PostPractice from './pages/Practice/pages/PostPractice';
-import Practice from './pages/Practice/pages/Practice';
-import DetailedPractice from './pages/Practice/pages/DetailedPractice';
-import EditPractice from './pages/Practice/pages/EditPractice';
+
 
 function App() {
   return (
@@ -28,6 +27,12 @@ function App() {
         <Route path="detailedpractice" element={<DetailedPractice/>}/>
         <Route path="practice" element={<Practice/>}/>
         <Route path="editpractice" element={<EditPractice/>}/>
+
+        <Route path="tip" element={<Tip/>}/>
+        <Route path="posttip" element={<PostTip/>}/>
+        <Route path="detailedtip" element={<DetailedTip/>}/>
+
+        <Route path="agora" element={<Agora/>}/>
       </Routes>
     </div>
   );

@@ -3,12 +3,10 @@ import axios from "axios";
 
 import { useNavigate, useLocation} from 'react-router-dom';
 
+import { ListTemplate, PracticeNavbar} from '../../components';
 
 
 
-import ListTemplate from "./ListTemplate";
-
-import PracticeNavbar from "./PracticeNavbar";
 
 
 

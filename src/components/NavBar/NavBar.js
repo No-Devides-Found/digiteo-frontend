@@ -1,11 +1,8 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
-import Grid from "@mui/material/Grid";
+import {Grid, Button, Menu, MenuItem } from "@mui/material";
 
-import Button from "@mui/material/Button";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
 
 const NavMenu = (props) => {
   // ... existing code ...
@@ -38,7 +35,7 @@ const NavMenu = (props) => {
           "aria-labelledby": "basic-button",
         }}
       >
-        {props.items.map((item) => (
+        {props.items.map((item) =>(
           <MenuItem key={item} onClick={handleClose}>
             {item}
           </MenuItem>
@@ -58,7 +55,6 @@ export default function NavBar() {
   ];
 
   return (
-    <div>
       <Grid container>
         {navMenuItems.map((items, index) => (
           <Grid item xs key={index}>
@@ -67,7 +63,7 @@ export default function NavBar() {
               index === 0
                ? ""
                : index === 1
-               ? ""
+               ? "tip"
                : index === 2
                ? "practicehome"
                : index === 3
@@ -79,7 +75,7 @@ export default function NavBar() {
                   index === 0
                     ? "홍보마당"
                     : index === 1
-                    ? "커뮤니티"
+                    ? "커뮤니티" 
                     : index === 2
                     ? "창작마루"
                     : index === 3
@@ -92,6 +88,5 @@ export default function NavBar() {
           </Grid>
         ))}
       </Grid>
-    </div>
   );
 }

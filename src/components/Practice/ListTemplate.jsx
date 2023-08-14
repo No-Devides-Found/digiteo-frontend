@@ -3,10 +3,10 @@ import { Grid , Box, Button} from '@mui/material';
 import { styled } from "@mui/material/styles";
 
 // import {Dropdown, SearchBar} from '../../components/';
-import Dropdown from '../../components/Dropdown/Dropdown';
-import SearchBar from '../../components/SearchBar/SearchBar';
-import Tags from '../../components/Tags/Tags';
-import Paginations from '../../components/Paginations/Paginations'; 
+import Dropdown from '../common/Dropdown/Dropdown';
+import SearchBar from '../common/SearchBar/SearchBar';
+import Tags from '../common/Tags/Tags';
+import Paginations from '../common/Paginations/Paginations'; 
 
 import CreationTemplate from './CreationTemplate';
 

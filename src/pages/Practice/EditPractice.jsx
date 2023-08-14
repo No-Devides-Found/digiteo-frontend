@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import Tags from './../../../components/Tags/Tags'
+import {Tags} from '../../components'; 
 
 import { styled } from "@mui/material/styles";
 
@@ -46,7 +46,7 @@ const ButtonContainer = styled(Container)({
 })
 
 
-function PostPractice () {
+function EditPractice () {
 
   const navigate = useNavigate();
   const [practice, setPractice] = useState({
@@ -71,9 +71,8 @@ function PostPractice () {
     
   };
 
-  const savePractice = async () => {
+  const editComplete= async () => {
     console.log(practice)
-    //detailedpractice로 가게 수정해야 함
     navigate(`/practice`, {
       state: practice, //전체 'practice'객체 전달
     });
@@ -103,7 +102,7 @@ function PostPractice () {
     <Container>
 
       <Typography variant="h4" align="center" gutterBottom>
-        창작물 작성
+        창작물 수정 페이지
       </Typography>
 
       <Box type='form'>
@@ -147,8 +146,8 @@ function PostPractice () {
         </StyledContainer>
 
         <ButtonContainer>
-          <StyledButton type="submit" onClick={savePractice}>등록하기</StyledButton>
-          <StyledButton type="button" onClick={backToList}>취소하기</StyledButton>
+          <StyledButton type="submit" onClick={editComplete}>수정 완료</StyledButton>
+          <StyledButton type="button" onClick={backToList}>수정 취소</StyledButton>
         </ButtonContainer>
         
         
@@ -158,7 +157,4 @@ function PostPractice () {
   );
 };
 
-export default PostPractice;
-
-
-
+export default EditPractice;

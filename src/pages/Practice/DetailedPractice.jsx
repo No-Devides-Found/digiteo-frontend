@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {useParams} from "react-router-dom";
 import axios from 'axios';
 
-import Practice from "../pages/Practice";
+import Practice from "./Practice";
 //창작물 데이터 
 
 
