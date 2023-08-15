@@ -28,7 +28,7 @@ function App() {
         <Route path="practice" element={<Practice />} />
         <Route path="editpractice" element={<EditPractice />} />
 
-        <Route path="mypage" element={<Mypage />}></Route>
+        <Route path="mypage/*" element={<Mypage />}></Route>
 
         <Route path="*" element={<p>Path not resolved</p>} />
       </Routes>

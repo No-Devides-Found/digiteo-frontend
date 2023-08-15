@@ -12,9 +12,9 @@ import {
   Button,
 } from "@mui/material";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
-import AdditionalInfo from "./AdditionalInfo";
+import AdditionalInfo from "../AdditionalInfo";
 import { useRecoilValue } from "recoil";
-import { userState } from "../../recoil/user";
+import { userState } from "../../../recoil/user";
 
 function Profile() {
   const profile = {
@@ -47,7 +47,7 @@ function Profile() {
   };
 
   return (
-    <Box sx={{ backgroundColor: "lightgrey" }}>
+    <Box sx={{ backgroundColor: "" }}>
       <Container>
         <Typography variant="h6" fontWeight={"bold"}>
           프로필
