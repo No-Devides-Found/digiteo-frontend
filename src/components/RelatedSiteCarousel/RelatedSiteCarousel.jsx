@@ -26,10 +26,10 @@ export function RelatedSiteCarousel() {
     if (i % itemLength === 0) {
       items.push(
         <Grid
+          key={contents[i]}
           container
           spacing={0}
           className="BannerGrid"
-          key={i.toString()}
           height={"100%"}
           justifyContent={"center"}
           alignItems={"center"}
@@ -37,12 +37,14 @@ export function RelatedSiteCarousel() {
         >
           {contents.slice(i, i + itemLength).map((data, index) => {
             return (
-              <Grid item xs={2} height={60}>
-                <Item key={index.toString()} elevation={0}>
-                  {/* {data} */}
-                  DIGITEO
-                </Item>
-              </Grid>
+              <React.Fragment key={data}>
+                <Grid item xs={2} height={60}>
+                  <Item elevation={0}>
+                    {/* {data} */}
+                    DIGITEO
+                  </Item>
+                </Grid>
+              </React.Fragment>
             );
           })}
         </Grid>

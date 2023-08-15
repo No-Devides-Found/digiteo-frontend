@@ -58,8 +58,8 @@ function PlayGroundCarousel() {
             },
           }}
         >
-          {contents.map((item) => {
-            return <Item item={item} />;
+          {contents.map((item, idx) => {
+            return <Item item={item} key={idx} />;
           })}
         </Carousel>
       </Container>

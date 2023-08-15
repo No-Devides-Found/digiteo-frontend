@@ -16,7 +16,7 @@ const NavMenu = ({ data }) => {
   };
 
   return (
-    <PopupState variant="popover" popupId="demo-popup-menu">
+    <PopupState variant="popover" popupId="popup-menu">
       {(popupState) => (
         <>
           <Button
@@ -35,8 +35,9 @@ const NavMenu = ({ data }) => {
           </Button>
           {data.items.length > 0 ? (
             <Menu {...bindMenu(popupState)}>
-              {data.items.map((item) => (
+              {data.items.map((item, idx) => (
                 <MenuItem
+                  key={idx}
                   onClick={() => {
                     popupState.close();
                     navigate(`/${item.to}`);
