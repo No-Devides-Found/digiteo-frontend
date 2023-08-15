@@ -13,7 +13,7 @@ import CreationTemplate from './CreationTemplate';
 const StyledBox = styled(Box)({
   backgroundColor: '#FFF5E5',
   margin: '0 auto',
-  width: '75rem',
+  width: '100%',
   padding: '2rem 5rem',
 })
 
@@ -32,6 +32,7 @@ const PageGrid = styled(Grid)({
   margin: '0 auto',
 })
 
+
 const options = ["제목+닉네임", "제목", "닉네임"]
 
 const programs = [
@@ -47,7 +48,7 @@ const programs = [
 
 
 
-// 여기서 -> 
+// 
 function ListTemplate ({page}) {
 
   console.log('여기 리스트 템플릿', page) //페이지 정보 잘 오는지 확인 -완료
@@ -65,33 +66,46 @@ function ListTemplate ({page}) {
 
   const { title, createdBy,  tags, type, file, story, review } = practice; //비구조화 할당
 
+  // 검색바 관련 상태값
   const [searchKeyword, setSearchKeyword ]= useState(''); //검색어
   const [choice, setChoice] = useState(0); //선택 검색 옵션
+  const [isSearch, setIsSearch]=useState(false); //검색버튼 클릭 여부
+
   // const [tags, setPractice] = useState([]);
 
   return (
       <StyledBox>
-        <Grid container style={{padding: '0 5rem',}}>
+        <Grid container spacing={1}>
+          {/* 검색바 */}
           <StyledGrid item xs={12}>
-            <SearchBar  choice={choice} setChoice={setChoice} options={options} searchKeyword={searchKeyword} setSearchKeyword={setSearchKeyword}/>
+            <SearchBar  options={options} 
+              choice={choice} setChoice={setChoice} 
+              searchKeyword={searchKeyword} setSearchKeyword={setSearchKeyword}
+              isSearch={isSearch} setIsSearch={setIsSearch}
+            />
           </StyledGrid>
 
-          <StyledGrid item xs={9}>
+          {/* 프로그램 태그 선택 */}
+          <Grid item xs={9}>
             <Tags  programs={programs} tags={practice.tags} setPractice={setPractice}/>
-          </StyledGrid>
-
-          <StyledGrid item xs={3} style={{marginBottom:'5rem', textAlign:'right'}}>
+          </Grid>
+          
+          {/* 정렬순 드롭다운 */}
+          <Grid item xs={3} style={{textAlign:'right'}}>
             <Dropdown  />
-          </StyledGrid> 
+          </Grid> 
 
-          <StyledGrid item xs={12}>
+          {/* 창작물 목록 리스트 하나 */}
+          <Grid item xs={12}>
             <CreationTemplate/>
-          </StyledGrid>
+          </Grid>
 
+          {/* 창작물 작성 페이지로 이동 */}
           <PostButton type="button" href="/postpractice">
-              창작물 올리기
+            창작물 올리기
           </PostButton>
 
+          {/* 페이지네이션 */}
           <StyledGrid item xs={12} style={{marginTop:'2rem'}}>
            <Paginations />
           </StyledGrid>

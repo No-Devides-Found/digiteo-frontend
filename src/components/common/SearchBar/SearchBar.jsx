@@ -25,16 +25,20 @@ import { styled } from "@mui/material/styles";
 
 
 // 검색옵션, 검색바
-function SearchBar({options, choice, setChoice, setSearchKeyword, searchKeyword}){
+function SearchBar({options, choice, setChoice, 
+  setSearchKeyword, searchKeyword,
+  isSearch, setIsSearch
+}){
   
-  //검색
+  //검색어 
   const handleSearchKeyword = (e) => {
     setSearchKeyword(e.target.value);
   }
 
-  //검색 버튼 클릭 시 
+  //검색 버튼 클릭
   const clickSearch = (e) => {
-    setSearchKeyword(''); //검색창에 입력한 값 지우기
+    setSearchKeyword(''); //검색창에 입력한 값 초기화
+    setIsSearch(true); //검색 시작 전달
   }
 
  
@@ -42,7 +46,6 @@ function SearchBar({options, choice, setChoice, setSearchKeyword, searchKeyword}
   const anchorRef = React.useRef(null);
 
   //선택한 검색 옵션 (순서대로 인덱스)
-
   const handleClick = () => {
     console.info(`You clicked ${options[choice]}`);
   };
