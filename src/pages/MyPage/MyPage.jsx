@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid } from "@mui/material";
-import { MypageNav, Profile } from "../../components";
+import { MypageNav, Profile, Courses } from "../../components";
 
 function Mypage() {
   return (
@@ -9,7 +9,8 @@ function Mypage() {
         <MypageNav />
       </Grid>
       <Grid xs={8}>
-        <Profile />
+        {/* <Profile /> */}
+        <Courses />
       </Grid>
     </Grid>
   );

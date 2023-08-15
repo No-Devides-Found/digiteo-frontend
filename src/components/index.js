@@ -7,4 +7,5 @@ export { default as RelatedSiteCarousel } from "./RelatedSiteCarousel/RelatedSit
 export { default as Header } from "./Header/Header";
 export { default as NavBar } from "./NavBar/NavBar";
 export { default as MypageNav } from "./Mypage/MypageNav";
-export { default as Profile } from "./Mypage/Profile";
+export { default as Profile } from "./Mypage/Profile/Profile";
+export { default as Courses } from "./Mypage/Courses/Courses";
