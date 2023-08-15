@@ -21,11 +21,8 @@ import { styled } from "@mui/material/styles";
 
 
 
-
-
-
 // 검색옵션, 검색바
-function SearchBar({options, choice, setChoice, setSearchKeyword, searchKeyword}){
+function SearchBar({searchKeyword, setSearchKeyword, searchOption, setSearchOption, options}){
   
   //검색
   const handleSearchKeyword = (e) => {
@@ -44,11 +41,11 @@ function SearchBar({options, choice, setChoice, setSearchKeyword, searchKeyword}
   //선택한 검색 옵션 (순서대로 인덱스)
 
   const handleClick = () => {
-    console.info(`You clicked ${options[choice]}`);
+    console.info(`You clicked ${options[searchOption]}`);
   };
 
   const handleMenuItemClick = (event, index) => {
-    setChoice(index);
+    setSearchOption(index);
     setOpen(false);
   };
 
@@ -72,7 +69,7 @@ function SearchBar({options, choice, setChoice, setSearchKeyword, searchKeyword}
         sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '100%' , margin:'0 auto'}}
       >
         <ButtonGroup sx={{width:'10rem'}} variant="contained" ref={anchorRef} aria-label="split button">
-          <Button sx={{width:'100%'}}onClick={handleClick}>{options[choice]}</Button>
+          <Button sx={{width:'100%'}}onClick={handleClick}>{options[searchOption]}</Button>
           <Button
             size="small"
             aria-controls={open ? 'split-button-menu' : undefined}
@@ -108,7 +105,7 @@ function SearchBar({options, choice, setChoice, setSearchKeyword, searchKeyword}
                     {options.map((option, index) => (
                       <MenuItem
                         key={option}
-                        selected={index === choice}
+                        selected={index === searchOption}
                         onClick={(event) => handleMenuItemClick(event, index)}
                       >
                         {option}

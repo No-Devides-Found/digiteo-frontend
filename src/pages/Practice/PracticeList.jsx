@@ -5,24 +5,18 @@ import { useNavigate, useLocation} from 'react-router-dom';
 
 import { ListTemplate, PracticeNavbar} from '../../components';
 
-
-
-
-
-
-
 function PracticeList() {
   
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  const firtType = params.get('param1');  // 창작물 홈에서 진입 
+  const firtType = params.get('param1');  // 창작마루 홈에서 진입할 때 받는 유형 정보
     
-
-  const [page, setPage]=useState(firtType) // 네브바로 넘겨줄 페이지 유형 정보
+  const [page, setPage]=useState(firtType) // 네브바로 선택하는 창작물 유형 정보
   
   const navigate = useNavigate();  
   
-  const [practiceList, setPracticeList] = useState([]);
+  const [practiceList, setPracticeList] = useState([]); 
+  
   // const getPracticeList = async () => {
   //   try{
   //     const resp = (await axios.get('/practicelist')).data ////localhost:3000/practicelist
@@ -45,7 +39,7 @@ function PracticeList() {
     <React.Fragment>
       <PracticeNavbar page={page} setPage={setPage}></PracticeNavbar>
       
-      <ListTemplate page={page}/>
+      <ListTemplate page={page} />
       
     </React.Fragment>
   );
