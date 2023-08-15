@@ -37,7 +37,7 @@ function SearchBar({options, choice, setChoice, setSearchKeyword, searchKeyword}
     setSearchKeyword(''); //검색창에 입력한 값 지우기
   }
 
-  //검색 옵션 
+ 
   const [open, setOpen] = useState(false);  //옵션창 열기(true), 닫기(false)
   const anchorRef = React.useRef(null);
 

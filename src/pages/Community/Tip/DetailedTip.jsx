@@ -1,75 +1,98 @@
 import React from 'react';
 import { useLocation, useNavigate  } from 'react-router-dom';
 
+import {
+  Paginations,
+  Comments,
+  CommentsList,
+  Chips,
+  Footer, 
+} from "../../../components";
 
-import { Button, Grid, Container, Typography, TextField, Avatar, Stack} from '@mui/material';
+import { Button, Grid, Container, Typography, TextField, Avatar, Stack, 
+  IconButton, Checkbox, } from '@mui/material';
 import { styled } from "@mui/material/styles";
-import Chips from '../../../components/Chips/Chips';
 
-import Paginations from '../../../components/Paginations/Paginations';
-import Comments from '../../../components/Comments/Comments';
-import CommentsList from './../../../components/Comments/CommentsList';
-import Checkbox from '@mui/material/Checkbox';
+
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
-import Favorite from '@mui/icons-material/Favorite';
+import {Favorite} from '@mui/icons-material';
+import ShareIcon from '@mui/icons-material/Share';
+
+
+
 
 const Practice = ({idx, title, type, tags, story, review, createdBy}) => {  
   const location = useLocation();
   const practice = location.state;
 
   const navigate = useNavigate();
-  const gotoEdit = (e) => {
-    navigate(`/editpractice`);
+  const movetoTip=(e)=>{
+    navigate('/tip');
   }
+  // 나눔터 팁노하우는 수정 불가능한 거 맞는지 확인 필요
+  // const gotoEdit = (e) => {
+  //   navigate(`/editpractice`);
+  // }
 
   return (
     <Container>
       <ButtonContainer>
+        <UpperButton onClick={movetoTip} style={{float:'left'}}> 나눔터로 돌아가기</UpperButton> 
+
         {/* 작성자만 보이는 버튼으로 해야 함 */}
         <UpperButton>삭제하기</UpperButton>
-        <UpperButton onClick={gotoEdit}>수정하기</UpperButton>
+        {/* <UpperButton onClick={gotoEdit}>수정하기</UpperButton> */}
       </ButtonContainer>
 
       <StyledContainer>
         <Typography>
-          <Subtitle variant='subtitle1'>창작물 대제목</Subtitle>
+          <Subtitle variant='subtitle1'>팁&노하우 제목</Subtitle>
           <Grid container spaing={2} >
-            <Grid item xs={4}>
-              <Stack direction="row" spacing={2}>
-                <Avatar>H</Avatar><Typography>닉네임</Typography>
-              </Stack>
-            </Grid>
-            <Grid item xs={8} >
+            <Grid item xs={12} >
               {/* 선택된 태그들 */}
               <Container >
-                <Chips/>
+                <Chips style={{justifyContent:'flex-end'}}/>
               </Container>
+            </Grid>
+            {/* style={{borderBottom:'solid black 1px'}} */}
+            <Grid item xs={12} >  
+              <Stack direction="row" style={{justifyContent:'space-between'}}>
+                <Stack direction="row">
+                  <Avatar>H</Avatar><Typography>닉네임</Typography>
+                </Stack>
+                <Typography style={{float:'right'}}>작성일 2023-01-01</Typography>
+              </Stack>
               
             </Grid>
           </Grid>
         </Typography>
       </StyledContainer>
+     
       <StyledContainer>
-        창작물이 들어갈 공간
-      </StyledContainer>
-      <StyledContainer>
-        <Subtitle variant='subtitle1'>창작물 소개</Subtitle>
-          <Typography variant='subtitle2'>* 창작 스토리 {'('}계기, 과정, 의도{')'}</Typography> 
-            <StyledTextField id='story' name='story' sx={{width:'100%'}}  defaultValue={practice.story} InputProps={{ readOnly: true }} variant='outlined' />
+        {/* <Subtitle variant='subtitle1'>창작물 소개</Subtitle> */}
+          {/* <Typography variant='subtitle2'>* 창작 스토리 {'('}계기, 과정, 의도{')'}</Typography>  */}
+          <StyledTextField id='story' name='story' sx={{width:'100%'}}  
+          //defaultValue={practice.story} 
+          InputProps={{ readOnly: true }} variant='outlined' 
+          placeholder="팁 노하우 내용!!"/>
           
-          <Typography variant='subtitle2'>* 후기</Typography> 
-          <StyledTextField id='review' name='review'  sx={{width:'100%'}} defaultValue={practice.review} InputProps={{ readOnly: true }} variant='outlined'  />
-        </StyledContainer>
+          
+      </StyledContainer>
+
+
         <StyledContainer>
           <Grid container>
             <Grid item xs>
-          <div>
+          <Typography >
             좋아요<Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
-          </div>
+          </Typography>
             
             </Grid>
             <Grid item xs={{float:'right'}}>
-              공유하기
+            <Typography style={{display:'inline'}}>공유하기</Typography>
+              <IconButton  aria-label="delete" size="large"> 
+               <ShareIcon /> 
+              </IconButton>
             </Grid>
           </Grid>
         </StyledContainer>
@@ -84,8 +107,7 @@ const Practice = ({idx, title, type, tags, story, review, createdBy}) => {
           <Paginations/>
         </StyledContainer>
 
-      
-
+        <Footer/>
     </Container>
   );
 };

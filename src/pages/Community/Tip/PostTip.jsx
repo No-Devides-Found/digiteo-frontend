@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import Tags from './../../../components/Tags/Tags'
+import {Tags} from '../../../components';
 
 import { styled } from "@mui/material/styles";
 
@@ -46,7 +46,9 @@ const ButtonContainer = styled(Container)({
 })
 
 
-function EditPractice () {
+
+
+function PostTip () {
 
   const navigate = useNavigate();
   const [practice, setPractice] = useState({
@@ -71,9 +73,10 @@ function EditPractice () {
     
   };
 
-  const editComplete= async () => {
+  const saveTip = async () => {
     console.log(practice)
-    navigate(`/practice`, {
+    //detailedpractice로 가게 수정해야 함
+    navigate(`/detailedtip`, {
       state: practice, //전체 'practice'객체 전달
     });
     //practice 객체를 보냄
@@ -102,52 +105,44 @@ function EditPractice () {
     <Container>
 
       <Typography variant="h4" align="center" gutterBottom>
-        창작물 수정 페이지
+        나눔터 팁&노하우 작성하기
       </Typography>
 
       <Box type='form'>
         
         <StyledContainer>
-          <Subtitle variant='subtitle1'>창작물 대제목</Subtitle>
-          <TextField id="outlined-basic" name='title' value={title} onChange={onChange} sx={{width:'100%'}} variant="outlined" placeholder='창작물 대제목을 입력해주세요.'/>
+          <Subtitle variant='subtitle1'>팁 제목</Subtitle>
+          <TextField 
+          variant="outlined" 
+          name='title' 
+          value={title} 
+          onChange={onChange} sx={{width:'100%'}} 
+          placeholder='제목을 입력해주세요.'/>
         </StyledContainer>
           
         <StyledContainer>
-        <Subtitle variant='subtitle1'>태그</Subtitle>
+          <Subtitle variant='subtitle1'>태그</Subtitle>
           <Tags programs={programs} tags={practice.tags} setPractice={setPractice}/>
         </StyledContainer>
         
         <StyledContainer >
-         <Subtitle variant="subtitle1" >파일 업로드</Subtitle>
-            <Typography variant="subtitle2">파일 유형</Typography>
-              <RadioGroup
-                row
-                aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
-              >
-                <FormControlLabel name='type' value="video" onChange={onChange} control={<Radio />} label="영상" />
-                <FormControlLabel name='type' value="img" onChange={onChange} control={<Radio />} label="이미지" />
-                <FormControlLabel name='type' value="voice" onChange={onChange} control={<Radio />} label="음성" />
-                <FormControlLabel  name='type' value="text" onChange={onChange} control={<Radio />} label="문서" />
-              </RadioGroup>
-              <Input type="file" ></Input>
-
+          <Subtitle variant="subtitle1" >파일 업로드</Subtitle>
+          <Input type="file" ></Input>
         </StyledContainer>
 
         
         <StyledContainer>
-        <Subtitle variant='subtitle1'>창작물 소개</Subtitle>
-          <Typography variant='subtitle2'>* 창작 스토리 {'('}계기, 과정, 의도{')'}</Typography> 
-            <TextField name='story' value={story} onChange={onChange} sx={{width:'100%'}} multiline rows={8} id="outlined-basic" variant="outlined" placeholder='창작물 대제목을 입력해주세요.'/>
-          
-          <Typography variant='subtitle2'>* 후기</Typography> 
-            <TextField name='review' value={review} onChange={onChange} sx={{width:'100%'}} multiline rows={8} id="outlined-basic" variant="outlined" placeholder='창작물 대제목을 입력해주세요.'/>
+          <Subtitle variant='subtitle1'>팁 내용</Subtitle>
+          {/* <Typography variant='subtitle2'>* 창작 스토리 {'('}계기, 과정, 의도{')'}</Typography>  */}
+            <TextField name='story' value={story} onChange={onChange} 
+            sx={{width:'100%'}} multiline rows={20} id="outlined-basic" variant="outlined" 
+            placeholder='팁&노하우를 2000자 이내로 작성해주세요. (파일은 최대 100M크기까지 업로드 가능합니다.)'/>
 
         </StyledContainer>
 
         <ButtonContainer>
-          <StyledButton type="submit" onClick={editComplete}>수정 완료</StyledButton>
-          <StyledButton type="button" onClick={backToList}>수정 취소</StyledButton>
+          <StyledButton type="submit" onClick={saveTip}>등록하기</StyledButton>
+          <StyledButton type="button" onClick={backToList}>취소하기</StyledButton>
         </ButtonContainer>
         
         
@@ -157,4 +152,7 @@ function EditPractice () {
   );
 };
 
-export default EditPractice;
+export default PostTip;
+
+
+

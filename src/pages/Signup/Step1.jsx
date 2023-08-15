@@ -29,7 +29,7 @@ export const Step1Content = ({
       }
     }
      
-  }, [step1Clear, isNickname, setNicknameMessage, isEmail, isPassword, isPassword2]); // 여기에 의존성을 명시 
+  }, [setStep1Clear, step1Clear, isNickname, setNicknameMessage, isEmail, isPassword, isPassword2]); // 여기에 의존성을 명시 
 
 
   // 닉네임 검사

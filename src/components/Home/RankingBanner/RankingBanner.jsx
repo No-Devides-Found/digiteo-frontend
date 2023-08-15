@@ -1,5 +1,5 @@
 import React from "react";
-import stars from "../../assets/Home/stars.svg";
+import stars from "../../../assets/Home/stars.svg";
 import { Box, Typography, Grid } from "@mui/material";
 import RankingCard from "./RankingCard";
 

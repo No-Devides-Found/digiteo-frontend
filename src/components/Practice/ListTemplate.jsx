@@ -3,10 +3,10 @@ import { Grid , Box, Button} from '@mui/material';
 import { styled } from "@mui/material/styles";
 
 // import {Dropdown, SearchBar} from '../../components/';
-import Dropdown from '../../components/Dropdown/Dropdown';
-import SearchBar from '../../components/SearchBar/SearchBar';
-import Tags from '../../components/Tags/Tags';
-import Paginations from '../../components/Paginations/Paginations'; 
+import Dropdown from '../common/Dropdown/Dropdown';
+import SearchBar from '../common/SearchBar/SearchBar';
+import Tags from '../common/Tags/Tags';
+import Paginations from '../common/Paginations/Paginations'; 
 
 import CreationTemplate from './CreationTemplate';
 
@@ -46,7 +46,13 @@ const programs = [
 
 
 
-function ListTemplate () {
+
+// 여기서 -> 
+function ListTemplate ({page}) {
+
+  console.log('여기 리스트 템플릿', page) //페이지 정보 잘 오는지 확인 -완료
+
+  // 페이지 유형에 맞는 창작물 데이터 목록을 가져와야 함. -> 제목, 닉네임, 좋아요 개수, 
   const [practice, setPractice] = useState({
     title: '',
     createdBy: '',
@@ -69,19 +75,24 @@ function ListTemplate () {
           <StyledGrid item xs={12}>
             <SearchBar  choice={choice} setChoice={setChoice} options={options} searchKeyword={searchKeyword} setSearchKeyword={setSearchKeyword}/>
           </StyledGrid>
+
           <StyledGrid item xs={9}>
             <Tags  programs={programs} tags={practice.tags} setPractice={setPractice}/>
           </StyledGrid>
+
           <StyledGrid item xs={3} style={{marginBottom:'5rem', textAlign:'right'}}>
             <Dropdown  />
           </StyledGrid> 
+
           <StyledGrid item xs={12}>
             <CreationTemplate/>
           </StyledGrid>
+
           <PostButton type="button" href="/postpractice">
               창작물 올리기
           </PostButton>
-          <StyledGrid xs={12} style={{marginTop:'2rem'}}>
+
+          <StyledGrid item xs={12} style={{marginTop:'2rem'}}>
            <Paginations />
           </StyledGrid>
           

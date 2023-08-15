@@ -1,10 +1,12 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 
 import {Box, Button, FormControl,  TextField, } from '@mui/material'; 
 
 
 
 export default function Comments() {
+
+  const [comment, setComment] = useState('');
   
   return (
     <FormControl>
@@ -15,7 +17,10 @@ export default function Comments() {
         sx={{ width: '40rem' ,}}
       />
       <Box display="flex" justifyContent="flex-end">
-        <Button type='submit' sx={{ width: '5rem' }}>올리기</Button>
+        <Button type='submit' sx={{ width: '5rem' }}
+        >
+          올리기
+        </Button>
       </Box>
     </FormControl>
   );

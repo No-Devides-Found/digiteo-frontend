@@ -1,14 +1,13 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
-import { Home, Signin, Signup, Mypage } from "./pages";
-import PracticeHome from "./pages/Practice/PracticeHome";
-import PracticeList from "./pages/Practice/PracticeList";
-import { Header, NavBar } from "./components";
-import PostPractice from "./pages/Practice/pages/PostPractice";
-import Practice from "./pages/Practice/pages/Practice";
-import DetailedPractice from "./pages/Practice/pages/DetailedPractice";
-import EditPractice from "./pages/Practice/pages/EditPractice";
+import { Home, Signin, Signup, Mypage,
+         PracticeHome, PracticeList, PostPractice, DetailedPractice, EditPractice, Practice,
+         Tip, PostTip, DetailedTip,
+         Agora, PostAgora, DetailedAgora } from "./pages";
+
+import { Header, NavBar, } from "./components";
+
 
 function App() {
   return (
@@ -31,6 +30,14 @@ function App() {
         <Route path="mypage/*" element={<Mypage />}></Route>
 
         <Route path="*" element={<p>Path not resolved</p>} />
+
+        <Route path="tip" element={<Tip/>}/>
+        <Route path="posttip" element={<PostTip/>}/>
+        <Route path="detailedtip" element={<DetailedTip/>}/>
+
+        <Route path="agora" element={<Agora/>}/>
+        <Route path="postagora" element={<PostAgora/>}/>
+        <Route path="detailedagora" element={<DetailedAgora/>}/>
       </Routes>
     </div>
   );
