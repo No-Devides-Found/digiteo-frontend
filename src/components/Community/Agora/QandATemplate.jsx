@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 import { Grid,  Avatar,  Stack ,CardActionArea} from '@mui/material';
 import CardMedia from '@mui/material/CardMedia';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
-
+import {Chips} from "../../../components";
 
 
 
@@ -21,21 +21,26 @@ import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 //제목 작성자:닉네임 태그칩,내용중략 좋아요수 작성일
 const card = (
   <React.Fragment>
-    <CardActionArea href='/detailedagora'>
-    <CardMedia
-          component="img"
-          height="120"
-          image="\asset\thumbnail.jpg"
-          alt="썸네일"
-        />
+    <CardActionArea href='/detailedqa'>
+    
     <CardContent>
-      <Typography variant="h5" component="div" gutterBottom>
-        토의/토론 주제
-      </Typography>
+      <Grid container spacing={1}>
+        <Grid item xs={2}>
+          <Avatar>K</Avatar>썸네일 닉네임
+        </Grid>
+        <Grid item xs={10}>
+          <Typography variant="h5" component="div" gutterBottom>
+           - 질문 제목 - 
+          </Typography>
+          <Chips/>
+          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+            내용 중략
+          </Typography>
+        </Grid>
+      </Grid>
+      
 
-      <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-        유형 : 찬반/자유
-      </Typography>
+      
       
       
 
@@ -46,18 +51,19 @@ const card = (
           <Typography variant="body2">좋아요</Typography>{' '}
           <FavoriteRoundedIcon style={{color:'red'}}/>
           <Typography Typography variant="body2"> 999명</Typography>
+          <Typography sx={{ fontSize: 13 }} color="text.secondary" 
+            style={{float:'right'}}>
+              답글 수 아이콘 999명
+          </Typography>
         </Stack>
-
-        <Typography sx={{ fontSize: 13 }} color="text.secondary" 
-        style={{float:'right'}}>
-          참여자 수 아이콘 999명
-        </Typography>
-      </Stack>
-      <Stack >
-        <Typography sx={{ fontSize: 13 }} color="text.secondary" 
-          style={{textAlign:'right'}}>
-          작성일 2023-01-01
-        </Typography>
+       
+      
+        <Stack direction="row">
+          <Typography sx={{ fontSize: 13 }} color="text.secondary" 
+            style={{textAlign:'right'}}>
+            작성일 2023-01-01
+          </Typography>
+        </Stack>
       </Stack>
       
     </CardContent>
@@ -67,11 +73,11 @@ const card = (
 
 
 
-
-export default function AgoraTemplate() {
+// Q&A 리스트 템플릿
+export default function QandATemplate() {
 
   return (
-    <Box sx={{ width: '18rem' }}>
+    <Box sx={{ width: "100%" }}>
       <Card variant="outlined">{card}</Card>
     </Box>
   );

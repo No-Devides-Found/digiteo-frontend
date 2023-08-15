@@ -30,18 +30,21 @@ const programs = [
 
 
 const Agora = () => {
-  const [page, setPage] = useState("agora"); 
+  const [page, setPage] = useState("agora"); //페이지 (배움터 / Q&A)
 
   const navigate = useNavigate();
 
   const [searchKeyword, setSearchKeyword ]= useState(''); //검색어
   const [choice, setChoice] = useState(0); //선택 검색 옵션
 
-
-
- 
+  // 글쓰기 버튼 - 이동
   const postAgora=(e)=>{
-    navigate('/postagora')
+    if(page==="agora"){
+      navigate('/postagora') //토의토론 작성 페이지로 이동
+    }else{
+      navigate('/postqa') //q&a 작성 페이지로 이동
+    }
+    
   }
 
   //배움터-큐엔에이 토글
@@ -83,16 +86,6 @@ const Agora = () => {
               </ToggleButton>
           </ToggleButtonGroup>
 
-            {/* <StyledToggleButton 
-              value="qa"
-            >
-              Q & A
-            </StyledToggleButton>
-            <StyledToggleButton 
-              value="agora"
-            >
-              배움터
-            </StyledToggleButton> */}
           </Box>
           <Box>
             <SearchBar choice={choice} setChoice={setChoice} 
@@ -113,13 +106,16 @@ const Agora = () => {
         </Grid>
 
         <Grid item xs={12}>
-          <AgoraList/>
+          <AgoraList page={page}/>
         </Grid>
 
         <Grid item xs={12}>
-          <Button onClick={postAgora} style={{display:'block', margin:'0 auto'}}>글쓰기</Button> 
+          <Button onClick={postAgora} style={{display:'block', margin:'0 auto'}}>
+            글쓰기
+          </Button> 
         </Grid>
 
+        {/* 페이지네이션 */}
         <Grid item xs={12}>
           <Paginations/>
         </Grid>

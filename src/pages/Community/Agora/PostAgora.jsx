@@ -84,7 +84,7 @@ function PostAgora() {
 
 
   const backToList = (e)=>{
-    navigate('/agora');
+    navigate(-1);
   }
   const saveAgora = (e)=>{
     navigate('/detailedagora', {state:type});
