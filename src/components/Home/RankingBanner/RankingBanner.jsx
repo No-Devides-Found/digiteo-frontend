@@ -65,23 +65,25 @@ function RankingBanner() {
       />
 
       <Grid container>
-        {rankingData.map((data) => {
+        {rankingData.map((data, idx) => {
           return (
-            <Grid
-              item
-              xs={3}
-              minWidth={"300px"}
-              maxWidth={"500px"}
-              margin={"auto"}
-            >
-              <RankingCard
-                title="title"
-                desc="desc"
-                width="100%"
-                height="auto"
-                data={data}
-              />
-            </Grid>
+            <React.Fragment key={idx}>
+              <Grid
+                item
+                xs={3}
+                minWidth={"300px"}
+                maxWidth={"500px"}
+                margin={"auto"}
+              >
+                <RankingCard
+                  title="title"
+                  desc="desc"
+                  width="100%"
+                  height="100%"
+                  data={data}
+                />
+              </Grid>
+            </React.Fragment>
           );
         })}
       </Grid>

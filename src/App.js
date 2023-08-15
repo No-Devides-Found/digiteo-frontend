@@ -6,7 +6,7 @@ import { Home, Signin, Signup, Mypage,
          Tip, PostTip, DetailedTip,
          Agora, PostAgora, DetailedAgora } from "./pages";
 
-import { Header, NavBar } from "./components";
+import { Header, NavBar, } from "./components";
 
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
         <Route path="practice" element={<Practice />} />
         <Route path="editpractice" element={<EditPractice />} />
 
-        <Route path="mypage" element={<Mypage />}></Route>
+        <Route path="mypage/*" element={<Mypage />}></Route>
 
         <Route path="*" element={<p>Path not resolved</p>} />
 
