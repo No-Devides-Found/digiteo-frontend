@@ -9,3 +9,4 @@ export { default as NavBar } from "./NavBar/NavBar";
 export { default as MypageNav } from "./Mypage/MypageNav";
 export { default as Profile } from "./Mypage/Profile/Profile";
 export { default as Courses } from "./Mypage/Courses/Courses";
+export { default as Posts } from "./Mypage/Posts/Posts";

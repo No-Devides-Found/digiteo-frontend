@@ -47,7 +47,7 @@ function Profile() {
   };
 
   return (
-    <Box sx={{ backgroundColor: "lightgrey" }}>
+    <Box sx={{ backgroundColor: "" }}>
       <Container>
         <Typography variant="h6" fontWeight={"bold"}>
           프로필
