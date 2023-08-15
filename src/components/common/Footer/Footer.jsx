@@ -1,4 +1,4 @@
-import { Box, Typography, Grid, Container } from "@mui/material";
+import { Box, Typography, Container } from "@mui/material";
 import React from "react";
 
 export function Footer() {
@@ -15,6 +15,7 @@ export function Footer() {
             mb: "1%",
           }}
         >
+          
           DIGITEO
         </Typography>
         <Typography
