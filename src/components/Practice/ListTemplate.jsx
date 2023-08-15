@@ -67,9 +67,9 @@ function ListTemplate ({page}) {
   const { title, createdBy,  tags, type, file, story, review } = practice; //비구조화 할당
 
   // 검색바 관련 상태값
-  const [searchKeyword, setSearchKeyword ]= useState(""); //검색어
-  const [searchOption, setSearchOption]=useState(0); 
-
+  const [searchKeyword, setSearchKeyword ]= useState(''); //검색어
+  const [choice, setChoice] = useState(0); //선택 검색 옵션
+  const [isSearch, setIsSearch]=useState(false); //검색버튼 클릭 여부
 
   // const [tags, setPractice] = useState([]);
 
@@ -77,15 +77,13 @@ function ListTemplate ({page}) {
       <StyledBox>
         <Grid container spacing={1}>
           {/* 검색바 */}
-          <Grid item xs={12}>
-            <SearchBar 
-              searchKeyword={searchKeyword} 
-              setSearchKeyword={setSearchKeyword}
-              searchOption={setSearchOption} 
-              setSearchOption={setSearchOption} 
-              options={options}
+          <StyledGrid item xs={12}>
+            <SearchBar  options={options} 
+              choice={choice} setChoice={setChoice} 
+              searchKeyword={searchKeyword} setSearchKeyword={setSearchKeyword}
+              isSearch={isSearch} setIsSearch={setIsSearch}
             />
-          </Grid>
+          </StyledGrid>
 
           {/* 프로그램 태그 선택 */}
           <Grid item xs={9}>

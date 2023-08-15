@@ -21,17 +21,24 @@ import { styled } from "@mui/material/styles";
 
 
 
+
+
+
 // 검색옵션, 검색바
-function SearchBar({searchKeyword, setSearchKeyword, searchOption, setSearchOption, options}){
+function SearchBar({options, choice, setChoice, 
+  setSearchKeyword, searchKeyword,
+  isSearch, setIsSearch
+}){
   
-  //검색
+  //검색어 
   const handleSearchKeyword = (e) => {
     setSearchKeyword(e.target.value);
   }
 
-  //검색 버튼 클릭 시 
+  //검색 버튼 클릭
   const clickSearch = (e) => {
-    setSearchKeyword(''); //검색창에 입력한 값 지우기
+    setSearchKeyword(''); //검색창에 입력한 값 초기화
+    setIsSearch(true); //검색 시작 전달
   }
 
  
@@ -39,13 +46,12 @@ function SearchBar({searchKeyword, setSearchKeyword, searchOption, setSearchOpti
   const anchorRef = React.useRef(null);
 
   //선택한 검색 옵션 (순서대로 인덱스)
-
   const handleClick = () => {
-    console.info(`You clicked ${options[searchOption]}`);
+    console.info(`You clicked ${options[choice]}`);
   };
 
   const handleMenuItemClick = (event, index) => {
-    setSearchOption(index);
+    setChoice(index);
     setOpen(false);
   };
 
@@ -69,7 +75,7 @@ function SearchBar({searchKeyword, setSearchKeyword, searchOption, setSearchOpti
         sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '100%' , margin:'0 auto'}}
       >
         <ButtonGroup sx={{width:'10rem'}} variant="contained" ref={anchorRef} aria-label="split button">
-          <Button sx={{width:'100%'}}onClick={handleClick}>{options[searchOption]}</Button>
+          <Button sx={{width:'100%'}}onClick={handleClick}>{options[choice]}</Button>
           <Button
             size="small"
             aria-controls={open ? 'split-button-menu' : undefined}
@@ -105,7 +111,7 @@ function SearchBar({searchKeyword, setSearchKeyword, searchOption, setSearchOpti
                     {options.map((option, index) => (
                       <MenuItem
                         key={option}
-                        selected={index === searchOption}
+                        selected={index === choice}
                         onClick={(event) => handleMenuItemClick(event, index)}
                       >
                         {option}
