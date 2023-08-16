@@ -8,16 +8,10 @@ const ListItem = styled('li')(({ theme }) => ({
   margin: theme.spacing(0.5),
 }));
 
-export default function Chips() {
-  const [chipData, setChipData] = React.useState([
-    { key: 0, label: '프로그램명1' },
-    { key: 1, label: '프로그램명2' },
-    { key: 2, label: '프로그램명3' },
-    { key: 3, label: '프로그램명4' },
-    { key: 4, label: '프로그램명5' },
-  ]);
-
-
+// 선택한 프로그램 태그칩
+export default function Chips({chips}) {
+  const tags = ['tag1', 'tag2', 'tag3'];
+  console.log(tags)
 
   return (
     <Box
@@ -31,17 +25,11 @@ export default function Chips() {
       }}
       component="ul"
     >
-      {chipData.map((data) => {
-        return (
-          <ListItem key={data.key}>
-            <Chip
-             // onDelete={<DoneIcon/>}
-              label={data.label}
-             // deleteIcon={<DoneIcon />}
-            />
-          </ListItem>
-        );
-      })}
+     {chips && chips.map((chip, index) => (
+        <ListItem key={index}>
+          <Chip label={chip} />
+        </ListItem>
+      ))}
     </Box>
   );
 }
