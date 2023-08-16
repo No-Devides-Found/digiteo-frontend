@@ -2,12 +2,11 @@ export { default as Header } from "./common/Header/Header";
 export { default as NavBar } from "./common/NavBar/NavBar";
 export { default as Footer } from "./common/Footer/Footer";
 
-export { default as RelatedSiteCarousel } from "./RelatedSiteCarousel/RelatedSiteCarousel";
+export { default as RelatedSiteCarousel } from "./Home/RelatedSiteCarousel";
 export { default as EventCarousel } from "./Home/EventCarousel";
 export { default as RankingBanner } from "./Home/RankingBanner/RankingBanner";
 export { default as PlayGroundCarousel } from "./Home/PlayGroundCarousel";
 export { default as Program } from "./Home/Program/Program";
-
 
 export { default as SearchBar } from "./common/SearchBar/SearchBar";
 export { default as Chips } from "./common/Chips/Chips";
@@ -23,13 +22,12 @@ export { default as MypageNav } from "./Mypage/MypageNav";
 export { default as Profile } from "./Mypage/Profile/Profile";
 export { default as Courses } from "./Mypage/Courses/Courses";
 export { default as Posts } from "./Mypage/Posts/Posts";
-
+export { default as MyPractice } from "./Mypage/MyPractice/MyPractice";
 
 //Practice
 export { default as CreationTemplate } from "./Practice/CreationTemplate";
 export { default as ListTemplate } from "./Practice/ListTemplate";
 export { default as PracticeNavbar } from "./Practice/PracticeNavbar";
-
 
 //Community
 export { default as LeftList } from "./Community/LeftList";
