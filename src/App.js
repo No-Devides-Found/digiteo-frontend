@@ -24,7 +24,7 @@ function App() {
         <Route path="practicelist" element={<PracticeList />} />
         <Route path="postpractice" element={<PostPractice />} />
         <Route path="detailedpractice" element={<DetailedPractice />} />
-        <Route path="practice" element={<Practice />} />
+        {/* <Route path="practice" element={<Practice />} /> */}
         <Route path="editpractice" element={<EditPractice />} />
 
         <Route path="mypage/*" element={<Mypage />}></Route>
