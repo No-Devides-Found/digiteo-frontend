@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Grid } from "@mui/material";
 import {
   MypageNav,
@@ -10,6 +10,10 @@ import {
 
 function Mypage() {
   const [pathname, setPathname] = useState("profile");
+
+  useEffect(() => {
+    setPathname(window.location.pathname.split("/")[2]);
+  }, []);
 
   const pageRander = (pathname) => {
     switch (pathname) {
