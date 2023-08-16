@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import Tags from '../../components/common/Tags/Tags'
+import {Tags} from '../../components'; 
 
 import { styled } from "@mui/material/styles";
 
@@ -12,6 +12,7 @@ import {
   Input, 
   TextField, 
   Box, 
+  Grid,
   Container, 
   Button,
   Radio,
@@ -78,7 +79,7 @@ function PostPractice () {
   const savePractice = async () => {
     console.log(practice)
     //detailedpractice로 가게 수정해야 함
-    navigate(`/practice`, {
+    navigate(`/detailedpractice`, {
       state: practice, //전체 'practice'객체 전달
     });
     //practice 객체를 보냄
@@ -105,25 +106,19 @@ function PostPractice () {
 
   return (
     <Container>
+      <Grid container spacing={1}>
+        <Grid item xs={12}>
+        <Typography variant="h4" align="center" gutterBottom>
+          창작물 작성
+        </Typography>
+        </Grid>
+        <Grid item xs={12}>
+            <Subtitle variant='subtitle1'>창작물 대제목</Subtitle>
+            <TextField id="outlined-basic" name='title' value={title} onChange={onChange} sx={{width:'100%'}} variant="outlined" placeholder='창작물 대제목을 입력해주세요.'/>
 
-      <Typography variant="h4" align="center" gutterBottom>
-        창작물 작성
-      </Typography>
-
-      <Box type='form'>
-        
-        <StyledContainer>
-          <Subtitle variant='subtitle1'>창작물 대제목</Subtitle>
-          <TextField id="outlined-basic" name='title' value={title} onChange={onChange} sx={{width:'100%'}} variant="outlined" placeholder='창작물 대제목을 입력해주세요.'/>
-        </StyledContainer>
-          
-        <StyledContainer>
-        <Subtitle variant='subtitle1'>태그</Subtitle>
-          <Tags programs={programs} tags={practice.tags} setPractice={setPractice}/>
-        </StyledContainer>
-        
-        <StyledContainer >
-         <Subtitle variant="subtitle1" >파일 업로드</Subtitle>
+        </Grid>
+        <Grid item xs={12}>
+            <Subtitle variant="subtitle1" >파일 업로드</Subtitle>
             <Typography variant="subtitle2">파일 유형</Typography>
               <RadioGroup
                 row
@@ -135,28 +130,29 @@ function PostPractice () {
                 <FormControlLabel name='type' value="voice" onChange={onChange} control={<Radio />} label="음성" />
                 <FormControlLabel  name='type' value="text" onChange={onChange} control={<Radio />} label="문서" />
               </RadioGroup>
-              <Input type="file" ></Input>
+              <Input type="file"/>
+        </Grid>
 
-        </StyledContainer>
-
-        
-        <StyledContainer>
+        <Grid item xs={12}>
         <Subtitle variant='subtitle1'>창작물 소개</Subtitle>
           <Typography variant='subtitle2'>* 창작 스토리 {'('}계기, 과정, 의도{')'}</Typography> 
-            <TextField name='story' value={story} onChange={onChange} sx={{width:'100%'}} multiline rows={8} id="outlined-basic" variant="outlined" placeholder='창작물 대제목을 입력해주세요.'/>
+            <TextField name='story' value={story} onChange={onChange} sx={{width:'100%'}} 
+            multiline rows={8} id="outlined-basic" variant="outlined" 
+            placeholder='창작물 대제목을 입력해주세요.'/>
           
           <Typography variant='subtitle2'>* 후기</Typography> 
-            <TextField name='review' value={review} onChange={onChange} sx={{width:'100%'}} multiline rows={8} id="outlined-basic" variant="outlined" placeholder='창작물 대제목을 입력해주세요.'/>
+            <TextField name='review' value={review} onChange={onChange} sx={{width:'100%'}} 
+            multiline rows={8} id="outlined-basic" variant="outlined" 
+            placeholder='창작물 대제목을 입력해주세요.'/>
 
-        </StyledContainer>
-
-        <ButtonContainer>
+        </Grid>
+        <Grid item xs={12}>
+    
           <StyledButton type="submit" onClick={savePractice}>등록하기</StyledButton>
           <StyledButton type="button" onClick={backToList}>취소하기</StyledButton>
-        </ButtonContainer>
-        
-        
-      </Box>
+
+        </Grid>
+      </Grid>
     </Container>
 
   );

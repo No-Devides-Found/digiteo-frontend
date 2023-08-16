@@ -22,6 +22,8 @@ const Practice = ({idx, title, type, tags, story, review, createdBy}) => {
   const location = useLocation();
   const practice = location.state;
 
+  const chips=["tag1", "tag2", "tag3", "tag4"] ;
+
   const navigate = useNavigate();
   const gotoEdit = (e) => {
     navigate(`/editpractice`);
@@ -29,63 +31,57 @@ const Practice = ({idx, title, type, tags, story, review, createdBy}) => {
 
   return (
     <Container>
-      <ButtonContainer>
-        {/* 작성자만 보이는 버튼으로 해야 함 */}
-        <UpperButton>삭제하기</UpperButton>
-        <UpperButton onClick={gotoEdit}>수정하기</UpperButton>
-      </ButtonContainer>
+      <Grid container spacing={1}>
+         {/* 작성자만 보이는 버튼으로 해야 함 */}
+        <Grid item xs={12}>
+          <Button>삭제하기</Button>
+          <Button onClick={gotoEdit}>수정하기</Button>
+        </Grid>
 
-      <StyledContainer>
-        <Typography>
-          <Subtitle variant='subtitle1'>창작물 대제목</Subtitle>
-          <Grid container spaing={2} >
-            <Grid item xs={4} >
-              <Stack direction="row" spacing={2}>
+        <Grid item xs={12}>
+          <Typography variant='subtitle1'>창작물 대제목</Typography>
+                      
+        </Grid>
+        <Grid item xs={12} style={{display:'flex', justifyContent:'space-between'}}>
+              <Stack direction="row" spacing={2} >
                 <Avatar>H</Avatar><Typography>닉네임</Typography>
               </Stack>
-            </Grid>
-            <Grid item xs={8} >
-              {/* 선택된 태그들 */}
-              <Container >
-                <Chips style={{justifyContent:'flex-end'}}/>
-              </Container>
-              
-            </Grid>
-          </Grid>
-        </Typography>
-      </StyledContainer>
-      <StyledContainer>
-        창작물이 들어갈 공간
-      </StyledContainer>
+              <Chips chips={chips} style={{}}/>    
+        </Grid>
 
-      <StyledContainer>
-        <Subtitle variant='subtitle1'>창작물 소개</Subtitle>
+        <Grid item xs={12}>
+        창작물이 들어갈 공간
+        </Grid>
+        <Grid item xs={12}>
+        <Typography variant='subtitle1'>창작물 소개</Typography>
           <Typography variant='subtitle2'>* 창작 스토리 {'('}계기, 과정, 의도{')'}</Typography> 
-            <StyledTextField id='story' name='story' sx={{width:'100%'}}  
+            <TextField id='story' name='story' sx={{width:'100%'}}  
             defaultValue={practice.story} 
             InputProps={{ readOnly: true }} 
             variant='outlined' />
           
           <Typography variant='subtitle2'>* 후기</Typography> 
-          <StyledTextField id='review' name='review'  sx={{width:'100%'}} defaultValue={practice.review} InputProps={{ readOnly: true }} variant='outlined'  />
-        </StyledContainer>
-        <StyledContainer>
+          <TextField id='review' name='review'  sx={{width:'100%'}} 
+          defaultValue={practice.review} 
+          InputProps={{ readOnly: true }} variant='outlined'  />
+        </Grid>
+
+        <Grid item xs={12}>
           <Grid container>
             <Grid item xs>
-          <Typography >
-            좋아요<Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
-          </Typography>
-            
+              <Typography >
+                좋아요<Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
+              </Typography>
             </Grid>
             <Grid item xs={{float:'right'}}>
-            <Typography style={{display:'inline'}}>공유하기</Typography>
-              <IconButton  aria-label="delete" size="large"> 
-               <ShareIcon /> 
-              </IconButton>
+              <Typography style={{display:'inline'}}>공유하기</Typography>
+                <IconButton  aria-label="delete" size="large"> 
+                <ShareIcon /> 
+                </IconButton>
             </Grid>
           </Grid>
-        </StyledContainer>
-        <StyledContainer>
+        </Grid>
+        <Grid item xs={12}>
           댓글 {'('}총~개{')'}
           <Container style={{ textAlign:'center', marginBottom:'2rem'}}>
             <Comments/>
@@ -94,7 +90,13 @@ const Practice = ({idx, title, type, tags, story, review, createdBy}) => {
             <CommentsList />
           </Container>
           <Paginations/>
-        </StyledContainer>
+
+        </Grid>
+
+      </Grid>
+
+        
+     
 
       
 
@@ -110,21 +112,7 @@ export default Practice;
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 //{ idx, title, tags, createdBy, type, story, review }
-const StyledContainer = styled(Container)({
-  width: '60rem', 
-  backgroundColor: '#FFF5E5',
-  padding: '2rem',
-  marginBottom:'0.5rem',
-  height:'fit-content',
 
-});
-const ButtonContainer=styled(Container)({
-  width: '60rem', 
-  padding:'0',
-  marginBottom:'0.5rem',
-  textAlign:'right',
- 
-})
 const UpperButton=styled(Button)({
   backgroundColor:'orange',
   margin: '0 0.3rem',
