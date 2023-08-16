@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import { Grid } from "@mui/material";
-import { MypageNav, Profile, Courses } from "../../components";
+import {
+  MypageNav,
+  Profile,
+  Courses,
+  Posts,
+  MyPractice,
+} from "../../components";
 
 function Mypage() {
   const [pathname, setPathname] = useState("profile");
@@ -11,6 +17,10 @@ function Mypage() {
         return <Profile />;
       case "courses":
         return <Courses />;
+      case "posts":
+        return <Posts />;
+      case "mypractice":
+        return <MyPractice />;
       default:
         return <Profile />;
     }
