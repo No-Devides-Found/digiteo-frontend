@@ -107,7 +107,6 @@ const Practice = ({idx, title, type, tags, story, review, createdBy}) => {
           <Paginations/>
         </StyledContainer>
 
-        <Footer/>
     </Container>
   );
 };

@@ -120,7 +120,6 @@ const Agora = () => {
           <Paginations/>
         </Grid>
       </Grid>
-      <Footer/>
       
       
 

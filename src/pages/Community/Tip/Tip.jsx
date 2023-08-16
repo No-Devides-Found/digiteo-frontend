@@ -74,7 +74,6 @@ function Tip (){
         <Paginations/>
         </Grid>
       </Grid>
-      <Footer/>
       
       {/* <Container>
         <TipList/>
