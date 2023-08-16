@@ -1,5 +1,7 @@
 import * as React from 'react';
+import axios from 'axios';
 
+import {Chips} from '../../../components';
 
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -13,9 +15,8 @@ import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 
 
 
-
-
-
+// 칩에 넘겨 줄 임의의 태그들
+const chips = ['tag1', 'tag2', 'tag3'];
 
 //제목 작성자:닉네임 태그칩,내용중략 좋아요수 작성일
 const card = (
@@ -31,7 +32,7 @@ const card = (
       </Typography>
       
       <Typography sx={{ mb: 1.5 }} color="text.secondary">
-       태그칩들
+       <Chips chips={chips}/>
       </Typography>
 
       <Typography variant="body2" gutterBottom> 
