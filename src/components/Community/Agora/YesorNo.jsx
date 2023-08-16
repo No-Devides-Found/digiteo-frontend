@@ -1,5 +1,6 @@
 import { Container, Button, Grid, TextField, Typography } from '@mui/material';
 import React, {useState} from 'react';
+import {Tags, Free, UploadFile} from '../../../components';
 
 function YesorNo({
   summary,setSummary, 
@@ -31,7 +32,7 @@ function YesorNo({
 
         <Grid item xs={12}>
           <Typography variant='subtitle1' gutterBottom>이슈 정리</Typography>
-          <input type="file" /> 
+          <UploadFile/>
         </Grid>
         <Grid item xs={12}>
         <TextField 

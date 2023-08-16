@@ -18,4 +18,6 @@ export { default as DetailedTip } from "./Community/Tip/DetailedTip";
 
 export { default as Agora } from "./Community/Agora/Agora";     
 export { default as PostAgora } from "./Community/Agora/PostAgora";      
-export { default as DetailedAgora } from "./Community/Agora/DetailedAgora";     
+export { default as DetailedAgora } from "./Community/Agora/DetailedAgora";    
+export { default as PostQA } from "./Community/Agora/PostQA";       
+export { default as DetailedQA } from "./Community/Agora/DetailedQA";  

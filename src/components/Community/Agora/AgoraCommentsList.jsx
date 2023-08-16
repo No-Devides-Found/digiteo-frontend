@@ -13,8 +13,8 @@ const StyledGrid = styled(Grid)({
 function AgoraCommentsList ({type}) {
   const [alignment, setAlignment] = React.useState('newest');
 
-  const handleChange = (event, newAlignment) => {
-    setAlignment(newAlignment);
+  const handleChange = (e) => {
+    setAlignment(e.target.value);
   };
 
 
