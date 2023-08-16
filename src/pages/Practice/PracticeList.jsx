@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios from "axios";
+import { styled } from "@mui/material/styles";
 
 import { useNavigate, useLocation} from 'react-router-dom';
 
@@ -36,12 +37,13 @@ function PracticeList() {
 
   
   return (
-    <React.Fragment>
+      <React.Fragment>
       <PracticeNavbar page={page} setPage={setPage}></PracticeNavbar>
       
       <ListTemplate page={page} />
       
     </React.Fragment>
+    
   );
 }
 export default PracticeList;

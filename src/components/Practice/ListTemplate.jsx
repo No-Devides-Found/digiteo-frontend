@@ -11,7 +11,7 @@ import Paginations from '../common/Paginations/Paginations';
 import CreationTemplate from './CreationTemplate';
 
 const StyledBox = styled(Box)({
-  backgroundColor: '#FFF5E5',
+  
   margin: '0 auto',
   width: '100%',
   padding: '2rem 5rem',
@@ -75,26 +75,7 @@ function ListTemplate ({page}) {
 
   return (
       <StyledBox>
-        <Grid container spacing={1}>
-          {/* 검색바 */}
-          <StyledGrid item xs={12}>
-            <SearchBar  options={options} 
-              choice={choice} setChoice={setChoice} 
-              searchKeyword={searchKeyword} setSearchKeyword={setSearchKeyword}
-              isSearch={isSearch} setIsSearch={setIsSearch}
-            />
-          </StyledGrid>
-
-          {/* 프로그램 태그 선택 */}
-          <Grid item xs={9}>
-            <Tags  programs={programs} tags={practice.tags} setPractice={setPractice}/>
-          </Grid>
-          
-          {/* 정렬순 드롭다운 */}
-          <Grid item xs={3} style={{textAlign:'right'}}>
-            <Dropdown  />
-          </Grid> 
-
+        <Grid container >
           {/* 창작물 목록 리스트 하나 */}
           <Grid item xs={12}>
             <CreationTemplate/>

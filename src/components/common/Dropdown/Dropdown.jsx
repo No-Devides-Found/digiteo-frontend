@@ -40,9 +40,16 @@ export default function Dropdown() {
 
   return (
     <Box sx={{ flexGrow: 1}}>
-      <ButtonGroup variant="contained" ref={anchorRef} aria-label="split button">
-        <Button onClick={handleClick}>{options[selectedIndex]}</Button>
+      <ButtonGroup variant="contained" ref={anchorRef} aria-label="split button"
+        style={{height:"100%", backgroundColor:"#E9E9E9", borderRadius:"30px", boxShadow:"none",color:"black", fontSize:"1rem",lineHeight: '1.5rem'}}
+        >
+        <Button onClick={handleClick} sx={{width:'100%'}}
+        style={{backgroundColor:"#E9E9E9",boxShadow:"none", borderRadius:"30px",borderRight:"none",color:"black", fontSize:"1rem",lineHeight: '1.5rem'}}
+        >
+          {options[selectedIndex]}
+        </Button>
         <Button
+          style={{backgroundColor:"#E9E9E9", borderRadius:"30px", boxShadow:"none", color:"black" ,lineHeight: '1.5rem',fontSize:"1rem"}}
           size="small"
           aria-controls={open ? 'split-button-menu' : undefined}
           aria-expanded={open ? 'true' : undefined}

@@ -44,7 +44,8 @@ function PracticeHome () {
   //프로그램 유형 버튼 클릭 
   //-> 유형(value) 전달하면서 창작마루 목록으로 이동
   const onClick=(e)=>{
-    navigate(`/practicelist?param1=${e.target.value}`);   
+    console.log(e.target.alt)
+    navigate(`/practicelist?param1=${e.target.alt}`);   
   }
 
   //해당 창작물 페이지로 이동
@@ -61,7 +62,7 @@ function PracticeHome () {
                 CHANG <br/>
                 JAC <br/>
                 MA <br/>
-                ROO <br/>
+                ROO <br/> 
               </Typography>
             </Grid>
                         
@@ -94,30 +95,30 @@ function PracticeHome () {
             <GreenGrid container >
               
               <Grid item xs={6} >
-                <img src="img/video.png" alt="video" 
+                <img src="img/video.png" 
+                alt="video" 
                 style={{width:"80%", display:"block", margin:"0 auto",cursor:"pointer"}}
-                value="video"
                 onClick={onClick} 
                 />
               </Grid>
               <Grid item xs={6}>
-                <img src="img/video.png" alt="video" 
+                <img src="img/video.png" 
+                alt="img" 
                 style={{width:"80%", display:"block", margin:"0 auto",cursor:"pointer"}}
-                value="img"
                 onClick={onClick}
                 />
               </Grid>
               <Grid item xs={6}>
-                <img src="img/video.png" alt="video" 
+                <img src="img/video.png" 
+                alt="voice"
                 style={{width:"80%", display:"block", margin:"0 auto", cursor:"pointer"}}
-                value="voice"
                 />
         
               </Grid>
               <Grid item xs={6}>
-                <img src="img/video.png" alt="video" 
+                <img src="img/video.png" 
+                alt="text"
                 style={{width:"80%", display:"block", margin:"0 auto", cursor:"pointer"}}
-                value="text"
                 onClick={onClick} 
                 />
 

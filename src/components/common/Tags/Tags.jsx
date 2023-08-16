@@ -20,14 +20,18 @@ export default function Tags({programs, tags, setPractice}) {
           limitTags={5}
           id="multiple-limit-tags"
           name="tags"
-          options={programs}
+          options={programs}          
+
           value={tags}
           onChange={handleTagChange}
           getOptionLabel={(option) => option}
+          //style={{"&.MuiAutocomplete-tag":{backgroundColor:"#E0F7FA"}}}
           renderInput={(params) => (
-            <TextField {...params} label="프로그램 선택" placeholder="프로그램 선택" />
+            <TextField {...params} label="프로그램 선택" placeholder="프로그램 선택" 
+            />
           )}
-          sx={{ width: '40rem',  }}
+          sx={{ }}
+  
         />
     </Box>
     
