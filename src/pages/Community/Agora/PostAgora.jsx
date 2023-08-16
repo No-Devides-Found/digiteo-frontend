@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import {Tags, Free, YesorNo} from '../../../components';
+import {Tags, Free, YesorNo, UploadFile} from '../../../components';
 import { styled } from "@mui/material/styles";
 
 
@@ -52,7 +52,10 @@ function PostAgora() {
   // }
   
   const [title, setTitle]=useState('');
+  // 썸네일
   const [thumbnail, setThumbnail] = useState('');
+  const imgRef = React.useRef();
+
   const [type, setType] = useState("2");
   const [yes, setYes] = useState("");
   const [no, setNo] = useState("");
@@ -71,7 +74,6 @@ function PostAgora() {
   const onChangeType=(e)=>{
     setType(e.target.value);
     console.log('type', type)
-
     setTitle('');
     setThumbnail('');
     setYes('');
@@ -81,6 +83,15 @@ function PostAgora() {
     setSummaryFile('');
     setSummary('');
   }
+  // 이미지 업로드 input의 onChange
+  const saveThumbnail = () => {
+	const file = imgRef.current.files[0];
+	const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+        setThumbnail(reader.result);
+   	};
+  };
 
 
   const backToList = (e)=>{
@@ -100,9 +111,17 @@ function PostAgora() {
             토의/토론 만들기
           </Typography>
         </Grid>
-
-        <Grid item xs={5} style={{backgroundColor:'orange'}}>
-          썸네일
+        
+        {/* 썸네일 이미지 미리보기 */}
+        <Grid item xs={5} 
+        style={{ height:"15rem", width:"100%", padding:"0",
+        backgroundColor:'orange', overflow:'hidden',}}>
+            <img
+            src={thumbnail ? thumbnail :`/images/icon/user.png`}
+            alt="thumbnail"
+            style={{ width: '100%', 
+              objectFit: 'contain' }}
+            />
         </Grid>
 
         <Grid item xs={7} >
@@ -130,7 +149,17 @@ function PostAgora() {
         </Grid>
 
         <Grid item xs={12}>
-          썸네일 설정하기 <input type="file" />
+          <form>
+            <label className="signup-profileImg-label" htmlFor="profileImg">썸네일 추가</label>
+            <input
+              className="signup-profileImg-input"
+              type="file"
+              accept="image/*"
+              id="thumbnail"
+              onChange={saveThumbnail}
+              ref={imgRef}
+            />
+           </form>
         </Grid>
 
         <Grid item xs={12}>

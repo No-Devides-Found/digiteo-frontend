@@ -29,7 +29,7 @@ const card = (
           alt="썸네일"
         />
     <CardContent>
-      <Typography variant="h5" component="div" gutterBottom>
+      <Typography variant="h5"  gutterBottom>
         토의/토론 주제
       </Typography>
 
@@ -43,13 +43,17 @@ const card = (
     <CardContent>
       <Stack direction="row" style={{justifyContent:'space-between'}}>
         <Stack direction="row">
-          <Typography variant="body2">좋아요</Typography>{' '}
+          <Typography variant="body2">
+            좋아요
+          </Typography>{' '}
           <FavoriteRoundedIcon style={{color:'red'}}/>
-          <Typography Typography variant="body2"> 999명</Typography>
+          <Typography variant="body2"> 
+            999명
+          </Typography>
         </Stack>
 
         <Typography sx={{ fontSize: 13 }} color="text.secondary" 
-        style={{float:'right'}}>
+          style={{float:'right'}}>
           참여자 수 아이콘 999명
         </Typography>
       </Stack>

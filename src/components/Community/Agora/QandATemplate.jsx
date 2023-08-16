@@ -48,9 +48,13 @@ const card = (
     <CardContent>
       <Stack direction="row" style={{justifyContent:'space-between'}}>
         <Stack direction="row">
-          <Typography variant="body2">좋아요</Typography>{' '}
+          <Typography variant="body2">
+            좋아요
+          </Typography>{' '}
           <FavoriteRoundedIcon style={{color:'red'}}/>
-          <Typography Typography variant="body2"> 999명</Typography>
+          <Typography variant="body2"> 
+            999명
+          </Typography>
           <Typography sx={{ fontSize: 13 }} color="text.secondary" 
             style={{float:'right'}}>
               답글 수 아이콘 999명

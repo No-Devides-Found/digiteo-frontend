@@ -8,7 +8,9 @@ function TipList() {
   return (
     <Container>
       팁리스트
-      <TipTemplate/>
+      <TipTemplate 
+      
+      />
 
 
     </Container>

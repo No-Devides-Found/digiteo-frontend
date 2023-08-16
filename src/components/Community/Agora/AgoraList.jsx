@@ -7,12 +7,13 @@ import {AgoraTemplate, QandATemplate} from '../../../components';
 function AgoraList({page}) {
   return (
     <Container>
+      <>
       {
         page==="agora"
         ? <AgoraTemplate/>
         : <QandATemplate/>
       }
-      
+      </>
     </Container>
   );
 };

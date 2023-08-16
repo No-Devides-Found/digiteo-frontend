@@ -59,8 +59,7 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 
 
-
-
+// 배움터 - Q&A 상세페이지
 const DetailedQA = () => {
   const navigate = useNavigate();
 
@@ -82,16 +81,19 @@ const DetailedQA = () => {
         <Grid item xs={12} >
           <Chips style={{justifyContent:'flex-start'}}/>
         </Grid>
+
         <Grid item xs={12} style={{display:"flex", justifyContent:"space-between"}}>
           <div>닉네임</div>
           <div>작성일자 2023-01-01</div>
         </Grid>
 
         
-
+        
         <Grid item xs={12}>
           파일 업로드하기 <input type="file" />
         </Grid>
+
+        {/* q&a 내용 */}
         <Grid item xs={12}>
           <TextField id="outlined-basic" sx={{width:'100%'}} variant="outlined" 
             name='content' 
