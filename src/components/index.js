@@ -1,6 +1,7 @@
 export { default as Header } from "./common/Header/Header";
 export { default as NavBar } from "./common/NavBar/NavBar";
 export { default as Footer } from "./common/Footer/Footer";
+export { default as UserModal } from "./common/Header/UserModal";
 
 export { default as RelatedSiteCarousel } from "./Home/RelatedSiteCarousel";
 export { default as EventCarousel } from "./Home/EventCarousel";
