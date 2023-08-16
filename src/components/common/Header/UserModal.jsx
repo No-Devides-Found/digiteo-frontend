@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Card,
@@ -15,8 +15,8 @@ import MilitaryTechRoundedIcon from "@mui/icons-material/MilitaryTechRounded";
 
 const style = {
   position: "absolute",
-  top: "10rem",
-  right: "5%",
+  top: "14rem",
+  right: 0,
   transform: "translate(-50%, -50%)",
   p: 2,
   "&:focus": {
@@ -30,11 +30,9 @@ const cursorStyle = {
   },
 };
 
-function UserModal() {
-  const [open, setOpen] = useState(true);
+function UserModal({ open, setOpen }) {
   const navigate = useNavigate();
 
-  const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   return (
