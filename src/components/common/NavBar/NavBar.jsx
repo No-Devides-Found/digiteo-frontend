@@ -67,8 +67,8 @@ export default function NavBar() {
     {
       name: "커뮤니티",
       items: [
-        { title: "배움터", to: "" },
-        { title: "나눔터", to: "" },
+        { title: "배움터", to: "agora" },
+        { title: "나눔터", to: "tip" },
       ], // Menu items for "커뮤니티"
       to: "",
     },

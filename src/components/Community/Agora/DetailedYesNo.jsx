@@ -8,7 +8,7 @@ import {
   AgoraCommentsList,
   Chips, Footer,
   Tags
-} from "../../components";
+} from "../../../components";
 
 import { styled } from "@mui/material/styles";
 import Checkbox from '@mui/material/Checkbox';

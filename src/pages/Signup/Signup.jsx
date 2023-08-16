@@ -68,6 +68,7 @@ const Signup = () => {
         department: school,
       },
     };
+    
     console.log(user)
 
     Axios.post("/accounts/dj-rest-auth/registration", user)

@@ -8,7 +8,7 @@ export { default as RankingBanner } from "./Home/RankingBanner/RankingBanner";
 export { default as PlayGroundCarousel } from "./Home/PlayGroundCarousel";
 export { default as Program } from "./Home/Program/Program";
 
-
+export { default as UploadFile } from "./common/UploadFile/UploadFile";  
 export { default as SearchBar } from "./common/SearchBar/SearchBar";
 export { default as Chips } from "./common/Chips/Chips";
 export { default as Tags } from "./common/Tags/Tags";
@@ -33,13 +33,15 @@ export { default as PracticeNavbar } from "./Practice/PracticeNavbar";
 
 //Community
 export { default as LeftList } from "./Community/LeftList";
-export { default as TipList } from "./Community/TipList";
-export { default as TipTemplate } from "./Community/TipTemplate";
-export { default as YesorNo } from "./Community/YesorNo";
-export { default as Free } from "./Community/Free";
-export { default as DetailedYesNo } from "./Community/DetailedYesNo";
-export { default as DetailedFree } from "./Community/DetailedFree";
-export { default as AgoraComments } from "./Community/AgoraComments";
-export { default as AgoraCommentsList } from "./Community/AgoraCommentsList";
-export { default as AgoraList } from "./Community/AgoraList";
-export { default as AgoraTemplate } from "./Community/AgoraTemplate";
+export { default as TipList } from "./Community/Tip/TipList";
+export { default as TipTemplate } from "./Community/Tip/TipTemplate";
+
+export { default as YesorNo } from "./Community/Agora/YesorNo";
+export { default as Free } from "./Community/Agora/Free";
+export { default as DetailedYesNo } from "./Community/Agora/DetailedYesNo";
+export { default as DetailedFree } from "./Community/Agora/DetailedFree";
+export { default as AgoraComments } from "./Community/Agora/AgoraComments";
+export { default as AgoraCommentsList } from "./Community/Agora/AgoraCommentsList";
+export { default as AgoraList } from "./Community/Agora/AgoraList";
+export { default as AgoraTemplate } from "./Community/Agora/AgoraTemplate";
+export { default as QandATemplate } from "./Community/Agora/QandATemplate";
