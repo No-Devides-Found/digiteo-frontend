@@ -8,6 +8,7 @@ import { styled } from "@mui/material/styles";
 
 
 import { 
+  Autocomplete, 
   Typography, 
   Input, 
   TextField, 
@@ -60,22 +61,24 @@ const StyledChip=styled(Chip)({
 })
 
 
-
+// 창작마루 게시글 작성 페이지 
 function PostPractice () {
 
   const navigate = useNavigate();
   
   const [practice, setPractice] = useState({
+    nickname:"",
     title: '',
     createdBy: '', 
     tags: [],
     type: '',
-    file: '',
+    files: [],
     story: '',
     review: '',
   });
 
-  const { title, createdBy,  tags, type, file, story, review } = practice; //비구조화 할당
+  const { nickname, title, createdBy,  tags, type, files, story, review } = practice; //비구조화 할당
+
 
   const onChange = (event) => {
     const { value, name } = event.target;
@@ -90,7 +93,8 @@ function PostPractice () {
   const savePractice = async () => {
     console.log(practice)
     //detailedpractice로 가게 수정해야 함
-    navigate(`/detailedpractice`, {
+    navigate(`/detailedpractice`, 
+    {
       state: practice, //전체 'practice'객체 전달
     });
     //practice 객체를 보냄
@@ -99,12 +103,14 @@ function PostPractice () {
     //   navigate('/practicelist/:idx'); 
     // });
   };
+
+
   //작성 취소
   const backToList = () => {
-    navigate('/practicelist');
+    navigate(-1);
   };
 
-
+  // 전체 프로그램 목록 가져오기
   const programs = [
     '프로그램명1',
     '프로그램명2',
@@ -114,10 +120,9 @@ function PostPractice () {
     '프로그램명6',
     '프로그램명7',
   ];
-  // 수정 페이지로 이동
-  const gotoEdit = (e) => {
-    navigate(`/editpractice`);
-  }
+
+
+  
 
   const handleClick = () => {
     console.info('You clicked the Chip.');
@@ -131,9 +136,9 @@ function PostPractice () {
             <StyledPaper>
               <Grid container>
                   <Grid item xs={12} style={{display:"flex", justifyContent:"flex-end"}}>
-                    <Button onClick={gotoEdit} style={{color:"#757575", fontSize:"13px"}} >
-                            수정하기 <BorderColorIcon />
-                    </Button>
+                    {/* <Button onClick={gotoEdit} style={{color:"#757575", fontSize:"13px"}} >
+                      수정하기 <BorderColorIcon />
+                    </Button> */}
                   </Grid>
                   <Grid item xs={12}  mt={1}>
                   
@@ -161,14 +166,15 @@ function PostPractice () {
                       </Grid>
                       {/*  칩 태그들 */}
                       <Grid item xs={7} mt={2} style={{width:'100%'}}>
-                        <Stack direction="row" spacing={1} >
+                      <Tags programs={programs}/>
+                        {/* <Stack direction="row" spacing={1} >
                           <StyledChip label="Clickable"   onClick={handleClick}/>
                           <StyledChip label="Clickable"  onClick={handleClick}/>
                         
                       
                           <StyledChip label="Clickable"   onClick={handleClick}/>
                           <StyledChip label="Clickable" onClick={handleClick}/>
-                        </Stack>
+                        </Stack> */}
                   </Grid>
                 </Grid>
             </StyledPaper>
