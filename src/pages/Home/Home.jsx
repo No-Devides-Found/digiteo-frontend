@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Box, Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
@@ -10,9 +10,8 @@ import {
   RelatedSiteCarousel,
 } from "../../components";
 
-import Api from "../../api/api";
-import { useRecoilState } from "recoil";
-import { userState } from "../../recoil/user";
+import axios from "axios";
+import { server } from "../../constants";
 
 //프로그램 컴포넌트 테스트
 const programProps = {
@@ -25,16 +24,16 @@ const programProps = {
 };
 
 function Home() {
-  const [curUser, setCurUser] = useRecoilState(userState);
+  const [attendRank, setAttendRank] = useState();
 
   useEffect(() => {
-    const getUserInfo = async () => {
-      const { data } = await Api.get("/accounts/dj-rest-auth/user");
-      console.log(data);
-      setCurUser(data);
+    // 프로그램 랭킹 가져오기
+    const getAttendRank = async () => {
+      await axios.get(`${server}/programs/attend_rank/`).then((res) => {
+        setAttendRank(res.data);
+      });
     };
-
-    // getUserInfo();
+    getAttendRank();
   }, []);
 
   return (
