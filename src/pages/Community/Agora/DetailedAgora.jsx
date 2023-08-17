@@ -95,7 +95,11 @@ const StyledChip=styled(Chip)({
 })
 
 
-
+const ContentField = styled(Container)({
+  background:"#FFF3E0",
+  borderRadius:"20px",
+  padding:"2rem 3rem",
+}); 
 
 
 
@@ -104,27 +108,42 @@ const DetailedAgora = () => {
 
   const { state }  = useLocation();
   console.log(state)
+  
+
+  const post = {
+    //post_id: 0, 
+    thumbnail: "/img/video.png",  
+    title: "제목", 
+    date: "2021-02-10", 
+    type: "agora",   
+    summary: "요약아ㅓㄹ ㅏ나ㅣㅇ", 
+    my_opinion: "내ㅡ이견ㄴㄴㄴ",  
+    no: "반대의견ㄴㄴ",  
+    yes: "찬성의견ㄴㄴㄴ",
+    files: ["", "", ""],    
+    likes:"999",
+    participants:"999"
+  }; 
+
 
 
   return (
-    <Maindiv>
-      <StyledGrid container >
-      <Grid container spacing={2}>
+    <Container>
+      <Grid container  style={{padding:"1rem 5rem 4rem 5rem"}}>
         
-
-        <StyledGrid item xs={12}>
+        <Grid item xs={12}>
           {/* 포스트 제목 부분 */}
           <StyledPaper>
             <Grid container >
               <Grid item xs={5} >
-                <img src="/img/video.png" alt="video-box" width="80%"/>
+                <img src={post.thumbnail} alt="video-box" width="80%"/>
               </Grid>
 
               <Grid item xs={7} style={{padding:"0 2rem 1rem 0 "}}>
                 <Grid container>
                   <Grid item xs={12} mt={4}>
                       <Typography variant='h5' fontWeight="bold"  >
-                        입력한 주제
+                        {post.title}
                       </Typography>
                   </Grid>
                   <Grid item xs={12}  mt={3}>
@@ -141,17 +160,17 @@ const DetailedAgora = () => {
                     <Stack direction="row" >
                           <Typography variant="body2">좋아요 {' '}</Typography>
                           <FavoriteRoundedIcon style={{color:'red', margin:"0 0.5rem"}}/> 
-                          <Typography variant="body2"> 명</Typography>
+                          <Typography variant="body2"> {post.likes} 명</Typography>
                     </Stack>
                     <Stack direction="row" >
                           <Typography variant="body2">참여인원 {' '}</Typography>
                           <PeopleAltIcon style={{margin:"0 0.5rem"}}/> 
-                          <Typography variant="body2"> 명</Typography>
+                          <Typography variant="body2">{post.participants}명</Typography>
                     </Stack>
                   </Grid>
                   <Grid item xs={12} mt={2}>
                     <Typography variant="body2" style={{color:'gray',  textAlign:"right"}}>
-                         작성일
+                         {post.date}작성일
                     </Typography>
                   </Grid>
                 </Grid>
@@ -160,44 +179,19 @@ const DetailedAgora = () => {
           </StyledPaper>
 
 
-          
-        </StyledGrid>
-
         
-
-        
-
-   
-            <Stack direction="row" style={{justifyContent:'space-between'}}>
-              <Stack direction="row">
-                <Typography variant="body2">좋아요 {' '}</Typography>
-                <FavoriteRoundedIcon style={{color:'red'}}/> 
-                <Typography Typography variant="body2"> 명</Typography>
-              </Stack>
-
-              <Typography variant="body2" style={{float:'right'}}>
-                참여자 수 아이콘 999명
-              </Typography>
-            </Stack>
-            <Stack >
-              <Typography sx={{ fontSize: 13 }} color="text.secondary" 
-                style={{textAlign:'right'}}>
-                작성일 2023-01-01
-              </Typography>
-            </Stack>
-
-
-        <Grid item xs={12}>
-
-        </Grid>
-        
+         
         <Grid item xs={12}>
           {
             state === "1"
-            ? <DetailedFree/>
-            : <DetailedYesNo/>
+            ? <DetailedFree post={post}/>
+            : <DetailedYesNo post={post}/>
           }
         </Grid>
+      </Grid>
+      <Grid item xs={12}>
+
+
       </Grid>
 
       
@@ -250,8 +244,8 @@ const DetailedAgora = () => {
       </Container>
 
 
-      </StyledGrid >
-    </Maindiv>
+      </Grid >
+    </Container>
   );
 };
 
