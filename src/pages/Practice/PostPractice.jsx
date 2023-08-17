@@ -66,37 +66,24 @@ function PostPractice () {
 
   const navigate = useNavigate();
   
-  const [practice, setPractice] = useState({
-    nickname:"",
-    title: '',
-    createdBy: '', 
-    tags: [],
-    type: '',
-    files: [],
-    story: '',
-    review: '',
-  });
+  //
+  const [title, setTitle] = useState(""); //창작물 제목
+  const [type, setType] = useState("video"); //창작물 유형
+  const [story, setStory] = useState(""); //스토리
+  const [review, setReview] = useState(""); //후기
+  const [files, setFiles] = useState([]); //파일들
+  const [tags, setTags] = useState([]); //태그들
+  console.log(title, type, story, review, files, tags)
+  
 
-  const { nickname, title, createdBy,  tags, type, files, story, review } = practice; //비구조화 할당
+  //const { title, type, files, story, review } = post; //비구조화 할당
 
-
-  const onChange = (event) => {
-    const { value, name } = event.target;
-
-    setPractice((prevPractice) => ({
-      ...prevPractice,
-      [name]: name === 'tags' ? value.split(',') : value,
-  }));
-    
-  };
-
+  //선택한 태그들 상태값
   const savePractice = async () => {
-    console.log(practice)
+    console.log()
     //detailedpractice로 가게 수정해야 함
-    navigate(`/detailedpractice`, 
-    {
-      state: practice, //전체 'practice'객체 전달
-    });
+    navigate(`/detailedpractice`,) 
+    
     //practice 객체를 보냄
     // await axios.post('/practicelist', practice).then((res) => {
     //   alert('등록되었습니다.');
@@ -148,15 +135,12 @@ function PostPractice () {
                           name='title' 
                           sx={{width:'100%'}} variant="outlined" 
                           value={title} 
-                          onChange={onChange} 
+                          onChange={(e)=>setTitle(e.target.value)} 
                           placeholder='[창작물 대제목]을 입력해주세요.'/>
       
                   </Grid>
                   <Grid item xs={12} mt={2}>
                     
-                          
-                          
-                        
                       </Grid>
                       <Grid item xs={5} mt={2}>
                         <Stack direction="row">
@@ -165,16 +149,8 @@ function PostPractice () {
                         </Stack>
                       </Grid>
                       {/*  칩 태그들 */}
-                      <Grid item xs={7} mt={2} style={{width:'100%'}}>
-                      <Tags programs={programs}/>
-                        {/* <Stack direction="row" spacing={1} >
-                          <StyledChip label="Clickable"   onClick={handleClick}/>
-                          <StyledChip label="Clickable"  onClick={handleClick}/>
-                        
-                      
-                          <StyledChip label="Clickable"   onClick={handleClick}/>
-                          <StyledChip label="Clickable" onClick={handleClick}/>
-                        </Stack> */}
+                  <Grid item xs={7} mt={2} style={{width:'100%'}}>
+                      <Tags programs={programs} value={tags} onChange={setTags}/>
                   </Grid>
                 </Grid>
             </StyledPaper>
@@ -190,7 +166,7 @@ function PostPractice () {
 
         <Grid item xs={12}>
           <div style={{ position: 'relative' }}>
-            <DragUploadFile />
+            <DragUploadFile  value={files} onChange={setFiles}/>
             <div
               style={{
                 position: 'absolute',
@@ -207,12 +183,13 @@ function PostPractice () {
                         required
                         aria-labelledby="demo-row-radio-buttons-group-label"
                         name="row-radio-buttons-group"
+                        selected={type}
                       >
                       
-                        <FormControlLabel name='type' value="video" onChange={onChange} control={<Radio />} label="영상" />
-                        <FormControlLabel name='type' value="img" onChange={onChange} control={<Radio />} label="이미지" />
-                        <FormControlLabel name='type' value="voice" onChange={onChange} control={<Radio />} label="음성" />
-                        <FormControlLabel name='type' value="text" onChange={onChange} control={<Radio />} label="문서" />
+                        <FormControlLabel name='type' value="video" onChange={(e)=>setType(e.target.value)}  control={<Radio />} label="영상" />
+                        <FormControlLabel name='type' value="img" onChange={(e)=>setType(e.target.value)} control={<Radio />} label="이미지" />
+                        <FormControlLabel name='type' value="voice" onChange={(e)=>setType(e.target.value)} control={<Radio />} label="음성" />
+                        <FormControlLabel name='type' value="text" onChange={(e)=>setType(e.target.value)} control={<Radio />} label="문서" />
                       </RadioGroup>
                   </Stack>
             </div>
@@ -227,7 +204,7 @@ function PostPractice () {
               <TextField 
                 name='story' 
                 value={story} 
-                onChange={onChange} 
+                onChange={(e)=>setStory(e.target.value)}
                 sx={{width:'100%'}} 
                 multiline rows={8} id="outlined-basic" variant="outlined" 
                 placeholder='나만의 창작 스토리 (계기, 과정, 의도)를 소개해주세요 :)'/>
@@ -239,7 +216,7 @@ function PostPractice () {
               <TextField 
                 name='review' 
                 value={review} 
-                onChange={onChange} 
+                onChange={(e)=>setReview(e.target.value)}
                 sx={{width:'100%'}} 
                 multiline rows={8} id="outlined-basic" variant="outlined" 
                 placeholder='창작물을 만들어 본 소감(느낀 점)을 이야기해주세요 :)'/>

@@ -10,7 +10,6 @@ export { default as PlayGroundCarousel } from "./Home/PlayGroundCarousel";
 export { default as Program } from "./Home/Program/Program";
 
 export { default as DragUploadFile } from "./common/UploadFile/DragUploadFile";
-export { default as UploadFile } from "./common/UploadFile/UploadFile";
 export { default as SearchBar } from "./common/SearchBar/SearchBar";
 export { default as Chips } from "./common/Chips/Chips";
 export { default as Tags } from "./common/Tags/Tags";
