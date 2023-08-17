@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Container, Typography, Grid } from "@mui/material";
 
 import Tab from "@mui/material/Tab";
@@ -8,15 +8,29 @@ import TabPanel from "@mui/lab/TabPanel";
 
 import { Program } from "../../../components";
 
+import { withProgram } from "../../../recoil/user";
+import { useRecoilValue } from "recoil";
+
 function Courses() {
   const [value, setValue] = useState("1");
+  const programs_data = useRecoilValue(withProgram);
 
-  const programs = [
-    { wish: false, participate: true, progress: 15 },
-    { wish: true, participate: false, progress: 0 },
-    { wish: true, participate: true, progress: 50 },
-    { wish: true, participate: true, progress: 100 },
-  ];
+  const program_user_maps = programs_data.program_user_maps;
+  const programs = programs_data.programs;
+
+  const getProgramProps = (program_id) => {
+    const program = programs.filter((el) => {
+      return el.id === program_id;
+    })[0];
+    return {
+      img: program.thumbnail,
+      alt: program.title,
+      title: program.title,
+      info: program.introduce,
+      participants: program.participants_cnt,
+      rating: program.score ? program.score : 0,
+    };
+  };
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -38,25 +52,44 @@ function Courses() {
           </Box>
           <TabPanel value="1" style={{ padding: 0 }}>
             <Grid>
-              {programs.map((item, idx) => {
-                return item.wish === true ? <Program maxWidth={200} /> : null;
+              {program_user_maps.map((item, idx) => {
+                return item.wish === true ? (
+                  <React.Fragment key={item.program_id}>
+                    <Program
+                      maxWidth={200}
+                      {...getProgramProps(item.program_id)}
+                    />
+                  </React.Fragment>
+                ) : null;
               })}
             </Grid>
           </TabPanel>
           <TabPanel value="2" style={{ padding: 0 }}>
             <Grid>
-              {programs.map((item, idx) => {
+              {program_user_maps.map((item, idx) => {
                 return item.participate === true && item.progress < 100 ? (
-                  <Program maxWidth={200} progress={item.progress} />
+                  <React.Fragment key={item.program_id}>
+                    <Program
+                      maxWidth={200}
+                      progress={item.progress}
+                      {...getProgramProps(item.program_id)}
+                    />
+                  </React.Fragment>
                 ) : null;
               })}
             </Grid>
           </TabPanel>
           <TabPanel value="3" style={{ padding: 0 }}>
             <Grid>
-              {programs.map((item, idx) => {
+              {program_user_maps.map((item, idx) => {
                 return item.progress === 100 ? (
-                  <Program maxWidth={200} progress={item.progress} />
+                  <React.Fragment key={item.program_id}>
+                    <Program
+                      maxWidth={200}
+                      progress={item.progress}
+                      {...getProgramProps(item.program_id)}
+                    />
+                  </React.Fragment>
                 ) : null;
               })}
             </Grid>

@@ -60,7 +60,7 @@ function Program(props) {
       <CardActions>
         <StyledGrid container>
           <StyledGrid item xs>
-            {props.participants}
+            참여인원 {props.participants}명
           </StyledGrid>
           <StyledGrid item xs>
             별점{" "}

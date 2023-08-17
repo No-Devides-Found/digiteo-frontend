@@ -7,11 +7,18 @@ import {
   Posts,
   MyPractice,
 } from "../../components";
+import { isAccessExpired } from "../../utils";
+import { useNavigate } from "react-router-dom";
 
 function Mypage() {
   const [pathname, setPathname] = useState("profile");
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (isAccessExpired()) {
+      alert("로그인이 필요합니다.");
+      navigate("/signin");
+    }
     setPathname(window.location.pathname.split("/")[2]);
   }, []);
 
@@ -35,7 +42,9 @@ function Mypage() {
       <Grid>
         <MypageNav setPathname={setPathname} />
       </Grid>
-      <Grid xs={8}>{pageRander(pathname)}</Grid>
+      <Grid item xs={8}>
+        {pageRander(pathname)}
+      </Grid>
     </Grid>
   );
 }

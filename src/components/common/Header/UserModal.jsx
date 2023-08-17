@@ -12,6 +12,8 @@ import {
 } from "@mui/material";
 import NotificationsNoneRoundedIcon from "@mui/icons-material/NotificationsNoneRounded";
 import MilitaryTechRoundedIcon from "@mui/icons-material/MilitaryTechRounded";
+import { useRecoilValue } from "recoil";
+import { withProfile, withProgram } from "../../../recoil/user";
 
 const style = {
   position: "absolute",
@@ -31,6 +33,11 @@ const cursorStyle = {
 };
 
 function UserModal({ open, setOpen }) {
+  // 유저 프로필 상태관리
+  const userProfile = useRecoilValue(withProfile);
+  const userProgramInfo = useRecoilValue(withProgram);
+  const userPrograms = userProgramInfo.program_user_maps;
+
   const navigate = useNavigate();
 
   const handleClose = () => setOpen(false);
@@ -54,7 +61,7 @@ function UserModal({ open, setOpen }) {
         <Stack spacing={"1.5rem"}>
           <Grid container>
             <Grid item xs={3}>
-              <Avatar width="100%" />
+              <Avatar width="100%" src={userProfile.img} />
             </Grid>
             <Grid item xs={7}>
               <Typography
@@ -66,7 +73,7 @@ function UserModal({ open, setOpen }) {
                   handleClose();
                 }}
               >
-                닉네임 님 &gt;
+                {userProfile.nickname} 님 &gt;
               </Typography>
             </Grid>
             <Grid item xs={2}>
@@ -80,18 +87,34 @@ function UserModal({ open, setOpen }) {
               </Typography>
             </Grid>
             <Grid item xs={2}>
-              <Typography>~개</Typography>
+              <Typography>
+                {userProfile.stemp ? userProfile.stemp : 0} 개
+              </Typography>
             </Grid>
           </Grid>
           <Container>
             <Stack>
               <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                 <Typography>참여 중인 프로그램</Typography>
-                <Typography>~개</Typography>
+                <Typography>
+                  {
+                    userPrograms.filter(
+                      (el) => el.participate === true && el.progress < 100
+                    ).length
+                  }
+                  개
+                </Typography>
               </Box>
               <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                 <Typography>이수한 프로그램</Typography>
-                <Typography>~개</Typography>
+                <Typography>
+                  {
+                    userPrograms.filter(
+                      (el) => el.participate === true && el.progress === 100
+                    ).length
+                  }
+                  개
+                </Typography>
               </Box>
             </Stack>
           </Container>

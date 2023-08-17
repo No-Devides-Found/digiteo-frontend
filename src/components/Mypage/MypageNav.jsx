@@ -6,8 +6,13 @@ import { useNavigate } from "react-router-dom";
 const StyledMenuList = styled(MenuList)({
   display: "block",
   padding: 0,
-  li: { justifyContent: "center", borderRadius: "0.25rem" },
-  "li:nth-child(1)": { backgroundColor: "#FFA000" },
+  li: {
+    justifyContent: "center",
+    borderRadius: "0.25rem",
+    backgroundColor: "#F1F8E9",
+  },
+  "li:nth-of-type(1)": { backgroundColor: "#DCEDC8", fontFamily: "Krona One" },
+  ".currPage": { backgroundColor: "#DCEDC8" },
 });
 
 function MypageNav({ setPathname }) {
