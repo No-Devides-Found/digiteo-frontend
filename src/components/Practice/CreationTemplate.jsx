@@ -37,8 +37,6 @@ const handleClick = () => {
 export default function CreationTemplate( { practice }) {
   return (
       <StyledPaper>
-      
-        
             <Grid container >
               <Grid item xs={3} >
                 {/* 링크 아이디 연결 필요 */}

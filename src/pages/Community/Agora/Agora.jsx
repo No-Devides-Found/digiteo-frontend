@@ -30,12 +30,13 @@ const programs = [
 
 
 const Agora = () => {
-  const [page, setPage] = useState("agora"); //페이지 (배움터 / Q&A)
+  const [page, setPage] = useState("agora"); //페이지 (배움터 :agora / Q&A :qa)
 
   const navigate = useNavigate();
 
-  const [searchKeyword, setSearchKeyword ]= useState(''); //검색어
   const [choice, setChoice] = useState(0); //선택 검색 옵션
+  const [searchKeyword, setSearchKeyword ]= useState(''); //검색어 관련 상태값
+  
 
   // 글쓰기 버튼 - 이동
   const postAgora=(e)=>{
@@ -106,18 +107,19 @@ const Agora = () => {
         </Grid>
 
         <Grid item xs={12}>
-          <AgoraList page={page}/>
+          <AgoraList page={page} searchKeyword={searchKeyword}/>
         </Grid>
 
         <Grid item xs={12}>
-          <Button onClick={postAgora} style={{display:'block', margin:'0 auto'}}>
+          <Button onClick={postAgora} style={{display:'block', margin:'0 auto'
+        , background: "#A5D6A7", color: "black", fontWeight: "bold", textAlign: "center" }} cursor="pointer">
             글쓰기
           </Button> 
         </Grid>
 
         {/* 페이지네이션 */}
-        <Grid item xs={12}>
-          <Paginations/>
+        <Grid item xs={12} style={{ marginBottom:"2rem" }}>
+          <Paginations />
         </Grid>
       </Grid>
       

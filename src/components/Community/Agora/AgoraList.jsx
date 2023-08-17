@@ -5,16 +5,107 @@ import {AgoraTemplate, QandATemplate} from '../../../components';
 
 
 function AgoraList({page}) {
+  
+  const agoras = [
+    {
+      id:"",
+      title:"",
+      type:"",
+      liked:"",
+      participants:"",
+      created_at:""
+    },
+    {
+      id:"",
+      title:"",
+      type:"",
+      liked:"",
+      participants:"",
+      created_at:""
+    },
+    {
+      id:"",
+      title:"",
+      type:"",
+      liked:"",
+      participants:"",
+      created_at:""
+    },
+    {
+      id:"",
+      title:"",
+      type:"",
+      liked:"",
+      participants:"",
+      created_at:""
+    },
+  ]
+
+
+
+  const qas = [
+    {
+      id:"",
+      title:"",
+      liked:"",
+      comments:"",
+      created_at:""
+    },
+    {
+      id:"",
+      title:"",
+      liked:"",
+      comments:"",
+      created_at:""
+    },
+    {
+      id:"",
+      title:"",
+      liked:"",
+      comments:"",
+      created_at:""
+    },
+    {
+      id:"",
+      title:"",
+      liked:"",
+      comments:"",
+      created_at:""
+    },
+  ]
+
+
   return (
-    <Container>
-      <>
-      {
-        page==="agora"
-        ? <AgoraTemplate/>
-        : <QandATemplate/>
-      }
-      </>
-    </Container>
+    <div>
+    {
+      page ==="agora"
+      ?
+      <Grid container style={{margin:"0 auto", display:"flex", }}>
+      
+      {agoras.map((agora, index) => (
+         <Grid item xs={4} mt={3}  >
+          <AgoraTemplate   
+          agora={agora}
+          style={{width: "80%", display:"block", margin:"0 auto"}}/>  
+          </Grid>
+      ))}
+      </Grid>
+
+      : 
+
+      <Grid container style={{margin:"0 auto", display:"flex", }}>
+      {qas.map((qa, index) => (
+        <Grid item xs={4} mt={3} >
+          <QandATemplate 
+          qa={qa}
+          style={{width: "80%", display:"block", margin:"0 auto"}} />
+          </Grid>
+      ))}
+      </Grid>
+      
+    }
+    
+    </div>
   );
 };
 
