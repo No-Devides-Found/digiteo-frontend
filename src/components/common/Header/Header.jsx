@@ -1,29 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
-import moment from "moment";
-import UserModal from "./UserModal";
 
-//접근 만료가 됐는지 아닌지 boolean값이 저장됨
-const isAccessExpired = () => {
-  const accessExpiration = localStorage.getItem("access_expiration");
-
-  if (!accessExpiration) {
-    //접근 기한이 없을때
-    return true;
-  }
-
-  const currentDateTime = moment();
-  const expirationDateTime = moment(accessExpiration, "YYYY-MM-DD HH:mm:ss");
-
-  return currentDateTime.isAfter(expirationDateTime);
-  //현재 시각이 기한 이후면 true 아니면 false
-};
+import { isAccessExpired } from "../../../utils";
+import LoginBlock from "./LoginBlock";
 
 function Header() {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-
   //const handleLogout = () => {
   //localStorage.removeItem("access_token"); //토큰 삭제
   //localStorage.removeItem("access_expiration"); //토큰 기한 삭제
@@ -65,28 +47,9 @@ function Header() {
           </Box>
         ) : (
           //false일때
-          <Box
-            style={{
-              display: "flex",
-              gap: "1rem",
-            }}
-            sx={{
-              "&:hover": {
-                cursor: "pointer",
-              },
-            }}
-            onClick={handleOpen}
-          >
-            <img
-              src="프로필사진경로"
-              alt="프로필사진"
-              style={{ width: "50px", height: "50px", borderRadius: "50%" }}
-            />
-            <span style={{ lineHeight: "50px" }}>{"유저 닉네임"}</span>
-          </Box>
+          <LoginBlock />
         )}
       </Box>
-      <UserModal open={open} setOpen={setOpen} />
     </>
   );
 }
