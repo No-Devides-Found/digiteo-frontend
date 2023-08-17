@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Container, Typography, Grid } from "@mui/material";
 
 import Tab from "@mui/material/Tab";
@@ -20,9 +20,8 @@ function Courses() {
 
   const getProgramProps = (program_id) => {
     const program = programs.filter((el) => {
-      return el.id == program_id;
+      return el.id === program_id;
     })[0];
-    console.log("program:", program);
     return {
       img: program.thumbnail,
       alt: program.title,
@@ -55,10 +54,12 @@ function Courses() {
             <Grid>
               {program_user_maps.map((item, idx) => {
                 return item.wish === true ? (
-                  <Program
-                    maxWidth={200}
-                    {...getProgramProps(item.program_id)}
-                  />
+                  <React.Fragment key={item.program_id}>
+                    <Program
+                      maxWidth={200}
+                      {...getProgramProps(item.program_id)}
+                    />
+                  </React.Fragment>
                 ) : null;
               })}
             </Grid>
@@ -67,11 +68,13 @@ function Courses() {
             <Grid>
               {program_user_maps.map((item, idx) => {
                 return item.participate === true && item.progress < 100 ? (
-                  <Program
-                    maxWidth={200}
-                    progress={item.progress}
-                    {...getProgramProps(item.program_id)}
-                  />
+                  <React.Fragment key={item.program_id}>
+                    <Program
+                      maxWidth={200}
+                      progress={item.progress}
+                      {...getProgramProps(item.program_id)}
+                    />
+                  </React.Fragment>
                 ) : null;
               })}
             </Grid>
@@ -80,11 +83,13 @@ function Courses() {
             <Grid>
               {program_user_maps.map((item, idx) => {
                 return item.progress === 100 ? (
-                  <Program
-                    maxWidth={200}
-                    progress={item.progress}
-                    {...getProgramProps(item.program_id)}
-                  />
+                  <React.Fragment key={item.program_id}>
+                    <Program
+                      maxWidth={200}
+                      progress={item.progress}
+                      {...getProgramProps(item.program_id)}
+                    />
+                  </React.Fragment>
                 ) : null;
               })}
             </Grid>
