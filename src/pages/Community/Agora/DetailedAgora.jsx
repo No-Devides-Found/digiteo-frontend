@@ -176,7 +176,6 @@ const DetailedAgora = () => {
           <Paginations/>
       </Container>
 
-      <Footer/>
     </Container>
   );
 };

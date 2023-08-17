@@ -1,14 +1,14 @@
 import React from 'react';
 import {  useNavigate } from 'react-router-dom';
-import {Box, Grid, Typography, Button,} from "@mui/material";
+import {Box, Grid, Typography, Button,ButtonBase} from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 
 const MainGrid = styled(Grid)({
   width:"100%",
-  height:"70%",
-  margin:"5rem auto",
+  margin:"3rem auto 3rem auto",
   backgroundColor: "#FFF5E5",
+  padding:"4rem 6rem",
 });
 
 const StyledContent = styled(Typography)({
@@ -17,6 +17,26 @@ const StyledContent = styled(Typography)({
   fontFamily:"Kumbh Sans"
 
 });
+const BrownGrid=styled(Grid)({
+  backgroundColor:"#A1887F", 
+  borderRadius:"20px",
+  position:"relative", 
+  width:"100%", 
+  height:"100%", 
+  margin:"0 auto"
+})
+const GreenGrid=styled(Grid)({
+  backgroundColor:"#DCEDC8", 
+  borderRadius:"20px", 
+  justifyContent:"center",
+  position:"relative",
+   margin:"1.5rem", 
+   alignItems:'center', 
+   padding:"1rem 1rem 1rem 0"
+})
+
+
+
 
 function PracticeHome () {
   const navigate = useNavigate();
@@ -24,28 +44,29 @@ function PracticeHome () {
   //프로그램 유형 버튼 클릭 
   //-> 유형(value) 전달하면서 창작마루 목록으로 이동
   const onClick=(e)=>{
-    navigate(`/practicelist?param1=${e.target.value}`);   
+    console.log(e.target.alt)
+    navigate(`/practicelist?param1=${e.target.alt}`);   
   }
 
   //해당 창작물 페이지로 이동
   return(
-    <Box>
-      <MainGrid container spacing={1}>
-        <Grid item xs={5}>
+    <Box style={{height:"100vh"}}>
+      <MainGrid container >
+        <Grid item xs={5} >
           {/* 창작마루 좌측 타이틀 - 내용 */}
-          <Grid container spacing={1} style={{}}>
+          <Grid container style={{paddingLeft:"3rem"}}>
             <Grid item xs={12}>
               <Typography variant="h4" fontFamily={"Krona One"} 
-                style={{backgroundColor:"#FF8A65", width:"40%", padding:"1rem"}}
-              >
+                style={{backgroundColor:"#FF8A65", width:"40%", padding:"1rem"
+              }}>
                 CHANG <br/>
                 JAC <br/>
                 MA <br/>
-                ROO <br/>
+                ROO <br/> 
               </Typography>
             </Grid>
                         
-            <Grid item xs={12} style={{fontFamily:"Kumbh Sans", fontSize:"8"}}>
+            <Grid item xs={12} style={{fontFamily:"Kumbh Sans", fontSize:"8"}} mt={2}>
             <StyledContent variant="subtitle1"> 
               <strong>창작마루</strong>(실습)란?<br/>
               <strong>디지털 놀이터</strong>(학습)에 1개 이상의 프로그램을 듣고<br/>
@@ -58,65 +79,53 @@ function PracticeHome () {
               이러한 활동을 통해 디지털 리터러시 역량 증진을 위한 <br/>
               자기주도적 학습을 유도.
             </StyledContent>
-                  
-
-         {/* 
-                   <div style={{backgroundColor:"#A1887F", width:"100%", height:"100%", position:"relative",
-        margin:"0 auto"}}>
-            <div style={{backgroundColor:"#DCEDC8", width:"80%", height:"80%", position:"relative",
-          margin:"0 auto", verticalAlign:"middle"}}>
-              box
-            </div>
-          </div>
-         
-         */}
+            
                   
             </Grid>
           </Grid>
         </Grid>
 
         {/* 창작마루 우측 - 유형 버튼 */}
-        <Grid item xs={7} >
-          <Grid container spacing={1} style={{backgroundColor:"#A1887F", 
-           position:"relative",width:"90%", height:"90%", margin:"0 auto"}}>
-            <Grid container style={{backgroundColor:"#DCEDC8", position:"relative", margin:"2rem"}}>
-              <Grid item xs={6}>
-                <Button 
-                value="video" 
+        <Grid item xs={7} style={{posigion:"relative"}}>
+        
+          <BrownGrid container style={{justifyContent:"center"}}>
+          <img src="img\changjactitle.png" alt="changjac-title" 
+              style={{position:"absolute", width:"35%", top:"-6%", zIndex:"10",
+              }}/>
+            <GreenGrid container >
+              
+              <Grid item xs={6} >
+                <img src="img/video.png" 
+                alt="video" 
+                style={{width:"80%", display:"block", margin:"0 auto",cursor:"pointer"}}
                 onClick={onClick} 
-                variant="contained">
-                    영상창작물
-                </Button>
+                />
               </Grid>
               <Grid item xs={6}>
-                <Button 
-                value="img" 
-                onClick={onClick} 
-                variant="contained">
-                    이미지 창작물
-                </Button>
-                
+                <img src="img/video.png" 
+                alt="img" 
+                style={{width:"80%", display:"block", margin:"0 auto",cursor:"pointer"}}
+                onClick={onClick}
+                />
               </Grid>
               <Grid item xs={6}>
-                <Button 
-                value="voice" 
-                onClick={onClick} 
-                variant="contained">
-                    음성 창작물
-                </Button>
+                <img src="img/video.png" 
+                alt="voice"
+                style={{width:"80%", display:"block", margin:"0 auto", cursor:"pointer"}}
+                />
+        
               </Grid>
               <Grid item xs={6}>
-                <Button 
-                value="text" 
+                <img src="img/video.png" 
+                alt="text"
+                style={{width:"80%", display:"block", margin:"0 auto", cursor:"pointer"}}
                 onClick={onClick} 
-                variant="contained">
-                    문서 창작물
-                </Button>
-                
-              </Grid>
-            </Grid>
+                />
 
-          </Grid>
+              </Grid>
+            </GreenGrid>
+
+          </BrownGrid>
         </Grid>
       </MainGrid>
 

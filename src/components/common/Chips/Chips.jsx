@@ -9,9 +9,9 @@ const ListItem = styled('li')(({ theme }) => ({
 }));
 
 // 선택한 프로그램 태그칩
-export default function Chips({chips}) {
-  const tags = ['tag1', 'tag2', 'tag3'];
-  console.log(tags)
+export default function Chips({programs}) {
+  //const tags = ['tag1', 'tag2', 'tag3'];
+ // console.log(tags)
 
   return (
     <Box
@@ -25,11 +25,13 @@ export default function Chips({chips}) {
       }}
       component="ul"
     >
-     {chips && chips.map((chip, index) => (
-        <ListItem key={index}>
-          <Chip label={chip} />
-        </ListItem>
-      ))}
+     {programs &&
+        programs.map((program, index) => (
+          <ListItem key={index}>
+            {/* Use program.title instead of program */}
+            <Chip label={program.title} style={{ background: '#E0F7FA' }} />
+          </ListItem>
+        ))}
     </Box>
   );
 }

@@ -130,8 +130,6 @@ const DetailedQA = () => {
 
           <Paginations/>
       </Container>
-
-      <Footer/>
       
     </Container>
   );

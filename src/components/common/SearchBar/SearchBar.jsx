@@ -68,25 +68,39 @@ function SearchBar({options, choice, setChoice,
 
 
   return (
-    <Box >
-      <Paper
+    <Grid container spacing={3}>
+      {/* 드롭 다운 - 검색 조건  */}
+      <Grid item xs={3} > 
+        <ButtonGroup sx={{width:'100%'}}  variant="contained" ref={anchorRef} aria-label="split button"
+        style={{height:"100%", backgroundColor:"#E9E9E9", borderRadius:"30px", boxShadow:"none",color:"black", fontSize:"1rem",lineHeight: '1.5rem'}}
+        >
+            <Button sx={{width:'100%'}}onClick={handleClick} 
+            style={{backgroundColor:"#E9E9E9",boxShadow:"none", borderRadius:"30px",borderRight:"none",color:"black", fontSize:"1rem",lineHeight: '1.5rem'}}
+            >
+              {options[choice]}
+            </Button>
+            <Button
+              style={{backgroundColor:"#E9E9E9",borderRadius:"30px", boxShadow:"none", color:"black" ,lineHeight: '1.5rem',fontSize:"1rem"}}
+            
+              aria-controls={open ? 'split-button-menu' : undefined}
+              aria-expanded={open ? 'true' : undefined}
+              aria-label="select merge strategy"
+              aria-haspopup="menu"
+              onClick={handleToggle}
+            >
+              <ArrowDropDownIcon />
+            </Button>
+        </ButtonGroup>
+      </Grid>
 
+      {/* 검색창 */}
+      <Grid item xs={9}>
+      <Paper
         component="form"
+        style={{backgroundColor:"#E9E9E9", borderRadius:"30px", boxShadow:"none",}}
         sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '100%' , margin:'0 auto'}}
       >
-        <ButtonGroup sx={{width:'10rem'}} variant="contained" ref={anchorRef} aria-label="split button">
-          <Button sx={{width:'100%'}}onClick={handleClick}>{options[choice]}</Button>
-          <Button
-            size="small"
-            aria-controls={open ? 'split-button-menu' : undefined}
-            aria-expanded={open ? 'true' : undefined}
-            aria-label="select merge strategy"
-            aria-haspopup="menu"
-            onClick={handleToggle}
-          >
-            <ArrowDropDownIcon />
-          </Button>
-      </ButtonGroup>
+        
         <Popper
           sx={{
             zIndex: 5,
@@ -123,22 +137,28 @@ function SearchBar({options, choice, setChoice,
             </Grow>
           )}
         </Popper>
+        <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
+          <SearchIcon />
+        </IconButton>
         <InputBase
           onChange={handleSearchKeyword}
           value={searchKeyword}
           sx={{ ml: 1, flex: 1 }}
-          placeholder="검색어를 입력해주세요."
+          placeholder="찾고 싶은 프로그램 제목/내용을 입력해주세요."
           inputProps={{ 'aria-label': 'search google maps' }}
         />
-        <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
-          <SearchIcon />
-        </IconButton>
-        <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+       
+        {/* <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
         <IconButton onClick={clickSearch} color="primary" sx={{ p: '8px' }} aria-label="directions">
           search
-        </IconButton>
+        </IconButton> */}
       </Paper>
-    </Box>
+      </Grid>
+
+    
+     
+      
+    </Grid>
          
   );
 };

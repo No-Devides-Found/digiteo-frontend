@@ -15,7 +15,7 @@ import { Button, Paper,Grid, Chip, Container, Typography, TextField, Avatar, Sta
 import { styled } from "@mui/material/styles";
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
-import {Favorite} from '@mui/icons-material';
+import {Favorite, TypeSpecimenTwoTone} from '@mui/icons-material';
 import ShareIcon from '@mui/icons-material/Share';
 //창작물 데이터 
 
@@ -131,19 +131,38 @@ function DetailedPractice () {
               </Grid>
             </Grid>
           </StyledPaper>
-
-          <Grid container sx={{justifyContent:"space-between", padding:"0 13%"}}>
+          {/* 가지  */}
+          <Grid container sx={{justifyContent:"space-between", padding:"0 13%",}}>
             <Grid item xs={0.15} style={{backgroundColor:"#A1887F", height:"5rem"}}>
+            </Grid>
+            <Grid item xs={5}>
+              <Typography fontFamily={"Krona One"} 
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontFamily: "Krona One",
+                height: "125%",
+                position:"relative",
+                textShadow: '1px 1px 1px gray',}}>
+              <div style={{backgroundColor:"#FFA000", width:"50%", height:"0.5rem", bottom:"32%",position:"absolute"}}></div>
+                ABOUT
+                
+              </Typography>
+              
+              
             </Grid>
             <Grid item xs={0.15} style={{backgroundColor:"#A1887F", height:"5rem"}}>
             </Grid>
           </Grid>
-          
+
+          {/* 창작물 */}
           <Paper
           style={{backgroundColor:"#E0E0E0", width:"100%", height:"20rem", padding:"1rem", borderRadius:"10px"}}>
             창작물 소개
           </Paper>
 
+          {/* 가지 */}
           <Grid container sx={{justifyContent:"space-between", padding:"0 13%"}}>
             <Grid item xs={0.15} style={{backgroundColor:"#A1887F", height:"5rem"}}>
             </Grid>
