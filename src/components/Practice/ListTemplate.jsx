@@ -104,7 +104,7 @@ function ListTemplate ({page}) {
           {/* 창작물 목록 리스트 */}
           <Grid item xs={12}>
             {practices.map((practice, index) => (
-              <CreationTemplate key={index} practice={practice}/>
+                <CreationTemplate key={index} practice={practice}  />
             ))}
           </Grid>
           {/* 창작물 작성 페이지로 이동 */}
