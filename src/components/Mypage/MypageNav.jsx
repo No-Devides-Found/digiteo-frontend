@@ -15,7 +15,7 @@ const StyledMenuList = styled(MenuList)({
   ".currPage": { backgroundColor: "#DCEDC8" },
 });
 
-function MypageNav({ setPathname }) {
+function MypageNav({ pathname, setPathname }) {
   const navigate = useNavigate();
   // window.location.pathname.split("/")[2];
   return (
@@ -23,6 +23,7 @@ function MypageNav({ setPathname }) {
       <StyledMenuList>
         <MenuItem>MY DIGITEO</MenuItem>
         <MenuItem
+          className={pathname === "profile" ? "currPage" : null}
           onClick={() => {
             navigate("/mypage/profile");
             setPathname("profile");
@@ -32,6 +33,7 @@ function MypageNav({ setPathname }) {
         </MenuItem>
         {/* <MenuItem>알림</MenuItem> */}
         <MenuItem
+          className={pathname === "courses" ? "currPage" : null}
           onClick={() => {
             navigate("/mypage/courses");
             setPathname("courses");
@@ -40,6 +42,7 @@ function MypageNav({ setPathname }) {
           프로그램 참여 현황
         </MenuItem>
         <MenuItem
+          className={pathname === "posts" ? "currPage" : null}
           onClick={() => {
             navigate("/mypage/posts");
             setPathname("posts");
@@ -48,6 +51,7 @@ function MypageNav({ setPathname }) {
           나의 커뮤니티 활동
         </MenuItem>
         <MenuItem
+          className={pathname === "mypractice" ? "currPage" : null}
           onClick={() => {
             navigate("/mypage/mypractice");
             setPathname("mypractice");
