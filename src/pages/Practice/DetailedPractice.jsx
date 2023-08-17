@@ -78,19 +78,19 @@ function DetailedPractice () {
   }
 
   return (
-    <Maindiv>
-      <StyledGrid container >
+    <Container>
+      <Grid container style={{padding:"1rem 5rem 4rem 5rem"}}>
          {/* 작성자만 보이는 버튼으로 해야 함 */}
-        <StyledGrid item xs={12} style={{color:"gray", textAlign:"right", margin:"0 1rem 0.5rem 0", }} >
+        <Grid item xs={12} style={{color:"gray", textAlign:"right", margin:"0 1rem 0.5rem 0", }} >
           <Button style={{color:"#757575", fontSize:"13px"}} > 
             삭제하기 <DeleteOutlineIcon />
           </Button>
           <Button onClick={gotoEdit} style={{color:"#757575", fontSize:"13px"}} >
             수정하기 <BorderColorIcon />
           </Button>
-        </StyledGrid>
+        </Grid>
 
-        <StyledGrid item xs={12} mt={1}>
+        <Grid item xs={12} mt={1}>
           {/* 포스트 제목 부분 */}
           <StyledPaper>
             <Grid container >
@@ -189,23 +189,21 @@ function DetailedPractice () {
           <ContentPaper style={{marginTop:"2rem"}}>
             {post.review}
           </ContentPaper>
-        <StyledGrid item xs={12} mt={3}>
-          <Stack direction="row" style={{display:"flex", justifyContent:"space-between", 
-           marginTop:"2rem"
-        }}>
-            <Typography fontFamily="Kumbh Sans" variant="subtitle1" style={{fontWeight:"medium",}}>
-              좋아요 <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite  style={{color:'red'}}/>} />
+          <Grid container  >
+          <Grid item xs mt={4} style={{padding:"0 2rem"}}>
+            <Typography >
+              좋아요<Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
             </Typography>
-            <Typography fontFamily="Kumbh Sans" variant="subtitle1"style={{fontWeight:"medium", display:'inline'}}>
-              공유하기
-                  <IconButton  aria-label="delete" size="large"> 
-                  <ShareIcon /> 
-                  </IconButton>
-            </Typography>
-          </Stack>
-        </StyledGrid>
+          </Grid>
+          <Grid item xs={{float:'right'}} mt={4} style={{padding:"0 2rem"}}>
+              <Typography style={{display:'inline'}}>공유하기</Typography>
+                <IconButton  aria-label="delete" size="large"> 
+                <ShareIcon /> 
+                </IconButton>
+          </Grid>
+        </Grid>
                       
-      </StyledGrid>
+      </Grid>
 
 
       
@@ -221,14 +219,14 @@ function DetailedPractice () {
           
         </Grid>
 
-      </StyledGrid>
+      </Grid>
 
         
      
 
       
 
-    </Maindiv>
+    </Container>
   );
 };
 

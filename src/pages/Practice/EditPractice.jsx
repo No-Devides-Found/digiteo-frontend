@@ -116,7 +116,7 @@ function EditPractice () {
 
   return (
     <Container>
-      <Grid container  style={{padding:"1rem 3rem 4rem 3rem"}}>
+      <Grid container  style={{padding:"1rem 5rem 4rem 5rem"}}>
         {/* 제목 부분 */}
         <Grid item xs={12} mt={6}>
             <StyledPaper>

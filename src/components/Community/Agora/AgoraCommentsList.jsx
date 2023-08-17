@@ -11,16 +11,46 @@ const StyledGrid = styled(Grid)({
   }
 })
 function AgoraCommentsList ({type}) {
+
+  //댓글 정렬 순서
   const [alignment, setAlignment] = React.useState('newest');
 
   const handleChange = (e) => {
     setAlignment(e.target.value);
   };
 
+  //댓글 목록을 불러와야 함
+  const comments = [
+    {
+      nickname:"",
+      contents:"",
+      liked:"",
+      date:"",
+    },
+    {
+      nickname:"",
+      contents:"",
+      liked:"",
+      date:"",
+    },
+    {
+      nickname:"",
+      contents:"",
+      liked:"",
+      date:"",
+    }, {
+      nickname:"",
+      contents:"",
+      liked:"",
+      date:"",
+    }
+  ]
 
 
   return (
-    <Container>
+    <div style={{margin:"0", padding:"0"}}>
+
+
       <Grid Container spacing={2}>
         <Grid item xs={12}>
           <ToggleButtonGroup
@@ -35,6 +65,8 @@ function AgoraCommentsList ({type}) {
           </ToggleButtonGroup>
 
         </Grid>
+      {comments.map((comment, index) => (
+        <div>
         <Grid item xs={12} style={{textAlign:'right',  padding:' 0 2rem'}}>
           <Button>삭제하기</Button>
         </Grid>
@@ -44,7 +76,7 @@ function AgoraCommentsList ({type}) {
               <StyledGrid item xs={12}>
                 <Stack direction="row" spacing={2} style={{display:'flex', justifyContent:'space-between'}}>
                   <div>
-                    <span>닉네임</span>{" "}
+                    <span>{comments.nickname}</span>{" "}
                     {
                       type==="2"
                       ?  <Button>찬성 / 반대</Button>
@@ -57,23 +89,24 @@ function AgoraCommentsList ({type}) {
               </StyledGrid>
 
               <StyledGrid item xs={12}>
-                댓글내용마ㅓㄹ 미ㅏ널 ;마ㅣㅓㄴㄹ ;ㅣ너리
+                {comments.contents}
               </StyledGrid>
           
               <StyledGrid item xs={6} >
-                좋아요N개
+                {comments.liked}
               </StyledGrid>
               <StyledGrid item xs={6} style={{textAlign:'right'}} >
-                작성일 2023-01-01
+                {comments.date}
               </StyledGrid>        
             </StyledGrid>
           </Box>
         </Grid>
-        
+        </div>
+        ))}       
       </Grid>
       
 
-    </Container>
+    </div>
     
   );
 };

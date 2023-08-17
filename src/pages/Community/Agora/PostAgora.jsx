@@ -231,7 +231,7 @@ function PostAgora() {
     console.log(post) ;
 
 
-    //navigate('/detailedagora', {state:type});
+    navigate('/detailedagora', {state:type});
   }
 
 
@@ -240,9 +240,9 @@ function PostAgora() {
 
 
   return (
-    <Maindiv>
-      <StyledGrid container >
-        <StyledGrid item xs={12}>
+    <Container>
+      <Grid container  style={{padding:"1rem 5rem 4rem 5rem"}}>
+        <Grid item xs={12}>
           {/* 포스트 제목 부분 */}
           <StyledPaper>
             <Grid container >
@@ -314,7 +314,7 @@ function PostAgora() {
             </Grid>
           </StyledPaper>
           
-        </StyledGrid>
+        </Grid>
 
         <Grid item xs={12}>
           {
@@ -340,10 +340,10 @@ function PostAgora() {
           <StyledButton type="button" onClick={backToList}>취소하기</StyledButton>
         </Grid>
 
-      </StyledGrid>
+      </Grid>
       
       
-    </Maindiv>
+    </Container>
   );
 };
 
