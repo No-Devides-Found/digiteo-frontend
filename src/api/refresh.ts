@@ -1,6 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 import Cookie from "js-cookie";
 import moment from "moment";
+import { server } from "../constants";
 
 const goToLogin = () => {
   alert("로그인이 필요합니다.");
@@ -22,7 +23,7 @@ const refresh = async (
 
     // 토큰 갱신 서버통신
     const { data } = await axios.post(
-      `accounts/dj-rest-auth/token/refresh/`
+      `${server}accounts/dj-rest-auth/token/refresh/`
       // , body
     );
 

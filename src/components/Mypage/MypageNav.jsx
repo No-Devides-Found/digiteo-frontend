@@ -7,7 +7,7 @@ const StyledMenuList = styled(MenuList)({
   display: "block",
   padding: 0,
   li: { justifyContent: "center", borderRadius: "0.25rem" },
-  "li:nth-child(1)": { backgroundColor: "#FFA000" },
+  "li:nth-of-type(1)": { backgroundColor: "#FFA000" },
 });
 
 function MypageNav({ setPathname }) {
