@@ -8,13 +8,14 @@ const withProfile = selector({
   get: async ({ get }) => {
     const { pk, email } = get(curUser);
     if (!pk || !email) return;
-    const url = `${server}/accounts/profile/${pk}`;
+    const url = `${server}/accounts/profile/${pk}/`;
 
     try {
       const response = await Api.get(url);
       return response.data;
     } catch (err) {
-      throw Error("유저 프로필 정보 가져오기 실패");
+      console.log(err);
+      // throw Error("유저 프로필 정보 가져오기 실패");
     }
   },
 });

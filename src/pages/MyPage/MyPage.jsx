@@ -42,7 +42,9 @@ function Mypage() {
       <Grid>
         <MypageNav setPathname={setPathname} />
       </Grid>
-      <Grid xs={8}>{pageRander(pathname)}</Grid>
+      <Grid item xs={8}>
+        {pageRander(pathname)}
+      </Grid>
     </Grid>
   );
 }
