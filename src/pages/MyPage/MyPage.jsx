@@ -40,7 +40,7 @@ function Mypage() {
   return (
     <Grid container justifyContent={"center"} gap={"2rem"}>
       <Grid>
-        <MypageNav setPathname={setPathname} />
+        <MypageNav pathname={pathname} setPathname={setPathname} />
       </Grid>
       <Grid item xs={8}>
         {pageRander(pathname)}
