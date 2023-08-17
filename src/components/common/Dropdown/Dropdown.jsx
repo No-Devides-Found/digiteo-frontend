@@ -12,21 +12,25 @@ import MenuList from '@mui/material/MenuList';
 
 const options = ['최신순', '좋아요순'];
 
-export default function Dropdown() {
+export default function Dropdown({order, setOrder}) {
+
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
   const handleClick = () => {
     console.info(`You clicked ${options[selectedIndex]}`);
+    
   };
 
   const handleMenuItemClick = (event, index) => {
     setSelectedIndex(index);
     setOpen(false);
+    setOrder(selectedIndex);
+    console.log(order)
   };
 
-  const handleToggle = () => {
+  const handleToggle = (e) => {
     setOpen((prevOpen) => !prevOpen);
   };
 
@@ -39,17 +43,17 @@ export default function Dropdown() {
   };
 
   return (
-    <Box sx={{ flexGrow: 1}}>
+    <Box >
       <ButtonGroup variant="contained" ref={anchorRef} aria-label="split button"
-        style={{height:"100%", backgroundColor:"#E9E9E9", borderRadius:"30px", boxShadow:"none",color:"black", fontSize:"1rem",lineHeight: '1.5rem'}}
+        style={{height:"100%", backgroundColor:"#E9E9E9", borderRadius:"20px", boxShadow:"none",color:"black", fontSize:"1rem",lineHeight: '1.5rem'}}
         >
         <Button onClick={handleClick} sx={{width:'100%'}}
-        style={{backgroundColor:"#E9E9E9",boxShadow:"none", borderRadius:"30px",borderRight:"none",color:"black", fontSize:"1rem",lineHeight: '1.5rem'}}
+        style={{backgroundColor:"#E9E9E9",boxShadow:"none", borderRadius:"20px",borderRight:"none",color:"black", fontSize:"1rem",lineHeight: '1.5rem'}}
         >
           {options[selectedIndex]}
         </Button>
         <Button
-          style={{backgroundColor:"#E9E9E9", borderRadius:"30px", boxShadow:"none", color:"black" ,lineHeight: '1.5rem',fontSize:"1rem"}}
+          style={{backgroundColor:"#E9E9E9", borderRadius:"20px", boxShadow:"none", color:"black" ,lineHeight: '1.5rem',fontSize:"1rem"}}
           size="small"
           aria-controls={open ? 'split-button-menu' : undefined}
           aria-expanded={open ? 'true' : undefined}
@@ -61,6 +65,7 @@ export default function Dropdown() {
         </Button>
       </ButtonGroup>
       <Popper
+      style={{backgroundColor:"#E9E9E9", }}
         sx={{
           zIndex: 1,
         }}
@@ -74,15 +79,19 @@ export default function Dropdown() {
           <Grow
             {...TransitionProps}
             style={{
+              backgroundColor:"#E9E9E9",
               transformOrigin:
                 placement === 'bottom' ? 'center top' : 'center bottom',
             }}
+         
           >
-            <Paper>
-              <ClickAwayListener onClickAway={handleClose}>
-                <MenuList id="split-button-menu" autoFocusItem>
+            <Paper style={{backgroundColor:"#E9E9E9", }}>
+              <ClickAwayListener onClickAway={handleClose} >
+                <MenuList id="split-button-menu" autoFocusItem
+                style={{backgroundColor:"#E9E9E9", width:"100%", }}>
                   {options.map((option, index) => (
                     <MenuItem
+                      style={{backgroundColor:"#E9E9E9", width:"100%"}}
                       key={option}
                       selected={index === selectedIndex}
                       onClick={(event) => handleMenuItemClick(event, index)}

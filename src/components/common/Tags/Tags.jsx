@@ -4,34 +4,44 @@ import { TextField,Autocomplete, Box } from '@mui/material';
 
 
 
-
-export default function Tags({programs, tags, setPractice}) {
+// 유형에 맞는 프로그램 목록들 : programs 
+// 검색할 태그 상태값 : searchTags, setSearchTags
+export default function Tags({programs, searchTags, setSearchTags}) {
+  // 창작마루 리스트 프로그램 태그 선택 -> 검색과 같음
+  
+  
   const handleTagChange = (event, newValue) => {
-    setPractice((prevPractice) => ({
-      ...prevPractice, 
-      tags: newValue,
-    }));
+
+    setSearchTags(
+      
+      )
+    console.log(searchTags)
+    // setPractice((prevPractice) => ({
+    //   ...prevPractice, 
+    //   tags: newValue,
+    // }));
   };
 
   return (
-    <Box>
+    <Box style={{width:"80%"}}>
         <Autocomplete
           multiple
-          limitTags={5}
+          //limitTags={5}
           id="multiple-limit-tags"
           name="tags"
           options={programs}          
-
-          value={tags}
+          value={programs} 
           onChange={handleTagChange}
           getOptionLabel={(option) => option}
-          //style={{"&.MuiAutocomplete-tag":{backgroundColor:"#E0F7FA"}}}
-          renderInput={(params) => (
-            <TextField {...params} label="프로그램 선택" placeholder="프로그램 선택" 
+          
+          renderInput={(programs) => (
+            <TextField 
+            {...programs} 
+            label="프로그램 선택" placeholder="프로그램 선택"
+            
             />
           )}
-          sx={{ }}
-  
+        
         />
     </Box>
     

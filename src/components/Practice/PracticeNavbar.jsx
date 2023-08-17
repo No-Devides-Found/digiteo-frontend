@@ -14,17 +14,9 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 // 창작마루 네비게이션 바 - 영상,이미지,음성,문서 
 // PracticeList에서 창작물 유형 정보 (page) 전달받음
-const BackBox = styled(Box)({
-  //position: "absolute",
- 
-  left: "0px",
-  top: "297px",
-  background: "linear-gradient(180deg, #FFFDE7 0%, rgba(217, 217, 217, 0) 100%)",
-  
-  })
 
 
-
+// 네브바 전체 그룹
 const StyledGroup = styled(ToggleButtonGroup)({
   display: 'block',
   borderRadius:"20px",
@@ -58,22 +50,6 @@ const selectedButtonStyle = {
 
 
 
-const options = ["제목+닉네임", "제목", "닉네임"]
-
-const programs = [
-  '프로그램명1',
-  '프로그램명2', 
-  '프로그램명3', 
-  '프로그램명4', 
-  '프로그램명5', 
-  '프로그램명6', 
-  '프로그램명7', 
-];
-
-
-
-
-
 export default function PracticeNavbar({ page, setPage}) {
   //네브바 토글 관련 상태값 
   const [alignment, setAlignment] = React.useState(page); 
@@ -89,35 +65,8 @@ export default function PracticeNavbar({ page, setPage}) {
     setPage(e.target.value);
   }
   
-
-    // 검색바 관련 상태값
-    const [searchKeyword, setSearchKeyword ]= useState(''); //검색어
-    const [choice, setChoice] = useState(0); //선택 검색 옵션
-    const [isSearch, setIsSearch]=useState(false); //검색버튼 클릭 여부
-
-    // 페이지 유형에 맞는 창작물 데이터 목록을 가져와야 함. -> 제목, 닉네임, 좋아요 개수, 
-  const [practice, setPractice] = useState({
-    title: '',
-    createdBy: '',
-    tags: [],
-    type: '',
-    file: '',
-    story: '',
-    review: '',
-  });
-
-  const { title, createdBy,  tags, type, file, story, review } = practice; //비구조화 할당
-
-
   return (
-    <BackBox>
-      <Grid container style={{padding:"0 13rem"}}>
-        {/* 창작마루 타이틀 이미지 */}
-        <Grid item xs={12} style={{justifyContent:'center'}} mt={6}>
-          <img src="img\changjactitle.png" alt="changjac-title"
-          style={{width:"35%", display:"block", margin:"0 auto"}} />
-        </Grid>
-
+      <Grid container>
         {/* 토글 네브바  */}
         <Grid item xs={12} mt={9}>
             <StyledGroup
@@ -159,23 +108,6 @@ export default function PracticeNavbar({ page, setPage}) {
             </StyledButton>
           </StyledGroup>
         </Grid>
-
-        {/* 검색바 */}
-        <Grid item xs={12} mt={9}>
-          <SearchBar  options={options} 
-              choice={choice} setChoice={setChoice} 
-              searchKeyword={searchKeyword} setSearchKeyword={setSearchKeyword}
-              isSearch={isSearch} setIsSearch={setIsSearch}
-            />
-        </Grid>
-        {/* 프로그램 태그 선택, 정렬 선택 */}
-        <Grid item xs={12} mt={5} style={{display:"flex", justifyContent: "space-between"}}>
-          <Tags style={{width:"80%"}} programs={programs} tags={practice.tags} setPractice={setPractice}/>
-          <Dropdown 
-          />
-        </Grid>
-        
     </Grid>
-    </BackBox>
   );
 }

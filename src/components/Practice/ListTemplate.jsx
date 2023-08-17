@@ -33,18 +33,6 @@ const PageGrid = styled(Grid)({
 })
 
 
-const options = ["제목+닉네임", "제목", "닉네임"]
-
-const programs = [
-  '프로그램명1',
-  '프로그램명2', 
-  '프로그램명3', 
-  '프로그램명4', 
-  '프로그램명5', 
-  '프로그램명6', 
-  '프로그램명7', 
-];
-
 
 
 
@@ -53,8 +41,14 @@ function ListTemplate ({page}) {
 
   console.log('여기 리스트 템플릿', page) //페이지 정보 잘 오는지 확인 -완료
 
-  // 페이지 유형에 맞는 창작물 데이터 목록을 가져와야 함. -> 제목, 닉네임, 좋아요 개수, 
-  const [practice, setPractice] = useState({
+   // 페이지 유형에 맞는 창작물 데이터 목록을 가져와야 함. -> 제목, 닉네임, 좋아요 개수, 
+  //const [practice, setPractice] = useState([]);
+
+  //const { title, createdBy,  tags, type, file, story, review } = practice; //비구조화 할당
+
+  //가져온 창작물 객체 목록
+  const practices = [
+  {
     title: '',
     createdBy: '',
     tags: [],
@@ -62,35 +56,54 @@ function ListTemplate ({page}) {
     file: '',
     story: '',
     review: '',
-  });
+  },
+  {
+    title: '',
+    createdBy: '',
+    tags: [],
+    type: '',
+    file: '',
+    story: '',
+    review: '',
+  },
+  {
+    title: '',
+    createdBy: '',
+    tags: [],
+    type: '',
+    file: '',
+    story: '',
+    review: '',
+  },
+  {
+    title: '',
+    createdBy: '',
+    tags: [],
+    type: '',
+    file: '',
+    story: '',
+    review: '',
+  },
 
-  const { title, createdBy,  tags, type, file, story, review } = practice; //비구조화 할당
 
-  // 검색바 관련 상태값
-  const [searchKeyword, setSearchKeyword ]= useState(''); //검색어
-  const [choice, setChoice] = useState(0); //선택 검색 옵션
-  const [isSearch, setIsSearch]=useState(false); //검색버튼 클릭 여부
+]; 
 
-  // const [tags, setPractice] = useState([]);
-
+ 
   return (
       <StyledBox>
         <Grid container >
-          {/* 창작물 목록 리스트 하나 */}
+          {/* 창작물 목록 리스트 */}
           <Grid item xs={12}>
-            <CreationTemplate/>
+            {practices.map((practice, index) => (
+              <CreationTemplate key={index} practice={practice}/>
+            ))}
           </Grid>
 
-          {/* 창작물 작성 페이지로 이동 */}
-          <PostButton type="button" href="/postpractice">
-            창작물 올리기
-          </PostButton>
 
           {/* 페이지네이션 */}
-          <StyledGrid item xs={12} style={{marginTop:'2rem'}}>
-           <Paginations />
-          </StyledGrid>
-          
+          <Grid item xs={12}>
+            <Paginations />
+          </Grid>
         </Grid>
         
       </StyledBox>
