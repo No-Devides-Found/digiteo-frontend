@@ -43,14 +43,15 @@ function CommentsList () {
 
   return (
 
-<div>
+<div style={{margin:"0", padding:"0"}}>
+  
     {comments.map((comment, index) => (
       <Box  
     style={{margin:"0 0 1rem 0",
     backgroundColor:"#F1F8E9", borderRadius:"1rem", fontFamily:"Kumbh Sans"}} 
     sx={{ width: "100%" , margin:'0', padding:"1.5rem 2rem"}}>
       
-      <Grid container spacing={2} style={{height:'100%'}}>
+      <Grid container style={{height:'100%'}}>
         <Grid item xs={1} style={{display:"flex", justifyContent:'flex-end'}}>
           <Avatar>{comment.nickname}</Avatar>
         </Grid>

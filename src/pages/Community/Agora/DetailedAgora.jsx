@@ -204,7 +204,7 @@ const DetailedAgora = () => {
       <Grid container spacing={2} style={{marginTop:"3rem"}}>
         <Grid item xs>
           <Typography >
-            좋아요<Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
+            좋아요<Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite style={{color:"red"}}/>} />
           </Typography>
         </Grid>
         <Grid item xs={{float:'right'}}>
