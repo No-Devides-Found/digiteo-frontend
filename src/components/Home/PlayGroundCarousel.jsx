@@ -4,14 +4,40 @@ import Carousel from "react-material-ui-carousel";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { styled } from "@mui/material/styles";
-import {ReactComponent as Comimg} from "../../../src/assets/courses/Communicationimg.svg"
-import {ReactComponent as  Culimg} from "../../../src/assets/courses/Cultureimg.svg"
-import {ReactComponent as  Techimg} from "../../../src/assets/courses/Techimg.svg"
-import {ReactComponent as  Informimg} from "../../../src/assets/courses/Informationimg.svg"
-
+import { ReactComponent as Comimg } from "../../../src/assets/courses/Communicationimg.svg";
+import { ReactComponent as Culimg } from "../../../src/assets/courses/Cultureimg.svg";
+import { ReactComponent as Techimg } from "../../../src/assets/courses/Techimg.svg";
+import { ReactComponent as Informimg } from "../../../src/assets/courses/Informationimg.svg";
+import { useNavigate } from "react-router-dom";
 
 function PlayGroundCarousel() {
-  const contents = [<Comimg height={"100%"} />,<Culimg height={"100%"} />,<Techimg height={"100%"} />,<Informimg height={"100%"} />];
+  const navigate = useNavigate();
+  const contents = [
+    <Comimg
+      height={"100%"}
+      onClick={() => {
+        navigate("/playground/communication");
+      }}
+    />,
+    <Culimg
+      height={"100%"}
+      onClick={() => {
+        navigate("/playground/culture");
+      }}
+    />,
+    <Techimg
+      height={"100%"}
+      onClick={() => {
+        navigate("/playground/tech");
+      }}
+    />,
+    <Informimg
+      height={"100%"}
+      onClick={() => {
+        navigate("/playground/information");
+      }}
+    />,
+  ];
 
   return (
     <Box

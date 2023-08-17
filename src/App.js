@@ -20,6 +20,8 @@ import {
   DetailedAgora,
   PostQA,
   DetailedQA,
+  Playground,
+  PlaygroundDetail,
 } from "./pages";
 
 import { Header, NavBar, Footer } from "./components";
@@ -57,6 +59,14 @@ function App() {
           <Route path="detailedagora" element={<DetailedAgora />} />
           <Route path="postqa" element={<PostQA />} />
           <Route path="detailedqa" element={<DetailedQA />} />
+
+          <Route path="playground/communication" element={<Playground />} />
+          <Route path="playground/information" element={<Playground />} />
+          <Route path="playground/tech" element={<Playground />} />
+          <Route path="playground/social" element={<Playground />} />
+          <Route path="playground/culture" element={<Playground />} />
+
+          <Route path="playground-detail/:id" element={<PlaygroundDetail />} />
 
           <Route path="*" element={<>404 page not found.</>} />
         </Routes>
