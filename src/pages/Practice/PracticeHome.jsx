@@ -89,7 +89,7 @@ function PracticeHome () {
         <Grid item xs={7} style={{posigion:"relative"}}>
         
           <BrownGrid container style={{justifyContent:"center"}}>
-          <img src="img\changjactitle.png" alt="changjac-title" 
+          <img src="img/changjactitle.png" alt="changjac-title" 
               style={{position:"absolute", width:"35%", top:"-6%", zIndex:"10",
               }}/>
             <GreenGrid container >
