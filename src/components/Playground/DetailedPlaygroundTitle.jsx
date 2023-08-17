@@ -14,7 +14,13 @@ function DetailedPlaygroundTitle({ program }) {
     program && (
       <>
         {/* 프로그램 타이틀 */}
-        <Box sx={{ bgcolor: "#F1F8E9", p: 4 }}>
+        <Box
+          sx={{
+            bgcolor: "#F1F8E9",
+            p: 5,
+            boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+          }}
+        >
           <Grid container justifyContent={"center"} alignItems={"center"}>
             <img src={program.thumbnail} alt={program.title} width={"35%"} />
             <Grid item xs={5} alignItems={"center"} justifyContent={"center"}>
