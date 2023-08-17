@@ -11,6 +11,7 @@ import {
   Box,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
 
 const StyledCard = styled(Card)({
   margin: "0 1rem",
@@ -35,12 +36,18 @@ const StyledGrid = styled(Grid)({
 });
 
 function Program(props) {
+  const navigate = useNavigate();
   const maxWidth = props.maxWidth ? props.maxWidth : 345;
   const mediaHeight = props.mediaHeight ? props.mediaHeight : 200;
   const progress = props.progress ? props.progress : null;
 
   return (
-    <StyledCard sx={{ width: "100%", maxWidth: maxWidth }}>
+    <StyledCard
+      sx={{ width: "100%", maxWidth: maxWidth }}
+      onClick={() => {
+        navigate(`/playground-detail/${props.id}`);
+      }}
+    >
       <CardActionArea>
         <StyledCardMedia
           component="img"

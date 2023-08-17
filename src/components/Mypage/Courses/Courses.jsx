@@ -23,6 +23,7 @@ function Courses() {
       return el.id === program_id;
     })[0];
     return {
+      id: program.id,
       image: program.thumbnail,
       alt: program.title,
       title: program.title,

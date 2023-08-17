@@ -22,3 +22,4 @@ export { default as PostQA } from "./Community/Agora/PostQA";
 export { default as DetailedQA } from "./Community/Agora/DetailedQA";
 
 export { default as Playground } from "./Playground/Playground";
+export { default as PlaygroundDetail } from "./Playground/PlaygroundDetail";

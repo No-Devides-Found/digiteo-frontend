@@ -5,6 +5,7 @@ import { Program } from "../index";
 function PlaygroundList({ pathname, programs }) {
   const getProgramProps = (program) => {
     return {
+      id: program.id,
       image: program.thumbnail,
       alt: program.title,
       title: program.title,
