@@ -13,9 +13,10 @@ function Paginations() {
 
   return (
     <Pagination
+    
       activePage={page}
       itemsCountPerPage={10}
-      totalItemsCount={450}
+      totalItemsCount={50}
       pageRangeDisplayed={5}
       prevPageText={"‹"}
       nextPageText={"›"}

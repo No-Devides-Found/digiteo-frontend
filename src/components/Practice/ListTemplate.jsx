@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { useNavigate, useLocation} from 'react-router-dom';
 import { Grid , Box, Button} from '@mui/material';
 import { styled } from "@mui/material/styles";
 
@@ -38,6 +39,7 @@ const PageGrid = styled(Grid)({
 
 // 
 function ListTemplate ({page}) {
+  const navigate = useNavigate(); 
 
   console.log('여기 리스트 템플릿', page) //페이지 정보 잘 오는지 확인 -완료
 
@@ -89,6 +91,13 @@ function ListTemplate ({page}) {
 ]; 
 
  
+  // 창작물 작성 페이지 이동
+  const postPractice=(e)=>{
+    navigate("/postpractice");
+  }
+
+
+
   return (
       <StyledBox>
         <Grid container >
@@ -98,10 +107,15 @@ function ListTemplate ({page}) {
               <CreationTemplate key={index} practice={practice}/>
             ))}
           </Grid>
-
+          {/* 창작물 작성 페이지로 이동 */}
+          <Grid item xs={12} style={{ display: "flex", justifyContent: "flex-end" }} mt={3}>
+            <Button type="button" onClick={postPractice} style={{ background: "#A5D6A7", color: "black", fontWeight: "bold", textAlign: "center" }} cursor="pointer">
+              창작물 올리기
+            </Button>
+          </Grid>
 
           {/* 페이지네이션 */}
-          <Grid item xs={12}>
+          <Grid item xs={12} >
             <Paginations />
           </Grid>
         </Grid>

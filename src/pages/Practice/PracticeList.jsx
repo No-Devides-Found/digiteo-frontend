@@ -43,7 +43,7 @@ const options = ["제목+닉네임", "제목", "닉네임"]
 function PracticeList() {
 
   
-  const navigate = useNavigate(); 
+  
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const firtType = params.get('param1');  // 창작마루 홈에서 진입할 때 받는 유형 정보
@@ -89,11 +89,6 @@ function PracticeList() {
 
 
 
-
-  // 창작물 작성 페이지 이동
-  const postPractice=(e)=>{
-    navigate("/postpractice");
-  }
 
 
   // const getPracticeList = async () => {
@@ -153,17 +148,7 @@ function PracticeList() {
             </GreenGrid>
           </BrownGrid>
         </Grid>
-
-
-
-
-
-        {/* 창작물 작성 페이지로 이동 */}
-        <Grid item xs={12} style={{ display: "flex", justifyContent: "flex-end" }}>
-          <Button type="button" onClick={postPractice} style={{ background: "#A5D6A7", color: "black", fontWeight: "bold", textAlign: "center" }} cursor="pointer">
-            창작물 올리기
-          </Button>
-        </Grid>
+        
       </Grid>
     </BackBox>
     

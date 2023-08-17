@@ -19,6 +19,7 @@ const StyledPaper=styled(Paper)({
   margin:"1rem 0",
 })
 //칩
+
 const StyledChip=styled(Chip)({
   width:'50%', 
   backgroundColor:"#C5E1A5"
