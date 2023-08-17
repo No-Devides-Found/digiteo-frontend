@@ -15,7 +15,7 @@ const withProfile = selector({
       return response.data;
     } catch (err) {
       console.log(err);
-      // throw Error("유저 프로필 정보 가져오기 실패");
+      throw Error("유저 프로필 정보 가져오기 실패");
     }
   },
 });

@@ -38,6 +38,7 @@ function Program(props) {
   const maxWidth = props.maxWidth ? props.maxWidth : 345;
   const mediaHeight = props.mediaHeight ? props.mediaHeight : 200;
   const progress = props.progress ? props.progress : null;
+  console.log(props);
 
   return (
     <StyledCard sx={{ width: "100%", maxWidth: maxWidth }}>
@@ -60,7 +61,7 @@ function Program(props) {
       <CardActions>
         <StyledGrid container>
           <StyledGrid item xs>
-            {props.participants}
+            참여인원 {props.participants}명
           </StyledGrid>
           <StyledGrid item xs>
             별점{" "}
