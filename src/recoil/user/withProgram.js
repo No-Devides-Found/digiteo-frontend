@@ -4,11 +4,11 @@ import curUser from "./atom";
 import { server } from "../../constants";
 
 const withProgram = selector({
-  key: "get/user-program-attendent",
+  key: "get/user-program-attendant",
   get: async ({ get }) => {
     const { pk, email } = get(curUser);
     if (!pk || !email) return;
-    const url = `${server}/programs/myprogram/${pk}`;
+    const url = `${server}/programs/myprogram/${pk}/`;
 
     try {
       const response = await Api.get(url);
