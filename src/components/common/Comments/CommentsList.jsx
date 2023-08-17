@@ -5,18 +5,50 @@ import Avatar from '@mui/material/Avatar';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import CampaignRoundedIcon from '@mui/icons-material/CampaignRounded';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import Checkbox from '@mui/material/Checkbox';
+import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
+import {Favorite, TypeSpecimenTwoTone} from '@mui/icons-material';
 
 
 function CommentsList () {
+
+  //코멘트 목록을 가져와야 함
+  const comments= [
+    { 
+      profile_img:"",
+      nickname:"",
+      created_at:"",
+      contents:"", 
+      liked:"", 
+    },
+    { 
+      profile_img:"",
+      nickname:"",
+      created_at:"",
+      contents:"", 
+      liked:"", 
+    },
+    { 
+      profile_img:"",
+      nickname:"",
+      created_at:"",
+      contents:"", 
+      liked:"", 
+    },
+  ];
+
   return (
-    <Box  
-    style={{margin:"0",
+
+<div>
+    {comments.map((comment, index) => (
+      <Box  
+    style={{margin:"0 0 1rem 0",
     backgroundColor:"#F1F8E9", borderRadius:"1rem", fontFamily:"Kumbh Sans"}} 
     sx={{ width: "100%" , margin:'0', padding:"1.5rem 2rem"}}>
       
       <Grid container spacing={2} style={{height:'100%'}}>
         <Grid item xs={1} style={{display:"flex", justifyContent:'flex-end'}}>
-          <Avatar>H</Avatar>
+          <Avatar>{comment.nickname}</Avatar>
         </Grid>
 
         <Grid item xs={11}>
@@ -24,7 +56,7 @@ function CommentsList () {
             <Grid item xs={12} style={{display:"flex", justifyContent:"space-between"}}>
               <Typography fontFamily={"Kumbh Sans"} fontWeight={"bold"} variant="h6"
               gutterBottom>
-                댓글 닉네임
+                {comment.nickname}
               </Typography>
              
               <Button style={{color:"gray"}}> 삭제하기 <DeleteOutlineIcon /></Button>
@@ -35,19 +67,20 @@ function CommentsList () {
 
             <Grid item xs={12} >
               <Typography fontFamily={"Kumbh Sans"} >
-                댓글 내용  댓글 내용  댓글 내용  댓글 내용 
+                {comment.contents}
               </Typography>
             </Grid>
 
             <Grid item xs={12} mt={2}>
               <Stack  direction="row" style={{display:"flex", justifyContent:'space-between'}}>
                   <Stack direction="row">
-                    <Typography variant="body2">좋아요</Typography>{' '}
-                    <FavoriteRoundedIcon style={{color:'red'}}/>
-                    <Typography Typography variant="body2"> 999명</Typography>
+                  <Typography fontFamily="Kumbh Sans" variant="subtitle1" style={{fontWeight:"medium",}}>
+                    좋아요 <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite  style={{color:'red'}}/>} />
+                    {comment.liked}명
+                  </Typography>
                   </Stack>
                   <Typography variant="body2">
-                    작성일 2023.01.01
+                    {comment.created_at}
                   </Typography>
               </Stack>
             </Grid>
@@ -57,9 +90,13 @@ function CommentsList () {
         
           
       </Box>
+      
+    ))}
+   </div> 
   );
 };
 
 export default CommentsList;
 
  
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };

@@ -9,7 +9,7 @@ export default function Comments() {
   const [comment, setComment] = useState('');
   
   const onChange=(e)=>{
-    setComment(e.target.value);
+    setComment(e.target.value);  
   }
   const onClick=(e)=>{
     setComment(""); //댓글 작성창 초기화
