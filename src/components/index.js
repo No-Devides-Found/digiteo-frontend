@@ -7,7 +7,7 @@ export { default as RelatedSiteCarousel } from "./Home/RelatedSiteCarousel";
 export { default as EventCarousel } from "./Home/EventCarousel";
 export { default as RankingBanner } from "./Home/RankingBanner/RankingBanner";
 export { default as PlayGroundCarousel } from "./Home/PlayGroundCarousel";
-export { default as Program } from "./Home/Program/Program";
+export { default as Program } from "./common/Program/Program";
 
 export { default as DragUploadFile } from "./common/UploadFile/DragUploadFile";
 export { default as SearchBar } from "./common/SearchBar/SearchBar";
@@ -45,3 +45,7 @@ export { default as AgoraCommentsList } from "./Community/Agora/AgoraCommentsLis
 export { default as AgoraList } from "./Community/Agora/AgoraList";
 export { default as AgoraTemplate } from "./Community/Agora/AgoraTemplate";
 export { default as QandATemplate } from "./Community/Agora/QandATemplate";
+
+// Playground
+export { default as PlaygroundNav } from "./Playground/PlaygroundNav";
+export { default as PlaygroundList } from "./Playground/PlaygroundList";
