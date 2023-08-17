@@ -1,8 +1,21 @@
 import React, {useState} from 'react';
 import { VscClose } from 'react-icons/vsc';
+import {Box, Grid, Typography, Button,ButtonBase} from "@mui/material";
+import FolderOpenIcon from '@mui/icons-material/FolderOpen';
+import { styled } from "@mui/material/styles";
 
 import Axios from "axios";
 
+
+
+
+const FileButton=styled(Button)({
+  color:"black",
+  
+});
+const StyledInput = styled(`input`)({
+  
+})
 // 파일 업로드 컴포넌트 
 function UploadFile() {
 
@@ -54,7 +67,7 @@ function UploadFile() {
 
   return (
     <div>
-      <div>첨부파일</div>
+      <FileButton>파일 찾기 <FolderOpenIcon/></FileButton>
       {
         selectedFiles.length !== 0
         ? (<div> {attachFile} </div>)
