@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Chips from '../common/Chips/Chips';
-
+import {Link} from "react-router-dom";
 import { Grid, Paper,Typography,Chip, Avatar, Card, CardMedia, CardContent, CardActionArea, Stack } from '@mui/material';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 
@@ -11,6 +11,8 @@ import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 //   maxWidth: '100%', 
 //   maxHeight: '100%', 
 // });
+
+
 // 제목 페이퍼 
 const StyledPaper=styled(Paper)({
   backgroundColor:"#F1F8E9",
@@ -29,24 +31,31 @@ const handleClick = () => {
 };
 
 
-export default function CreationTemplate( {practice }) {
+
+
+
+export default function CreationTemplate( { practice }) {
   return (
       <StyledPaper>
             <Grid container >
               <Grid item xs={3} >
-                <img src="img/video.png" alt="video-box" width="100%"/>
+                {/* 링크 아이디 연결 필요 */}
+                <Link to={"/detailedpractice"}>
+                  <img src="img/video.png" alt="video-box" width="100%" />
+                </Link>
               </Grid>
               <Grid item xs={9} style={{padding:"0 2rem"}}>
                 <Grid container>
                   <Grid item xs={12} mt={2}>
                     <Stack direction="row" style={{display:"flex", justifyContent:'space-between'}}>
-                      <Typography variant='h6' fontWeight="bold"  >
-                        창작물 대제목
-                        {/* {practice.title} */}
-                      </Typography>
+                    
+                        <Typography variant='h6' fontWeight="bold"  >
+                          대제목
+                          {/* {practice.title} */}
+                        </Typography>
                       <Typography variant="body2" style={{color:'gray'}}>
                             작성일 2023.01.01
-                          {/* {practice.date} */}
+                          {/* {practice.created_at} */}
                       </Typography>
                     </Stack>
                   </Grid>
@@ -84,6 +93,7 @@ export default function CreationTemplate( {practice }) {
                 </Grid>
               </Grid>
             </Grid>
+           
           </StyledPaper>
   );
 }

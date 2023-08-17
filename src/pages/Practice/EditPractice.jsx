@@ -1,17 +1,22 @@
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
-import {Tags} from '../../components'; 
+import BorderColorIcon from '@mui/icons-material/BorderColor';
+import {Tags, UploadFile, DragUploadFile} from '../../components'; 
 
 import { styled } from "@mui/material/styles";
 
 
 import { 
+  Autocomplete, 
   Typography, 
   Input, 
   TextField, 
   Box, 
+  Chip,
+  Paper,
+  Stack,
+  Avatar,
   Grid,
   Container, 
   Button,
@@ -20,63 +25,74 @@ import {
   FormControlLabel,
 } from '@mui/material';
 
-const StyledContainer = styled(Container)({
-  width: '60rem', 
-  backgroundColor: '#FFF5E5',
-  padding: '2rem',
-  marginBottom:'0.5rem',
-  height:'fit-content',
-});
+// 제목 페이퍼 
+const StyledPaper=styled(Paper)({
+  backgroundColor:"#F1F8E9",
+  borderRadius:"20px",
+  padding:"1rem 4rem 2rem 4rem", 
+  margin:"0",
+  width:"100%"
+})
 
-const Subtitle = styled(Typography)({
-  marginBottom: '0.5rem',
-  fontSize:'1.1rem',
-  fontWeight:'bold',
+const ContentField = styled(Container)({
+  background:"#FFF3E0",
+  borderRadius:"20px",
+  padding:"2rem 3rem",
+  
+
 }); 
 
 const StyledButton = styled(Button)({
-  backgroundColor: 'orange',
-  width: '10rem',
+  backgroundColor: '#FFA000',
+  width: '10%',
+  borderRadius:"10px",
   color: 'black',
-  margin: '1rem',
+  marginLeft:"1rem",
   float: 'right',
+  fontWeight:"bold",
   textAlign: 'center',
 });
-const ButtonContainer = styled(Container)({
-  width: '60rem',
+
+const StyledChip=styled(Chip)({
+  width:'50%', 
+  backgroundColor:"#C5E1A5"
 })
 
 
+// id로 특정 창작물 가져오기
 function EditPractice () {
 
   const navigate = useNavigate();
-  const [practice, setPractice] = useState({
-    title: '',
-    createdBy: '',
-    tags: [],
-    type: '',
-    file: '',
-    story: '',
-    review: '',
-  });
 
-  const { title, createdBy,  tags, type, file, story, review } = practice; //비구조화 할당
+  const post = {
+    title:"작성됨",
+    type:"작성됨",
+    nickname:"작성됨",
+    created_at:"작성됨",
+    liked:"",
+    tags: ["프로그램1", "tag2", "tag3", "tag4"],
+    files:"작성됨",
+    story:"작성됨",
+    review:"작성됨",
+}
+  //
+  const [title, setTitle] = useState(post.title); //창작물 제목
+  const [type, setType] = useState(post.type); //창작물 유형
+  const [story, setStory] = useState(post.story); //스토리
+  const [review, setReview] = useState(post.review); //후기
+  const [files, setFiles] = useState(post.files); //파일들
+  const [tags, setTags] = useState(post.tags); //태그들
+  //console.log(title, type, story, review, files, tags)
+  
 
-  const onChange = (event) => {
-    const { value, name } = event.target;
 
-    setPractice((prevPractice) => ({
-      ...prevPractice,
-      [name]: name === 'tags' ? value.split(',') : value,
-  }));
-    
-  };
-
+  
+  // 수정 완료
   const editComplete= async () => {
-    console.log(practice)
-    navigate(`/practice`, {
-      state: practice, //전체 'practice'객체 전달
-    });
+    // console.log(practice)
+    // navigate(`/practice`, {
+    //   state: practice, //전체 'practice'객체 전달
+    // });
     //practice 객체를 보냄
     // await axios.post('/practicelist', practice).then((res) => {
     //   alert('등록되었습니다.');
@@ -87,7 +103,6 @@ function EditPractice () {
   const backToList = () => {
     navigate('/practicelist');
   };
-
 
   const programs = [
     '프로그램명1',
@@ -101,67 +116,113 @@ function EditPractice () {
 
   return (
     <Container>
-      <Grid container spacing={1}>
-        <Grid item xs={12}>
-          <Typography variant="h4" align="center" gutterBottom>
-            창작물 수정 페이지
-          </Typography>
+      <Grid container  style={{padding:"1rem 3rem 4rem 3rem"}}>
+        {/* 제목 부분 */}
+        <Grid item xs={12} mt={6}>
+            <StyledPaper>
+              <Grid container>
+                  <Grid item xs={12} style={{display:"flex", justifyContent:"flex-end"}}>
+                    {/* <Button onClick={gotoEdit} style={{color:"#757575", fontSize:"13px"}} >
+                      수정하기 <BorderColorIcon />
+                    </Button> */}
+                  </Grid>
+                  <Grid item xs={12}  mt={1}>
+                  
+                      <TextField 
+                          style={{background:"#FFFFFF"}}
+                          id="outlined-basic" 
+                          name='title' 
+                          sx={{width:'100%'}} variant="outlined" 
+                          value={title} 
+                          onChange={(e)=>setTitle(e.target.value)} 
+                          placeholder='[창작물 대제목]을 입력해주세요.'/>
+      
+                  </Grid>
+                  <Grid item xs={12} mt={2}>
+                    
+                      </Grid>
+                      <Grid item xs={5} mt={2}>
+                        <Stack direction="row">
+                          <Avatar style={{marginRight:"1rem"}}>H</Avatar>
+                          <Typography style={{lineHeight:"40px"}}>{post.nickname}</Typography>
+                        </Stack>
+                      </Grid>
+                      {/*  칩 태그들 */}
+                  <Grid item xs={7} mt={2} style={{width:'100%'}}>
+                      <Tags programs={programs} value={post.tags} onChange={setTags}/>
+                  </Grid>
+                </Grid>
+            </StyledPaper>
+        </Grid>
+        
+
+        {/* 창작물 콘텐츠 부분 */}
+
+        
+        <Grid item xs={12} mt={6} >
+            <Typography variant="h6">파일 업로드</Typography>
         </Grid>
 
         <Grid item xs={12}>
-          <Subtitle variant='subtitle1'>창작물 대제목</Subtitle>
-          <TextField 
-            name='title' 
-            value={title} 
-            onChange={onChange} 
-            sx={{width:'100%'}} 
-            variant="outlined" 
-            placeholder='창작물 대제목을 입력해주세요.'/>
+          <div style={{ position: 'relative' }}>
+            <DragUploadFile  value={post.files} onChange={setFiles}/>
+            <div
+              style={{
+                position: 'absolute',
+                top: 0,
+                right: 0,
+                marginRight: '15px', 
+                marginTop:"15px",
+              }}
+            >     <Stack direction="row">
+                      {/* <div style={{verticalAlign:"middle"}}>파일유형 {'('}필수{')'}</div> */}
+                      {/* RadioGroup 컴포넌트 */}
+                      <RadioGroup
+                        row
+                        required
+                        aria-labelledby="demo-row-radio-buttons-group-label"
+                        name="row-radio-buttons-group"
+                        selected={type}
+                      >
+                      
+                        <FormControlLabel name='type' value="video" onChange={(e)=>setType(e.target.value)}  control={<Radio />} label="영상" />
+                        <FormControlLabel name='type' value="img" onChange={(e)=>setType(e.target.value)} control={<Radio />} label="이미지" />
+                        <FormControlLabel name='type' value="voice" onChange={(e)=>setType(e.target.value)} control={<Radio />} label="음성" />
+                        <FormControlLabel name='type' value="text" onChange={(e)=>setType(e.target.value)} control={<Radio />} label="문서" />
+                      </RadioGroup>
+                  </Stack>
+            </div>
+          </div>
         </Grid>
 
-        <Grid item xs={12}>
-          <Subtitle variant='subtitle1'>태그</Subtitle>
-          <Tags programs={programs} tags={practice.tags} setPractice={setPractice}/>
+        <Grid item xs={12} mt={6}>
+          <Typography variant='h6'>창작물 소개</Typography>
         </Grid>
+        <Grid item xs={12} mt={1}> 
+            <ContentField>
+              <TextField 
+                name='story' 
+                value={story} 
+                onChange={(e)=>setStory(e.target.value)}
+                sx={{width:'100%'}} 
+                multiline rows={8} id="outlined-basic" variant="outlined" 
+                placeholder='나만의 창작 스토리 (계기, 과정, 의도)를 소개해주세요 :)'/>
 
-        <Grid item xs={12}>
-           <Subtitle variant="subtitle1" >파일 업로드</Subtitle>
-            <Typography variant="subtitle2">파일 유형</Typography>
-              <RadioGroup
-                row
-                aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
-              >
-                <FormControlLabel name='type' value="video" onChange={onChange} control={<Radio />} label="영상" />
-                <FormControlLabel name='type' value="img" onChange={onChange} control={<Radio />} label="이미지" />
-                <FormControlLabel name='type' value="voice" onChange={onChange} control={<Radio />} label="음성" />
-                <FormControlLabel  name='type' value="text" onChange={onChange} control={<Radio />} label="문서" />
-              </RadioGroup>
-              <Input type="file" ></Input>
-        </Grid>
+            </ContentField>
+          </Grid>  
+          <Grid item xs={12} mt={2}> 
+            <ContentField>
+              <TextField 
+                name='review' 
+                value={review} 
+                onChange={(e)=>setReview(e.target.value)}
+                sx={{width:'100%'}} 
+                multiline rows={8} id="outlined-basic" variant="outlined" 
+                placeholder='창작물을 만들어 본 소감(느낀 점)을 이야기해주세요 :)'/>
 
-        <Grid item xs={12}>
-         <Subtitle variant='subtitle1'>창작물 소개</Subtitle>
-          <Typography variant='subtitle2'>* 창작 스토리 {'('}계기, 과정, 의도{')'}</Typography> 
-            <TextField name='story' 
-              value={story} 
-              onChange={onChange} 
-              sx={{width:'100%'}} 
-              multiline rows={8} 
-              id="outlined-basic" 
-              variant="outlined" 
-              placeholder='창작물 대제목을 입력해주세요.'/>
-          
-          <Typography variant='subtitle2'>* 후기</Typography> 
-            <TextField name='review' 
-              value={review} 
-              onChange={onChange} 
-              sx={{width:'100%'}} 
-              multiline rows={8} id="outlined-basic" 
-              variant="outlined" 
-              placeholder='창작물 대제목을 입력해주세요.'/>
+            </ContentField>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} mt={3}>
           <StyledButton type="submit" onClick={editComplete}>수정 완료</StyledButton>
           <StyledButton type="button" onClick={backToList}>수정 취소</StyledButton>
         </Grid>

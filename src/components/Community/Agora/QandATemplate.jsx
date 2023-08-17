@@ -11,65 +11,80 @@ import { Grid,  Avatar,  Stack ,CardActionArea} from '@mui/material';
 import CardMedia from '@mui/material/CardMedia';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import {Chips} from "../../../components";
+import { styled } from "@mui/material/styles";
+
+
+const MaxLinesTypography = styled(Typography)(({ theme }) => ({
+  display: '-webkit-box',
+  '-webkit-line-clamp': 3, // 최대 행 수 설정
+  '-webkit-box-orient': 'vertical',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  // 기타 적용할 스타일을 추가하세요
+}));
 
 
 
 
 
 
-
-//제목 작성자:닉네임 태그칩,내용중략 좋아요수 작성일
+// Q&A 리스트 템플릿
+export default function QandATemplate({qa}) {
+  //제목 작성자:닉네임 태그칩,내용중략 좋아요수 작성일
 const card = (
-  <React.Fragment>
-    <CardActionArea href='/detailedqa'>
+  <React.Fragment style={{borderRadius:"20px"}}>
+    <CardActionArea href='/detailedqa' style={{borderRadius:"20px", padding:"1rem" ,}}>
     
     <CardContent>
-      <Grid container spacing={1}>
-        <Grid item xs={2}>
-          <Avatar>K</Avatar>썸네일 닉네임
+      <Grid container >
+        <Grid item xs={12}>
+          <Typography variant="h6" fontWeight="bold">
+           {qa.title}
+          </Typography>
         </Grid>
-        <Grid item xs={10}>
-          <Typography variant="h5" component="div" gutterBottom>
-           - 질문 제목 - 
-          </Typography>
-          <Chips/>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            내용 중략
-          </Typography>
+        <Grid item xs={12} mt={2}>
+          <Stack direction="row">
+                      <Avatar style={{marginRight:"1rem"}}>
+                       {qa.profile_img}
+                      </Avatar>
+                      <Typography style={{lineHeight:"40px"}}>
+                        {qa.nickname}
+                      </Typography>
+          </Stack>
+        </Grid>
+        <Grid item xs={12} mt={1}>
+          <Chips />
+          <MaxLinesTypography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom >
+            {qa.contents}
+          </MaxLinesTypography>
         </Grid>
       </Grid>
       
 
-      
-      
-      
-
     </CardContent>
     <CardContent>
-      <Stack direction="row" style={{justifyContent:'space-between'}}>
-        <Stack direction="row">
-          <Typography variant="body2">
-            좋아요
-          </Typography>{' '}
-          <FavoriteRoundedIcon style={{color:'red'}}/>
-          <Typography variant="body2"> 
-            999명
-          </Typography>
-          <Typography sx={{ fontSize: 13 }} color="text.secondary" 
-            style={{float:'right'}}>
-              답글 수 아이콘 999명
-          </Typography>
-        </Stack>
-       
       
-        <Stack direction="row">
+        <div  style={{display:"flex", justifyContent:"space-between"}}>
+          <Stack direction="row" >
+            <Typography variant="body2"> 좋아요 </Typography>{' '}
+              <FavoriteRoundedIcon style={{color:'red'}}/>
+            <Typography Typography variant="body2"> 
+                {qa.liked}명  
+            </Typography>
+          </Stack>
+
+          <Typography variant="body2" color="text.secondary" >
+              답글 수 999명
+          </Typography>
+        </div>
+        <div style={{marginTop:"1rem"}}>
           <Typography sx={{ fontSize: 13 }} color="text.secondary" 
             style={{textAlign:'right'}}>
-            작성일 2023-01-01
+            작성일 {qa.created_at}
           </Typography>
-        </Stack>
-      </Stack>
-      
+
+        </div>
+   
     </CardContent>
     </CardActionArea>
   </React.Fragment>
@@ -77,12 +92,9 @@ const card = (
 
 
 
-// Q&A 리스트 템플릿
-export default function QandATemplate() {
-
   return (
-    <Box sx={{ width: "100%" }}>
-      <Card variant="outlined">{card}</Card>
+    <Box style={{width:"80%", margin:"0 auto", display:"block", borderRadius:"20px"}}>
+      <Card  style={{borderRadius:"20px", background:"#F1F8E9"}} >{card}</Card>
     </Box>
   );
 }

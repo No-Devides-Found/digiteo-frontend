@@ -9,7 +9,7 @@ export default function Comments() {
   const [comment, setComment] = useState('');
   
   const onChange=(e)=>{
-    setComment(e.target.value);
+    setComment(e.target.value);  
   }
   const onClick=(e)=>{
     setComment(""); //댓글 작성창 초기화
@@ -23,9 +23,9 @@ export default function Comments() {
         <Grid item xs={12}>
             <Typography fontFamily="Kumbh Sans" variant="h6" style={{textAlign:'left', fontWeight:"medium",}}>
               댓글 
-              <span style={{fontSize:"medium", color:"gray"}}>
+              {/* <span style={{fontSize:"medium", color:"gray"}}>
                 {" "}{'('} 총 {} 개 {')'}
-              </span>
+              </span> */}
             </Typography>
             
         </Grid>

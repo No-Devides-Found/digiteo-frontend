@@ -12,8 +12,19 @@ const StyledGrid=styled(Grid)({
 
 })
 
-function DragUploadFile() {
+function DragUploadFile({value, onChange}) {
+
   const [files, setFiles] = useState([]);
+
+
+  const handleChange=(values)=>{
+    const nameFiles= []; 
+    for(let i=0; i< values.length; i++){
+      nameFiles.push(values[i].name);
+    }
+    onChange(nameFiles);
+  }
+
 
   const handleDrop = (e) => {
     e.preventDefault();
@@ -25,8 +36,9 @@ function DragUploadFile() {
         newFiles.push(file);
       }
     }
-
     setFiles(newFiles);
+    handleChange(newFiles);
+    
   };
 
   const handleFileInput = (e) => {
@@ -40,11 +52,13 @@ function DragUploadFile() {
     }
 
     setFiles(newFiles);
+    handleChange(newFiles);
   };
 
   const removeFile = (fileName) => {
     const newFiles = files.filter((file) => file.name !== fileName);
     setFiles(newFiles);
+    handleChange(newFiles);
   };
 
   return (
@@ -74,6 +88,7 @@ function DragUploadFile() {
               onChange={handleFileInput}
             />
         </div>
+
 
       </div>
       

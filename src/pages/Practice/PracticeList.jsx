@@ -144,7 +144,9 @@ function PracticeList() {
         <Grid item xs={12} mt={5}>
           <BrownGrid container style={{ justifyContent: "center" }}>
             <GreenGrid container>
-              <ListTemplate page={page} searchKeyword={searchKeyword} order={order} searchTags={searchTags} />
+              <ListTemplate 
+              
+              page={page} searchKeyword={searchKeyword} order={order} searchTags={searchTags} />
             </GreenGrid>
           </BrownGrid>
         </Grid>
