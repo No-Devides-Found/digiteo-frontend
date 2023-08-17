@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Container,
@@ -13,9 +13,17 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 
+import { useRecoilValue } from "recoil";
+import { withPost } from "../../../recoil/user";
+
 function Posts() {
   const [value, setValue] = useState("1");
   const [page, setPage] = useState("qna");
+  const posts_data = useRecoilValue(withPost);
+
+  useEffect(() => {
+    console.log(posts_data);
+  }, []);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
