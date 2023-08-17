@@ -91,6 +91,7 @@ function DetailedPractice () {
         </StyledGrid>
 
         <StyledGrid item xs={12} mt={1}>
+          {/* 포스트 제목 부분 */}
           <StyledPaper>
             <Grid container >
               <Grid item xs={3} >
