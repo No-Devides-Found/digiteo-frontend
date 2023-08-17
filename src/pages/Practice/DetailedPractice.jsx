@@ -51,13 +51,24 @@ const StyledChip=styled(Chip)({
 })
 
 
-
+//창작물 id 받아오는 것 필요  
 function DetailedPractice () {
-  const chips=["tag1", "tag2", "tag3", "tag4"] ;
+
+  const post = {
+      title:"",
+      nickname:"",
+      created_at:"",
+      liked:"",
+      tags: ["tag1", "tag2", "tag3", "tag4"],
+      files:"",
+      story:"",
+      review:"",
+}
+  console.log(post.tags[0])
 
   const navigate = useNavigate();
 
-  // 수정 페이지로 이동
+  // 수정 페이지로 이동, id 같이 보내야 함
   const gotoEdit = (e) => {
     navigate(`/editpractice`);
   }
@@ -65,10 +76,6 @@ function DetailedPractice () {
   const onDelete =(e)=>{
   
   }
-
-  const handleClick = () => {
-    console.info('You clicked the Chip.');
-  };
 
   return (
     <Maindiv>
@@ -95,28 +102,32 @@ function DetailedPractice () {
                   <Grid item xs={12} mt={2}>
                     <Stack direction="row" style={{display:"flex", justifyContent:'space-between'}}>
                       <Typography variant='h6' fontWeight="bold"  >
-                        창작물 대제목
+                        {post.title}
                       </Typography>
                       <Typography variant="body2" style={{color:'gray'}}>
-                            작성일 2023.01.01
+                         {post.created_at}
                       </Typography>
                     </Stack>
                   </Grid>
                   <Grid item xs={5} mt={2}>
                     <Stack direction="row">
-                      <Avatar style={{marginRight:"1rem"}}>H</Avatar>
-                      <Typography style={{lineHeight:"40px"}}>닉네임</Typography>
+                      <Avatar style={{marginRight:"1rem"}}>
+                        H
+                      </Avatar>
+                      <Typography style={{lineHeight:"40px"}}>
+                        {post.nickname}
+                      </Typography>
                     </Stack>
                   </Grid>
                   {/*  칩 태그들 */}
                   <Grid item xs={7} mt={2} style={{width:'100%'}}>
                     <Stack direction="row" spacing={1} >
-                      <StyledChip label="Clickable"   onClick={handleClick}/>
-                      <StyledChip label="Clickable"  onClick={handleClick}/>
+                      <StyledChip label={post.tags[0]}  /> 
+                      <StyledChip label={post.tags[1]} /> 
                     </Stack>
                     <Stack direction="row" spacing={1} mt={1}>
-                      <StyledChip label="Clickable"   onClick={handleClick}/>
-                      <StyledChip label="Clickable" onClick={handleClick}/>
+                      <StyledChip label={post.tags[2]}  />
+                      <StyledChip label={post.tags[3]} />
                     </Stack>
                   </Grid>
 
@@ -124,7 +135,7 @@ function DetailedPractice () {
                         <Stack direction="row">
                           <Typography variant="body2">좋아요</Typography>{' '}
                           <FavoriteRoundedIcon style={{color:'red'}}/>
-                          <Typography Typography variant="body2"> 999명</Typography>
+                          <Typography Typography variant="body2"> {post.liked}명</Typography>
                         </Stack>
                   </Grid>
                 </Grid>
@@ -159,7 +170,7 @@ function DetailedPractice () {
           {/* 창작물 */}
           <Paper
           style={{backgroundColor:"#E0E0E0", width:"100%", height:"20rem", padding:"1rem", borderRadius:"10px"}}>
-            창작물 소개
+            {post.files}
           </Paper>
 
           {/* 가지 */}
@@ -171,18 +182,18 @@ function DetailedPractice () {
           </Grid>
 
           <ContentPaper >
-            콘텐츠 내용입니다.콘텐츠 내용입니다.콘텐츠 내용입니다.
+            {post.story}
           </ContentPaper>
 
           <ContentPaper style={{marginTop:"2rem"}}>
-            콘텐츠 내용입니다.콘텐츠 내용입니다.콘텐츠 내용입니다.
+            {post.review}
           </ContentPaper>
         <StyledGrid item xs={12} mt={3}>
           <Stack direction="row" style={{display:"flex", justifyContent:"space-between", 
            marginTop:"2rem"
         }}>
             <Typography fontFamily="Kumbh Sans" variant="subtitle1" style={{fontWeight:"medium",}}>
-              좋아요 <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
+              좋아요 <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite  style={{color:'red'}}/>} />
             </Typography>
             <Typography fontFamily="Kumbh Sans" variant="subtitle1"style={{fontWeight:"medium", display:'inline'}}>
               공유하기
@@ -201,14 +212,12 @@ function DetailedPractice () {
         {/* 댓글 */}
         <Grid container style={{}}>
           <Grid item xs={12}>
-            <Comments/>
+            <Comments />
           </Grid>
           <Grid item xs={12} mt={4}>
-            <CommentsList />
+            <CommentsList post={post.id}/>
           </Grid>
-          <Grid item xs={12} mt={4} mb={5}>
-            <Paginations/>
-          </Grid>
+          
         </Grid>
 
       </StyledGrid>

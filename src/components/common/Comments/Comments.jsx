@@ -23,9 +23,9 @@ export default function Comments() {
         <Grid item xs={12}>
             <Typography fontFamily="Kumbh Sans" variant="h6" style={{textAlign:'left', fontWeight:"medium",}}>
               댓글 
-              <span style={{fontSize:"medium", color:"gray"}}>
+              {/* <span style={{fontSize:"medium", color:"gray"}}>
                 {" "}{'('} 총 {} 개 {')'}
-              </span>
+              </span> */}
             </Typography>
             
         </Grid>

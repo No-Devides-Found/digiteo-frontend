@@ -8,7 +8,11 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import {Favorite, TypeSpecimenTwoTone} from '@mui/icons-material';
-
+import {
+  Paginations,
+  Comments,
+  Chips, 
+} from "../../../components";
 
 function CommentsList () {
 
@@ -86,12 +90,17 @@ function CommentsList () {
             </Grid>
           </Grid>
         </Grid>
-        </Grid>
+       
+      </Grid>
         
           
       </Box>
       
     ))}
+
+      <Grid item xs={12} mt={4} mb={5}>
+            <Paginations />
+        </Grid>
    </div> 
   );
 };
