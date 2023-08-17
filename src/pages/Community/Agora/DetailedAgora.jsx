@@ -3,7 +3,10 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
-
+import { styled } from "@mui/material/styles";
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import BorderColorIcon from '@mui/icons-material/BorderColor';
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import { 
   Paginations,
   AgoraComments,
@@ -13,7 +16,6 @@ import {
   DetailedFree, DetailedYesNo
 } from "../../../components/";
 
-import { styled } from "@mui/material/styles";
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import {Favorite} from '@mui/icons-material';
@@ -21,6 +23,9 @@ import ShareIcon from '@mui/icons-material/Share';
 
 
 import { 
+  Paper,
+  Chip,
+  Avatar,
   Typography, 
   Input, 
   TextField, 
@@ -56,6 +61,39 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 
+const Maindiv=styled(`div`)({
+  display:'block',
+  margin:"0 auto",
+  fontFamily:"Kumbh Sans",
+  padding:"0 20%", 
+})
+
+
+const StyledGrid=styled(Grid)({
+  display:'block',
+  margin:"0 auto", 
+  padding:"0 0 0 0"
+})
+
+// 제목 페이퍼 
+const StyledPaper=styled(Paper)({
+  backgroundColor:"#F1F8E9",
+  borderRadius:"20px",
+  padding:"1rem", 
+  margin:"0",
+})
+//콘텐츠 페이퍼
+const ContentPaper=styled(Paper)({
+  backgroundColor:"#FFF3E0",
+  borderRadius:"20px",
+  padding:"2rem 3rem", 
+})
+
+const StyledChip=styled(Chip)({
+  width:'50%', 
+  backgroundColor:"#C5E1A5"
+})
+
 
 
 
@@ -69,36 +107,72 @@ const DetailedAgora = () => {
 
 
   return (
-    <Container>
+    <Maindiv>
+      <StyledGrid container >
       <Grid container spacing={2}>
+        
 
-        <Grid item xs={12} >
-          <Typography variant="h4" align="center" gutterBottom>
-            토의/토론 상세페이지
-          </Typography>
-        </Grid>
+        <StyledGrid item xs={12}>
+          {/* 포스트 제목 부분 */}
+          <StyledPaper>
+            <Grid container >
+              <Grid item xs={5} >
+                <img src="/img/video.png" alt="video-box" width="80%"/>
+              </Grid>
 
-        <Grid item xs={5} style={{backgroundColor:'orange'}}>
-          썸네일
-        </Grid>
+              <Grid item xs={7} style={{padding:"0 2rem 1rem 0 "}}>
+                <Grid container>
+                  <Grid item xs={12} mt={4}>
+                      <Typography variant='h5' fontWeight="bold"  >
+                        입력한 주제
+                      </Typography>
+                  </Grid>
+                  <Grid item xs={12}  mt={3}>
+                    <span variant="body2">토의/토론 유형</span>
+                    {
+                      state === "2"
+                      ? <span variant="body2">: 찬반</span>
+                      : <span variant="body2">: 자유</span>
+                    }
+                  </Grid>
+                  
 
-        <Grid item xs={7} >
-          <Typography variant='h5'>
-            입력한 주제 
-          </Typography>
-           <span variant="body2">토의/토론 유형</span>
-           {
-            state === "2"
-            ? <span variant="body2">: 찬반</span>
-            : <span variant="body2">: 자유</span>
-           }
+                  <Grid item xs={12} mt={5} style={{ display:"flex", justifyContent:'space-between'}}>
+                    <Stack direction="row" >
+                          <Typography variant="body2">좋아요 {' '}</Typography>
+                          <FavoriteRoundedIcon style={{color:'red', margin:"0 0.5rem"}}/> 
+                          <Typography variant="body2"> 명</Typography>
+                    </Stack>
+                    <Stack direction="row" >
+                          <Typography variant="body2">참여인원 {' '}</Typography>
+                          <PeopleAltIcon style={{margin:"0 0.5rem"}}/> 
+                          <Typography variant="body2"> 명</Typography>
+                    </Stack>
+                  </Grid>
+                  <Grid item xs={12} mt={2}>
+                    <Typography variant="body2" style={{color:'gray',  textAlign:"right"}}>
+                         작성일
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Grid>
+          </StyledPaper>
 
 
+          
+        </StyledGrid>
+
+        
+
+        
+
+   
             <Stack direction="row" style={{justifyContent:'space-between'}}>
               <Stack direction="row">
-                <Typography variant="body2">좋아요</Typography>{' '}
-                <FavoriteRoundedIcon style={{color:'red'}}/>
-                <Typography Typography variant="body2"> 999명</Typography>
+                <Typography variant="body2">좋아요 {' '}</Typography>
+                <FavoriteRoundedIcon style={{color:'red'}}/> 
+                <Typography Typography variant="body2"> 명</Typography>
               </Stack>
 
               <Typography variant="body2" style={{float:'right'}}>
@@ -111,7 +185,6 @@ const DetailedAgora = () => {
                 작성일 2023-01-01
               </Typography>
             </Stack>
-        </Grid>
 
 
         <Grid item xs={12}>
@@ -176,7 +249,9 @@ const DetailedAgora = () => {
           <Paginations/>
       </Container>
 
-    </Container>
+
+      </StyledGrid >
+    </Maindiv>
   );
 };
 
