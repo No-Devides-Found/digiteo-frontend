@@ -38,7 +38,6 @@ function Program(props) {
   const maxWidth = props.maxWidth ? props.maxWidth : 345;
   const mediaHeight = props.mediaHeight ? props.mediaHeight : 200;
   const progress = props.progress ? props.progress : null;
-  console.log(props);
 
   return (
     <StyledCard sx={{ width: "100%", maxWidth: maxWidth }}>
