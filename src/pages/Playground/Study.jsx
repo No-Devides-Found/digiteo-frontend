@@ -8,11 +8,12 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 
 // 유저 학습 페이지 
 // 학습 프로그램 클릭 -> 클릭한 유저의 정보, 학습 프로그램의 정보가 들어옴
-// 학습 프로그램 정보: 
-// 학습물 총 페이지 수, 유저 학습 현황 데이터, 
+// 학습 프로그램 정보: 총 학습물 페이지 수, 유형(이미지, 영상, ) 마지막 고정 - 
+// 유저 학습 정보: 학습 현황, 학습 제출 과제물, 
 export default function Study({user, program}) {
   const [progress, setProgress] = React.useState() ; //유저 학습 현황 
 
+  const [files, setFiles] = React.useState([]);  //유저 제출 과제물
 
 
   const theme = useTheme();
@@ -29,13 +30,13 @@ export default function Study({user, program}) {
   return (
     <MobileStepper
       variant="progress"
-      steps={6}
+      steps={6}  //5스텝
       position="static"
       activeStep={activeStep}
-      sx={{ maxWidth: 400, flexGrow: 1 }}
+      sx={{ maxWidth:"100%", }}
       nextButton={
         <Button size="small" onClick={handleNext} disabled={activeStep === 5}>
-          Next
+          다음
           {theme.direction === 'rtl' ? (
             <KeyboardArrowLeft />
           ) : (
@@ -50,7 +51,7 @@ export default function Study({user, program}) {
           ) : (
             <KeyboardArrowLeft />
           )}
-          Back
+          이전
         </Button>
       }
     />
