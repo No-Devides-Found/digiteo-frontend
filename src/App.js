@@ -21,7 +21,7 @@ import {
   PostQA,
   DetailedQA,
   Playground,
-  PlaygroundDetail,
+  DetailedPlayground,
 } from "./pages";
 
 import { Header, NavBar, Footer } from "./components";
@@ -66,7 +66,10 @@ function App() {
           <Route path="playground/social" element={<Playground />} />
           <Route path="playground/culture" element={<Playground />} />
 
-          <Route path="playground-detail/:id" element={<PlaygroundDetail />} />
+          <Route
+            path="playground/detail/:id"
+            element={<DetailedPlayground />}
+          />
 
           <Route path="*" element={<>404 page not found.</>} />
         </Routes>

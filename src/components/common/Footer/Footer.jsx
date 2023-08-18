@@ -3,8 +3,13 @@ import React from "react";
 
 export function Footer() {
   return (
-    <Box sx={{ backgroundColor: "#FFF3E0" }}>
-      <Container sx={{ ml: "3%", mr: "3%", lineHeight: "2rem" }}>
+    <Box
+      sx={{
+        backgroundColor: "#FFF3E0",
+        p: " 1.5rem 0",
+      }}
+    >
+      <Container>
         <Typography
           variant="h6"
           fontFamily={"Krona One"}
@@ -15,7 +20,6 @@ export function Footer() {
             mb: "1%",
           }}
         >
-          
           DIGITEO
         </Typography>
         <Typography

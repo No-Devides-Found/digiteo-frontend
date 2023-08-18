@@ -45,7 +45,7 @@ function Program(props) {
     <StyledCard
       sx={{ width: "100%", maxWidth: maxWidth }}
       onClick={() => {
-        navigate(`/playground-detail/${props.id}`);
+        navigate(`/playground/detail/${props.id}`);
       }}
     >
       <CardActionArea>

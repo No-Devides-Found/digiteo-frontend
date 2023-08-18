@@ -40,6 +40,8 @@ const NavMenu = ({ data }) => {
               backgroundColor: isCurrentPath || isPathIn ? "#FFA000" : "#fff",
               margin: "2rem 0",
               width: "12vw",
+              height: "6vh",
+              whiteSpace:"nowrap",
             }}
             onClick={() => {
               onMenuClick(data.items.length, data.to);
@@ -58,11 +60,14 @@ const NavMenu = ({ data }) => {
             <Menu {...bindMenu(popupState)}>
               {data.items.map((item, idx) => (
                 <MenuItem
+                
                   key={idx}
                   onClick={() => {
                     popupState.close();
                     navigate(`/${item.to}`);
+                    
                   }}
+                  style={{ fontSize: '1vw', width:"12vw",height:"2rem", display:"flex", alignItems: "center", justifyContent: "center"  }}
                 >
                   {item.title}
                 </MenuItem>
@@ -106,14 +111,16 @@ export default function TestNavBar() {
 
   return (
     <div>
-      <Grid container justifyContent={"center"}>
+      <Grid container justifyContent={"center"} gap={"4rem"}>
         {navMenuItems.map((item, index) => (
           <Grid
             item
-            xs={2}
+            
             key={index}
             display={"flex"}
             justifyContent={"center"}
+            mt={"-2vw"}
+            
           >
             <NavMenu data={item} />
           </Grid>
