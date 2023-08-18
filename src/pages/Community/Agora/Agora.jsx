@@ -145,51 +145,22 @@ const [alignment, setAlignment] = React.useState(page);
             <Typography variant="h4" gutterBottom>배움터</Typography>
           </Grid>
 
-
-          {/* 토글 */}
-          <Grid item xs={12} mt={9}>
-            <StyledGroup
-            variant="soft"
-            size="lg"
-            value={alignment}
-            exclusive
-            onChange={handleChange}
-            aria-label="Platform"
-          >
-            <StyledButton
-           
-              value="video"
-              //onClick={onClick}
-              selected={alignment === "qa"}
-              style={alignment === "qa" ? { ...buttonStyle, ...selectedButtonStyle } : buttonStyle}
-            >
-               Q & A
-            </StyledButton>
-            <StyledButton
-              value="img"
-              selected={alignment === "agora"}
-              style={alignment === "agora" ? { ...buttonStyle, ...selectedButtonStyle } : buttonStyle}
-            >
-              배움터
-            </StyledButton>
-
-            </StyledGroup>
-        </Grid>
-
-
           <Grid item xs={12} mt={3} > 
             <ToggleButtonGroup
               //color="primary"
+              
               value={page}
               exclusive
               onChange={handlePage}
               aria-label="Platform"    
-              style={{width:"100%", backgroundColor:"#FFBCBC", border:"none", borderRadius:"20px"}}  
+              style={{width:"100%", color:"white", backgroundColor:"#FFBCBC", border:"none", borderRadius:"20px"
+                  
+            }}  
             >; 
-                <ToggleButton value="qa" style={{width:"50%" , border:"none", borderRadius:"20px"}}  >
+                <ToggleButton value="qa" style={{fontWeight:"bold", width:"50%" ,border:"none", borderRadius:"20px"}}  >
                   Q & A
                 </ToggleButton>
-                <ToggleButton value="agora" style={{width:"50%", border:"none", borderRadius:"20px"}}>
+                <ToggleButton value="agora" style={{  fontWeight:"bold", width:"50%", border:"none", borderRadius:"20px"}}>
                   배움터
                 </ToggleButton>
             </ToggleButtonGroup>

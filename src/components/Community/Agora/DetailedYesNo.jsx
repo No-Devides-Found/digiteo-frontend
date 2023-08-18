@@ -72,6 +72,10 @@ const DetailedYesNo = ({post}) => {
   const handleChange = (e) => {  //찬반 선택 세팅
     setChoice(e.target.value);
   };
+  const getpost = {
+    title:"title",
+    choice:"yes",
+  }
 
 
 
@@ -135,6 +139,7 @@ const DetailedYesNo = ({post}) => {
               color="primary"
               //value={post.choice}
               exclusive
+              selected={getpost.choice === "yes"}
               defaultValue={post.choice}
               aria-label="Platform"  
               style={{width: '100%'}}    
