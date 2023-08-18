@@ -35,6 +35,9 @@ const handleClick = () => {
 
 
 export default function CreationTemplate( { practice }) {
+
+  //practice 객체를 받습니다. 
+  //
   return (
       <StyledPaper>
             <Grid container >
@@ -50,22 +53,22 @@ export default function CreationTemplate( { practice }) {
                     <Stack direction="row" style={{display:"flex", justifyContent:'space-between'}}>
                     
                         <Typography variant='h6' fontWeight="bold"  >
-                          대제목
-                          {/* {practice.title} */}
+                          {practice.title}
                         </Typography>
                       <Typography variant="body2" style={{color:'gray'}}>
-                            작성일 2023.01.01
-                          {/* {practice.created_at} */}
+                          
+                          {practice.created_at}
                       </Typography>
                     </Stack>
                   </Grid>
                   <Grid item xs={5} mt={2}>
                     <Stack direction="row">
                       <Avatar style={{marginRight:"1rem"}}>
-                        H
-                       {/* {practice.profile_img} */}
+                       {practice.profile_img}
                       </Avatar>
-                      <Typography style={{lineHeight:"40px"}}>닉네임</Typography>
+                      <Typography style={{lineHeight:"40px"}}>
+                        {practice.auth}
+                      </Typography>
                     </Stack>
                   </Grid>
                   {/*  칩 태그들 */}
@@ -81,13 +84,19 @@ export default function CreationTemplate( { practice }) {
                   </Grid>
 
                   <Grid item xs={12} mt={1}>
-                        <Stack direction="row">
-                          <Typography variant="body2">좋아요</Typography>{' '}
-                          <FavoriteRoundedIcon style={{color:'red'}}/>
-                          <Typography Typography variant="body2"> 
-                          999명
-                          {/* {practice.liked} */}
+                        <Stack direction="row" style={{justifyContent:"space-between"}}>
+                          <Stack direction="row" >
+                            <Typography variant="body2">좋아요{' '}</Typography>
+                            <Typography variant="body2"><FavoriteRoundedIcon style={{color:'red'}}/></Typography>
+                            <Typography variant="body2">
+                              {practice.likes}명
+                            </Typography>
+                          </Stack>
+                          <Typography variant="body2" style={{color:'gray'}}>
+                            {practice.created_at}
                           </Typography>
+
+                          
                         </Stack>
                   </Grid>
                 </Grid>

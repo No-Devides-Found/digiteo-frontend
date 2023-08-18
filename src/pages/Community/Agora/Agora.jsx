@@ -27,6 +27,41 @@ const programs = [
   '프로그램명6', 
   '프로그램명7', 
 ];
+// 네브바 전체 그룹
+const StyledGroup = styled(ToggleButtonGroup)({
+  display: 'block',
+  borderRadius:"20px",
+  margin: '0 auto',
+  textAlign: 'center',
+  width: '100%',
+  filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
+  background: '#FFBCBC',
+})
+// 전체 토글 버튼 
+const StyledButton = styled(ToggleButton)({
+  width: '25%',
+  height: '3rem',
+  fontWeight: 'bold',
+  fontSize: '1rem',
+  borderRadius: '20px',
+})
+// 기본 버튼 
+const buttonStyle = {
+  background: '#FFBCBC',
+  border: 'none',
+  color: 'black',
+};
+//select된 버튼 색상 변경됨
+const selectedButtonStyle = {
+  width:"50%",
+  backgroundColor: '#FFEBEE', 
+  filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
+  borderRadius:"30px",
+  height:"fit-content",
+};
+
+
+
 
 
 
@@ -80,6 +115,16 @@ const Agora = () => {
 
 
 
+//네브바 토글 관련 상태값 
+const [alignment, setAlignment] = React.useState(page); 
+// 네브바 토글
+  const handleChange = (e) => {
+    setPage(e.target.value)
+    setAlignment(e.target.value);    
+    console.log(alignment)
+  };
+
+
 
 
   return (
@@ -101,20 +146,50 @@ const Agora = () => {
           </Grid>
 
 
-          {/*  */}
+          {/* 토글 */}
+          <Grid item xs={12} mt={9}>
+            <StyledGroup
+            variant="soft"
+            size="lg"
+            value={alignment}
+            exclusive
+            onChange={handleChange}
+            aria-label="Platform"
+          >
+            <StyledButton
+           
+              value="video"
+              //onClick={onClick}
+              selected={alignment === "qa"}
+              style={alignment === "qa" ? { ...buttonStyle, ...selectedButtonStyle } : buttonStyle}
+            >
+               Q & A
+            </StyledButton>
+            <StyledButton
+              value="img"
+              selected={alignment === "agora"}
+              style={alignment === "agora" ? { ...buttonStyle, ...selectedButtonStyle } : buttonStyle}
+            >
+              배움터
+            </StyledButton>
+
+            </StyledGroup>
+        </Grid>
+
+
           <Grid item xs={12} mt={3} > 
             <ToggleButtonGroup
-              color="primary"
+              //color="primary"
               value={page}
               exclusive
               onChange={handlePage}
               aria-label="Platform"    
-              style={{width:"100%"}}  
+              style={{width:"100%", backgroundColor:"#FFBCBC", border:"none", borderRadius:"20px"}}  
             >; 
-                <ToggleButton value="qa" style={{width:"50%"}} >
+                <ToggleButton value="qa" style={{width:"50%" , border:"none", borderRadius:"20px"}}  >
                   Q & A
                 </ToggleButton>
-                <ToggleButton value="agora" style={{width:"50%"}}>
+                <ToggleButton value="agora" style={{width:"50%", border:"none", borderRadius:"20px"}}>
                   배움터
                 </ToggleButton>
             </ToggleButtonGroup>
