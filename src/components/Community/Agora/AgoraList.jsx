@@ -86,7 +86,7 @@ function AgoraList({page, posts}) {
          <Grid item xs={4} mt={3}  >
           <AgoraTemplate   
           agora={agora}
-          style={{width: "80%", display:"block", margin:"0 auto"}}/>  
+          style={{width: "90%", display:"block", margin:"0 auto"}}/>  
           </Grid>
       ))}
       </Grid>
@@ -95,10 +95,10 @@ function AgoraList({page, posts}) {
 
       <Grid container style={{margin:"0 auto", display:"flex", }}>
       {qas.map((qa, index) => (
-        <Grid item xs={4} mt={3} >
+        <Grid item xs={12} mt={3} >
           <QandATemplate 
           qa={qa}
-          style={{width: "80%", display:"block", margin:"0 auto"}} />
+          style={{width: "100%", display:"block", margin:"0 auto"}} />
           </Grid>
       ))}
       </Grid>

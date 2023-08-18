@@ -30,32 +30,43 @@ const MaxLinesTypography = styled(Typography)(({ theme }) => ({
 // Q&A 리스트 템플릿
 export default function QandATemplate({qa}) {
   //제목 작성자:닉네임 태그칩,내용중략 좋아요수 작성일
+
+
+
 const card = (
   <React.Fragment style={{borderRadius:"20px"}}>
     <CardActionArea href='/detailedqa' style={{borderRadius:"20px", padding:"1rem" ,}}>
     
     <CardContent>
       <Grid container >
-        <Grid item xs={12}>
-          <Typography variant="h6" fontWeight="bold">
-           {qa.title}
-          </Typography>
-        </Grid>
-        <Grid item xs={12} mt={2}>
-          <Stack direction="row">
+      <Grid item xs={3} mt={2}>
+          
                       <Avatar style={{marginRight:"1rem"}}>
                        {qa.profile_img}
                       </Avatar>
-                      <Typography style={{lineHeight:"40px"}}>
+                      <Typography style={{lineHeight:"40px", marginLeft:"1rem"}}>
                         {qa.nickname}
                       </Typography>
-          </Stack>
+         
         </Grid>
-        <Grid item xs={12} mt={1}>
-          <Chips />
-          <MaxLinesTypography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom >
-            {qa.contents}
-          </MaxLinesTypography>
+        <Grid item xs={9} mt={2}>
+          <Grid container>
+            
+            <Grid item xs={12}>
+            
+            <Typography variant="h5" fontWeight="bold">
+              {qa.title}
+              </Typography>
+             
+
+             
+            </Grid>
+            <Grid item xs={12} mt={3}>
+              <Typography  color="text.secondary" gutterBottom >
+                {qa.contents}
+              </Typography>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
       
@@ -73,16 +84,10 @@ const card = (
           </Stack>
 
           <Typography variant="body2" color="text.secondary" >
-              답글 수 999명
+         `{qa.created_at}
           </Typography>
         </div>
-        <div style={{marginTop:"1rem"}}>
-          <Typography sx={{ fontSize: 13 }} color="text.secondary" 
-            style={{textAlign:'right'}}>
-            작성일 {qa.created_at}
-          </Typography>
 
-        </div>
    
     </CardContent>
     </CardActionArea>
@@ -92,7 +97,7 @@ const card = (
 
 
   return (
-    <Box style={{width:"90%", margin:"0 auto", display:"block", borderRadius:"20px"}}>
+    <Box style={{width:"100%", margin:"0 auto", display:"block", borderRadius:"20px"}}>
       <Card  style={{borderRadius:"20px", background:"#F1F8E9"}} >{card}</Card>
     </Box>
   );

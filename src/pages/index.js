@@ -23,3 +23,6 @@ export { default as DetailedQA } from "./Community/Agora/DetailedQA";
 
 export { default as Playground } from "./Playground/Playground";
 export { default as DetailedPlayground } from "./Playground/DetailedPlayground";
+
+
+export { default as Study } from "./Playground/Study";

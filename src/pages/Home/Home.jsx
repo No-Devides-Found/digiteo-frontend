@@ -97,8 +97,8 @@ function Home() {
               })}
             </Grid>
           </Box>
-        </Container>
-        <RankingBanner />
+        </Container>   
+        <RankingBanner   /> 
         <RelatedSiteCarousel />
       </>
     )

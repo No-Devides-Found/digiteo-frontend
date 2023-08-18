@@ -17,7 +17,7 @@ import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import styled from "@emotion/styled";
 
-import { EvaluationList } from "../../components";
+import { EvaluationList , QandATemplate} from "../../components";
 
 import { DetailedPlaygroundTitle } from "../../components";
 
@@ -44,6 +44,10 @@ function DetailedPlayground() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  // 해당 프로그램의 qas
+  const qas=[
+    
+  ]
 
   // assignment_id: 1;
   // category: 4;
@@ -99,9 +103,24 @@ function DetailedPlayground() {
                 </Grid>
               </Container>
             </TabPanel>
+
+            {/* 큐엔에이 게시판 */}
             <TabPanel value="2" style={{ padding: 0 }}>
-              <Grid></Grid>
+              <Grid>
+              <Grid container style={{margin:"0 auto", display:"flex", }}>
+                {qas.map((qa, index) => (
+                  <Grid item xs={12} mt={3} >
+                    <QandATemplate 
+                    qa={qa}
+                    style={{width: "100%", display:"block", margin:"0 auto"}} />
+                    </Grid>
+                ))}
+                </Grid>
+              </Grid>
             </TabPanel>
+
+
+            
             <TabPanel value="3" style={{ padding: 0 }}>
               <Container>
                 <Grid sx={{ mt: "4rem", mb: "2rem" }}>

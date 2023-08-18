@@ -142,77 +142,7 @@ const DetailedTip = ({}) => {
         
       </Grid>
       
-      <ButtonContainer>
-        <UpperButton onClick={movetoTip} style={{float:'left'}}> 나눔터로 돌아가기</UpperButton> 
-
-        {/* 작성자만 보이는 버튼으로 해야 함 */}
-        <UpperButton>삭제하기</UpperButton>
-        {/* <UpperButton onClick={gotoEdit}>수정하기</UpperButton> */}
-      </ButtonContainer>
-
-      <StyledContainer>
-        <Typography>
-          <Subtitle variant='subtitle1'>팁&노하우 제목</Subtitle>
-          <Grid container spaing={2} >
-            <Grid item xs={12} >
-              {/* 선택된 태그들 */}
-              <Container >
-                <Chips style={{justifyContent:'flex-end'}}/>
-              </Container>
-            </Grid>
-            {/* style={{borderBottom:'solid black 1px'}} */}
-            <Grid item xs={12} >  
-              <Stack direction="row" style={{justifyContent:'space-between'}}>
-                <Stack direction="row">
-                  <Avatar>H</Avatar><Typography>닉네임</Typography>
-                </Stack>
-                <Typography style={{float:'right'}}>작성일 2023-01-01</Typography>
-              </Stack>
-              
-            </Grid>
-          </Grid>
-        </Typography>
-      </StyledContainer>
      
-      <StyledContainer>
-        {/* <Subtitle variant='subtitle1'>창작물 소개</Subtitle> */}
-          {/* <Typography variant='subtitle2'>* 창작 스토리 {'('}계기, 과정, 의도{')'}</Typography>  */}
-          <StyledTextField id='story' name='story' sx={{width:'100%'}}  
-          //defaultValue={practice.story} 
-          InputProps={{ readOnly: true }} variant='outlined' 
-          placeholder="팁 노하우 내용!!"/>
-          
-          
-      </StyledContainer>
-
-
-        <StyledContainer>
-          <Grid container>
-            <Grid item xs>
-          <Typography >
-            좋아요<Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
-          </Typography>
-            
-            </Grid>
-            <Grid item xs={{float:'right'}}>
-            <Typography style={{display:'inline'}}>공유하기</Typography>
-              <IconButton  aria-label="delete" size="large"> 
-               <ShareIcon /> 
-              </IconButton>
-            </Grid>
-          </Grid>
-        </StyledContainer>
-        <StyledContainer>
-          댓글 {'('}총~개{')'}
-          <Container style={{ textAlign:'center', marginBottom:'2rem'}}>
-            <Comments/>
-          </Container>
-          <Container style={{ marginBottom:'2rem'}}>
-            <CommentsList />
-          </Container>
-          <Paginations/>
-        </StyledContainer>
-
     </Container>
   );
 };

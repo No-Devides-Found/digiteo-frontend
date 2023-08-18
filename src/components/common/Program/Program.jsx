@@ -45,7 +45,8 @@ function Program(props) {
     <StyledCard
       sx={{ width: "100%", maxWidth: maxWidth }}
       onClick={() => {
-        navigate(`/playground/detail/${props.id}`);
+        //navigate(`/playground/detail/${props.id}`);   //해당 학습 프로그램으로 이동
+        navigate('/study')
       }}
     >
       <CardActionArea>
