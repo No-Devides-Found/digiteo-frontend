@@ -51,3 +51,5 @@ export { default as PlaygroundNav } from "./Playground/PlaygroundNav";
 export { default as PlaygroundList } from "./Playground/PlaygroundList";
 export { default as DetailedPlaygroundTitle } from "./Playground/DetailedPlaygroundTitle";
 export { default as EvaluationList } from "./Playground/EvaluationList";
+
+export { default as PlayCommentsList } from "./Playground/PlayCommentsList";

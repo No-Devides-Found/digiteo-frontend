@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
-import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
+//import FavoriteRoundedIcon  from '@mui/icons-material/FavoriteRoundedIcon';
+import BorderColorIcon from '@mui/icons-material/BorderColor';
 
 import { 
   Paginations,
@@ -85,46 +86,50 @@ const DetailedQA = () => {
   const { state }  = useLocation();
   console.log(state)
 
-  // id 로 질문글 가져오기
+  // id 로 특정 질문글 가져오기
   const qa = {
     title:"제목",
     content:"내용",
     date:"작성일자",
   }
 
+  const gotoEdit=(e)=>{
+
+  }
+
 
   return (
     <Container>
       <Grid container  style={{padding:"1rem 5rem 4rem 5rem"}}>
+
         {/* 제목 부분 */}
         <Grid item xs={12} mt={6}>
             <StyledPaper>
               <Grid container>
+                {/* 게시글의 작성자일 경우에만 수정 버튼 보여야 함 */}
                 <Grid item xs={12} style={{display:"flex", justifyContent:"flex-end"}}>
-                    {/* <Button onClick={gotoEdit} style={{color:"#757575", fontSize:"13px"}} >
-                      수정하기 <BorderColorIcon />
-                    </Button> */}
+                    <Button onClick={gotoEdit} style={{color:"#757575", fontSize:"13px"}} >
+                      수정하기 
+                      <BorderColorIcon />
+                    </Button>
                 </Grid>
                 <Grid item xs={12}  mt={1}>
-                  
-                      <TextField 
-                          style={{background:"#FFFFFF"}}
-                          id="outlined-basic" 
-                          name='title' 
-                          sx={{width:'100%'}} variant="outlined" 
-                          defaultValue={qa.title}
-                          InputProps={{ readOnly: true }} 
-                          />
-      
+                  <Typography variant='h6' fontWeight="bold"  >
+                      {qa.title}
+                  </Typography>      
                 </Grid>
                 
                       
                 <Grid item xs={12} mt={2} style={{display:"flex", justifyContent:"space-between"}}>
                         <Stack direction="row">
                           <Avatar style={{marginRight:"1rem"}}>H</Avatar>
-                          <Typography style={{lineHeight:"40px"}}>닉네임</Typography>
+                          <Typography style={{lineHeight:"40px"}}> 
+                            {qa.auth}
+                          </Typography>
                         </Stack>
-                        <Typography style={{lineHeight:"40px"}} > 작성일자 </Typography>
+                        <Typography style={{lineHeight:"40px"}} > 
+                          {qa.date}
+                        </Typography>
                 </Grid>
               </Grid> 
             </StyledPaper>

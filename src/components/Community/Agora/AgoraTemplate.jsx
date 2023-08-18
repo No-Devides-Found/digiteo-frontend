@@ -70,13 +70,13 @@ export default function AgoraTemplate({agora}) {
           </Typography>
         </Stack>
         
-      </CardContent>
+    </CardContent>
       </CardActionArea>
     </React.Fragment>
   );
 
   return (
-    <Box style={{width:"80%", margin:"0 auto", display:"block", borderRadius:"20px"}}>
+    <Box style={{width:"90%", margin:"0 auto", display:"block", borderRadius:"20px"}}>
       <Card style={{borderRadius:"20px", background:"#F1F8E9"}}>{card}</Card>
     </Box>
   );
