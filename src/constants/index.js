@@ -1,1 +1,1 @@
-export const server = "https://api.digiteo.co.kr:443/";
+export const server = "https://api.digiteo.co.kr:443";

@@ -23,7 +23,7 @@ const refresh = async (
 
     // 토큰 갱신 서버통신
     const { data } = await axios.post(
-      `${server}accounts/dj-rest-auth/token/refresh/`
+      `${server}/accounts/dj-rest-auth/token/refresh/`
       // , body
     );
 
