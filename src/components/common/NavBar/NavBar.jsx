@@ -110,7 +110,7 @@ export default function TestNavBar() {
 
   return (
     <div>
-      <Grid container justifyContent={"center"} gap={"1rem"}>
+      <Grid container justifyContent={"center"} gap={"4rem"}>
         {navMenuItems.map((item, index) => (
           <Grid
             item
