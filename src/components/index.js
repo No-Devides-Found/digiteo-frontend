@@ -32,7 +32,7 @@ export { default as ListTemplate } from "./Practice/ListTemplate";
 export { default as PracticeNavbar } from "./Practice/PracticeNavbar";
 
 //Community
-export { default as LeftList } from "./Community/LeftList";
+export { default as CommunityNav } from "./Community/CommunityNav";  
 export { default as TipList } from "./Community/Tip/TipList";
 export { default as TipTemplate } from "./Community/Tip/TipTemplate";
 

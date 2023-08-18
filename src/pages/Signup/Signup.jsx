@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import Axios from "axios";
 import moment from "moment";
 import { server } from "../../constants";
+
 import { Grid, Box, Stepper, Step, StepLabel, Button } from "@mui/material";
-import "./Signup.css";
+import "./Signup.module.css";
+
 import Step1Content from "./Step1";
 import Step2Content from "./Step2";
 import Step3Content from "./Step3";
@@ -231,7 +233,7 @@ const Signup = () => {
   return (
     <Grid className="signupWrap">
       <Box sx={{ width: "80%", margin: "0 auto" }}>
-        <Stepper activeStep={activeStep}>
+        <Stepper activeStep={activeStep} >
           {steps.map((label, index) => {
             const stepProps = {};
             const labelProps = {};
@@ -249,10 +251,10 @@ const Signup = () => {
 
         {activeStep === steps.length ? (
           <React.Fragment>
-            <div sx={{ mt: 2, mb: 1 }}>
+            <Grid sx={{ mt: 2, mb: 1 }}>
               디지털 세상 속의 놀이터, 디지터에 가입해주셔서 감사합니다 <br />{" "}
               이제부터 디지터에서 함께 놀아봐요 !
-            </div>
+            </Grid>
             <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
               <Box sx={{ flex: "1 1 auto" }} />
               <Button onClick={handleStart}>시작하기</Button>
@@ -302,3 +304,5 @@ const Signup = () => {
 };
 
 export default Signup;
+
+

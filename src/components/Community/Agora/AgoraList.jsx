@@ -4,7 +4,7 @@ import { styled } from "@mui/material/styles";
 import {AgoraTemplate, QandATemplate} from '../../../components';
 
 
-function AgoraList({page}) {
+function AgoraList({page, posts}) {
   
   const agoras = [
     {
