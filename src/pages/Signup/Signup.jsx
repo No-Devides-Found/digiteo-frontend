@@ -249,7 +249,9 @@ const Signup = () => {
           })}
         </Stepper>
 
-        {activeStep === steps.length ? (
+        {activeStep === steps.length 
+        
+        ? (
           <React.Fragment>
             <Grid sx={{ mt: 2, mb: 1 }}>
               디지털 세상 속의 놀이터, 디지터에 가입해주셔서 감사합니다 <br />{" "}
@@ -260,7 +262,10 @@ const Signup = () => {
               <Button onClick={handleStart}>시작하기</Button>
             </Box>
           </React.Fragment>
-        ) : (
+        ) 
+        
+        : 
+        (
           <React.Fragment>
             {/* <div className="testing">
               <div>
