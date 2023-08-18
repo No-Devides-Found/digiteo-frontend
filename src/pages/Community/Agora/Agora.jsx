@@ -86,14 +86,14 @@ const Agora = () => {
     
       <Grid container justifyContent={"center"} gap={"2rem"}>
 
-        {/* 왼쪽 메뉴바 */}
-        <Grid >
-          <CommunityNav page={page}/>
+        {/* 좌측 메뉴바 */}
+        <Grid item  xs={1.5}>
+          <CommunityNav page={page} />
         </Grid>
 
-        
-
-        <Grid item xs={8} >
+          
+        {/* 우측 */}
+        <Grid item xs={7}>
 
           {/* 제목 */}
           <Grid item xs={12} mt={9}>
@@ -102,7 +102,7 @@ const Agora = () => {
 
 
           {/*  */}
-          <Grid item xs={12} mt={3}>
+          <Grid item xs={12} mt={3} > 
             <ToggleButtonGroup
               color="primary"
               value={page}
