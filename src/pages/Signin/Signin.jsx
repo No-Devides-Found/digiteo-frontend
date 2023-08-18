@@ -168,13 +168,13 @@ const Signin = () => {
             <StyledButton type="submit" variant="contained">
               로그인
             </StyledButton>
+            <Link to="/signup" style={{textDecoration:"none"}}> 
             <StyledButton
-              onChange={movetoSignup}
               style={{ backgroundColor: "#E9E9E9" }}
               variant="contained"
             >
               회원가입
-            </StyledButton>
+            </StyledButton></Link>
           </form>
 
           {/* 하단 부가 기능 */}

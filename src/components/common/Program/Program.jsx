@@ -61,7 +61,8 @@ function Program(props) {
             {props.title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {props.info}
+            {props.info.slice(0, 10)}
+            {props.info.length > 10 ? "..." : null}
           </Typography>
         </CardContent>
       </CardActionArea>

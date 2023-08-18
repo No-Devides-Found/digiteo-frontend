@@ -83,6 +83,7 @@ const steps = [
   {
     label: 'QUIZ TIME',
     type: "quiz",
+    answer: "1" ,  // 퀴즈 답
     files:  "img/video.png", 
     description: `Try out different ad text to see what brings in the most customers,
               and learn how to enhance your ads using features like ad extensions.
@@ -117,7 +118,20 @@ export default function Study() {
   
   const [files, setFiles]= React.useState([]);    //과제 제출
 
+  // 퀴즈 선택한 답 
+  const [selectAnswer, setSelectAnswer] = React.useState(1);    //유저는 int1,2로 답한다.
 
+  //퀴즈 답 테스트 퀴즈 답은 o == 1 ,x ==2, string일지 int일지 모름
+  const testAnswer=()=>{
+    //맞았다.
+    if (selectAnswer === steps[activeStep].answer){
+      
+    }
+    //틀렸다.
+    else{
+
+    }
+  }
 
   // 다음 페이지로 이동 
   const handleNext = () => {
@@ -140,6 +154,10 @@ export default function Study() {
     setProgress(currentProgress); // 학습 퍼센트 바 증가
    
   };
+
+
+
+  
   //과제 제출
   const submitAssignment = () =>{
 
@@ -191,6 +209,21 @@ export default function Study() {
               <Grid item xs={12} style={{justifyContent:"center", display:'flex'}}> 
               <img src={steps[activeStep].files}  alt="here"/>
               </Grid>
+              <Button onClick={() => {
+                setSelectAnswer(1);  //선택 답 테스트
+                testAnswer();//선택 답 테스트
+                }}
+              >
+                 O 
+              </Button>
+              <Button onClick={() => {
+                setSelectAnswer(2);  
+                testAnswer();//선택 답 테스트
+                }}
+              > 
+                X 
+              </Button>
+
               
             </Grid>
 

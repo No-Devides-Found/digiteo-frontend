@@ -288,16 +288,19 @@ const Signup = () => {
 
             <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
               <Button
-                color="inherit"
-                disabled={activeStep.label === 0}
+                
                 onClick={handleBack}
                 sx={{ mr: 1 }}
+                style={{background:"#E9E9E9",width:"20%",borderRadius: "10px",color:"black"}}
               >
                 이전
               </Button>
+
               <Box sx={{ flex: "2 2 auto" }} />
 
-              <Button type="submit" onClick={handleNext}>
+              <Button type="submit" onClick={handleNext}
+              style={{background:'#FFB977',width:"20%",borderRadius: "10px",color:"black" }}
+              >
                 {activeStep === steps.length - 1 ? "완료" : "다음"}
               </Button>
             </Box>
@@ -309,5 +312,3 @@ const Signup = () => {
 };
 
 export default Signup;
-
-

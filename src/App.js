@@ -42,11 +42,11 @@ function App() {
           <Route path="practicehome" element={<PracticeHome />} />
           <Route path="practicelist" element={<PracticeList />} />
           <Route path="postpractice" element={<PostPractice />} />
-          <Route path="detailedpractice" element={<DetailedPractice />} />
+          <Route path="detailedpractice/:id" element={<DetailedPractice />} />
           {/* <Route path="practice" element={<Practice />} /> */}
           <Route path="editpractice" element={<EditPractice />} />
 
-          <Route path="mypage/profile/*" element={<Mypage />}></Route>
+          <Route path="mypage/profile" element={<Mypage />}></Route>
           <Route path="mypage/courses" element={<Mypage />}></Route>
           <Route path="mypage/posts" element={<Mypage />}></Route>
           <Route path="mypage/mypractice" element={<Mypage />}></Route>
