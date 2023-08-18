@@ -45,6 +45,12 @@ const StyledContainer=styled(Container)({
   justifyContent:"center"
   
 })
+
+
+const answerButton=styled(Button)({
+  backgroundColor:"red",
+
+})
 // 프로그램 스텝별 프로그램 정보  (제목, 순서, 타입, 이미지(-무조건 / 파일) )
 const steps = [
   {
@@ -83,7 +89,7 @@ const steps = [
   {
     label: 'QUIZ TIME',
     type: "quiz",
-    answer: "1" ,  // 퀴즈 답
+    answer: 1 ,  // 퀴즈 답
     files:  "img/video.png", 
     description: `Try out different ad text to see what brings in the most customers,
               and learn how to enhance your ads using features like ad extensions.
@@ -124,12 +130,16 @@ export default function Study() {
   //퀴즈 답 테스트 퀴즈 답은 o == 1 ,x ==2, string일지 int일지 모름
   const testAnswer=()=>{
     //맞았다.
+    console.log(selectAnswer);
+    
     if (selectAnswer === steps[activeStep].answer){
-      
+      console.log(selectAnswer);
+      console.log("맞았다.")
     }
     //틀렸다.
     else{
-
+      console.log(selectAnswer);
+      console.log("틀렸다.")
     }
   }
 
@@ -209,21 +219,24 @@ export default function Study() {
               <Grid item xs={12} style={{justifyContent:"center", display:'flex'}}> 
               <img src={steps[activeStep].files}  alt="here"/>
               </Grid>
-              <Button onClick={() => {
+              <Grid item xs={12} mt={2}>
+              <Button style={{width:"50%" , backgroundColor:"#FFCDD2", color:"#FF0000", fontSize:"5rem", fontWeight:"heavy"}} 
+              onClick={() => {
                 setSelectAnswer(1);  //선택 답 테스트
                 testAnswer();//선택 답 테스트
                 }}
               >
                  O 
               </Button>
-              <Button onClick={() => {
+              <Button style={{width:"50%" , backgroundColor:"#C1D6FF", color:"#0056FD", fontSize:"5rem", fontWeight:"heavy"}} 
+              onClick={() => {
                 setSelectAnswer(2);  
                 testAnswer();//선택 답 테스트
                 }}
               > 
                 X 
               </Button>
-
+              </Grid>
               
             </Grid>
 
@@ -258,8 +271,6 @@ export default function Study() {
               
             </Grid>
             : 
-            
-
 
             <StyledContainer>
               {/* 그냥 학습 콘텐츠 */}
