@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Grid } from "@mui/material";
+import { Grid, Container } from "@mui/material";
 import {
   PlaygroundNav,
   SearchBar,
@@ -47,42 +47,44 @@ function Playground() {
   }, []);
 
   return (
-    <Grid container justifyContent={"center"} gap={"2rem"}>
-      <Grid>
-        <PlaygroundNav pathname={pathname} setPathname={setPathname} />
-      </Grid>
-      <Grid item xs={8}>
-        {/* 검색바 */}
-        <Grid item xs={12} mt={9}>
-          <SearchBar
-            options={options}
-            choice={choice}
-            setChoice={setChoice}
-            searchKeyword={searchKeyword}
-            setSearchKeyword={setSearchKeyword}
-            isSearch={isSearch}
-            setIsSearch={setIsSearch}
-          />
+    <Container>
+      <Grid container justifyContent={"center"} gap={"2rem"}>
+        <Grid>
+          <PlaygroundNav pathname={pathname} setPathname={setPathname} />
         </Grid>
-        {/* 프로그램 태그 검색 */}
-        <Grid
-          item
-          xs={12}
-          mt={5}
-          style={{ display: "flex", justifyContent: "space-between" }}
-        >
-          <Chips programs={programs} />
-          {/* <Tags programs={programs} searchTags={searchTags} setSearchTags={setSearchTags} /> */}
-          <Dropdown
-            style={{ width: "100%" }}
-            order={order}
-            setOrder={setOrder}
-          />
+        <Grid item xs={8}>
+          {/* 검색바 */}
+          <Grid item xs={12} mt={9}>
+            <SearchBar
+              options={options}
+              choice={choice}
+              setChoice={setChoice}
+              searchKeyword={searchKeyword}
+              setSearchKeyword={setSearchKeyword}
+              isSearch={isSearch}
+              setIsSearch={setIsSearch}
+            />
+          </Grid>
+          {/* 프로그램 태그 검색 */}
+          <Grid
+            item
+            xs={12}
+            mt={5}
+            style={{ display: "flex", justifyContent: "space-between" }}
+          >
+            <Chips programs={programs} />
+            {/* <Tags programs={programs} searchTags={searchTags} setSearchTags={setSearchTags} /> */}
+            <Dropdown
+              style={{ width: "100%" }}
+              order={order}
+              setOrder={setOrder}
+            />
+          </Grid>
+          <PlaygroundList programs={programs} />
+          <Paginations />
         </Grid>
-        <PlaygroundList programs={programs} />
-        <Paginations />
       </Grid>
-    </Grid>
+    </Container>
   );
 }
 

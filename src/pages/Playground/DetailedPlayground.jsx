@@ -2,12 +2,22 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { server } from "../../constants";
-import { Box, Grid, Container, Typography, Paper } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Container,
+  Typography,
+  Paper,
+  TextField,
+  Button,
+} from "@mui/material";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import styled from "@emotion/styled";
+
+import { EvaluationList } from "../../components";
 
 import { DetailedPlaygroundTitle } from "../../components";
 
@@ -21,6 +31,15 @@ function DetailedPlayground() {
   let { id } = useParams();
   const [program, setProgram] = useState();
   const [value, setValue] = useState("1");
+
+  const [comment, setComment] = useState("");
+  const onChange = (e) => {
+    setComment(e.target.value);
+  };
+  const onClick = (e) => {
+    setComment(""); //댓글 작성창 초기화
+    //comment 보내기
+  };
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -71,22 +90,69 @@ function DetailedPlayground() {
               </TabList>
             </Box>
             <TabPanel value="1" style={{ padding: 0 }}>
-              <Grid>
-                <Typography
-                  variant="h6"
-                  fontWeight={"bold"}
-                  sx={{ mt: "4rem", mb: "2rem" }}
-                >
-                  프로그램 소개
-                </Typography>
-                <ContentPaper>{program.introduce}</ContentPaper>
-              </Grid>
+              <Container>
+                <Grid sx={{ mt: "4rem", mb: "2rem" }}>
+                  <Typography variant="h6" fontWeight={"bold"}>
+                    프로그램 소개
+                  </Typography>
+                  <ContentPaper>{program.introduce}</ContentPaper>
+                </Grid>
+              </Container>
             </TabPanel>
             <TabPanel value="2" style={{ padding: 0 }}>
               <Grid></Grid>
             </TabPanel>
             <TabPanel value="3" style={{ padding: 0 }}>
-              <Grid></Grid>
+              <Container>
+                <Grid sx={{ mt: "4rem", mb: "2rem" }}>
+                  <Typography variant="h6" component="span" fontWeight={"bold"}>
+                    참여후기{" "}
+                  </Typography>
+                  <Typography
+                    variant="p"
+                    component="span"
+                    fontWeight={"bold"}
+                    color={"text.disabled"}
+                  >
+                    (총 {program.reviews.length}개)
+                  </Typography>
+                  <Grid item xs={12}>
+                    <TextField
+                      multiline
+                      value={comment}
+                      onChange={onChange}
+                      placeholder="후기를 작성해보세요. (500자 이내)"
+                      rows={6}
+                      style={{ width: "100%", margin: "0", padding: "0" }}
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    display="flex"
+                    justifyContent="flex-end"
+                    mt={1}
+                  >
+                    <Button
+                      type="submit"
+                      sx={{ width: "10%" }}
+                      style={{
+                        backgroundColor: "#C5E1A5",
+                        color: "black",
+                        fontFamily: "Kumbh Sans",
+                        borderRadius: "10px",
+                        fontWeight: "medium",
+                      }}
+                      onClick={onClick}
+                    >
+                      등록
+                    </Button>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <EvaluationList reviews={program.reviews} />
+                  </Grid>
+                </Grid>
+              </Container>
             </TabPanel>
           </TabContext>
         </Container>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, Stack, Typography, Button } from "@mui/material";
+import { Box, Grid, Stack, Typography, Button, Container } from "@mui/material";
 import { Chips } from "../index";
 import styled from "@emotion/styled";
 
@@ -12,15 +12,14 @@ const StyledButton = styled(Button)({
 function DetailedPlaygroundTitle({ program }) {
   return (
     program && (
-      <>
-        {/* 프로그램 타이틀 */}
-        <Box
-          sx={{
-            bgcolor: "#F1F8E9",
-            p: 5,
-            boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-          }}
-        >
+      <Box
+        sx={{
+          bgcolor: "#F1F8E9",
+          p: 5,
+          boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+        }}
+      >
+        <Container>
           <Grid container justifyContent={"center"} alignItems={"center"}>
             <img src={program.thumbnail} alt={program.title} width={"35%"} />
             <Grid item xs={5} alignItems={"center"} justifyContent={"center"}>
@@ -68,8 +67,8 @@ function DetailedPlaygroundTitle({ program }) {
               </Stack>
             </Grid>
           </Grid>
-        </Box>
-      </>
+        </Container>
+      </Box>
     )
   );
 }
