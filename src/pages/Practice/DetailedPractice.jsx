@@ -147,7 +147,12 @@ function DetailedPractice() {
                     </Grid>
                     <Grid item xs={5} mt={2}>
                       <Stack direction="row">
-                        <Avatar style={{ marginRight: "1rem" }}>H</Avatar>
+                        <Avatar
+                          src={post.user_profile.img}
+                          style={{ marginRight: "1rem" }}
+                        >
+                          H
+                        </Avatar>
                         <Typography style={{ lineHeight: "40px" }}>
                           {post.user_profile.nickname}
                         </Typography>
@@ -283,10 +288,11 @@ function DetailedPractice() {
           {/* 댓글 */}
           <Grid container style={{}}>
             <Grid item xs={12}>
-              <Comments />
+              <Comments postId={post.id} />
             </Grid>
             <Grid item xs={12} mt={4}>
-              <CommentsList post={post.id} />
+              <CommentsList comments={post.comment} />
+              {/*post.comment가 리스트임*/}
             </Grid>
           </Grid>
         </Grid>
