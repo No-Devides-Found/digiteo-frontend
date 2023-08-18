@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import {Tags} from '../../../components';
+import {Tags, DragUploadFile} from '../../../components';
 
 import { styled } from "@mui/material/styles";
 
@@ -14,70 +14,78 @@ import {
   Box, 
   Container, 
   Button,
-  Radio,
-  RadioGroup,
+  Grid,
+  Stack,
+  Avatar,
+  Paper,
   FormControlLabel,
 } from '@mui/material';
 
-const StyledContainer = styled(Container)({
-  width: '60rem', 
-  backgroundColor: '#FFF5E5',
-  padding: '2rem',
-  marginBottom:'0.5rem',
-  height:'fit-content',
-});
 
-const Subtitle = styled(Typography)({
-  marginBottom: '0.5rem',
-  fontSize:'1.1rem',
-  fontWeight:'bold',
+
+// 제목 페이퍼 
+const StyledPaper=styled(Paper)({
+  backgroundColor:"#F1F8E9",
+  borderRadius:"20px",
+  padding:"1rem 3rem", 
+  margin:"0",
+})
+// 콘텐츠 박스
+const ContentField = styled(Container)({
+  background:"#FFF3E0",
+  borderRadius:"20px",
+  padding:"2rem 3rem 2rem 3rem",
+
 }); 
-
 const StyledButton = styled(Button)({
-  backgroundColor: 'orange',
-  width: '10rem',
+  backgroundColor: '#FFA000',
+  width: '10%',
+  borderRadius:"10px",
   color: 'black',
-  margin: '1rem',
+  marginLeft:"1rem",
   float: 'right',
+  fontWeight:"bold",
   textAlign: 'center',
 });
-const ButtonContainer = styled(Container)({
-  width: '60rem',
-})
 
 
 
 
+// 나눔터 (Tip) 게시글 작성 페이지 - 제목, 태그, 작성자, 작성일자, 파일, 콘텐츠 내용
 function PostTip () {
 
   const navigate = useNavigate();
-  const [practice, setPractice] = useState({
-    title: '',
-    createdBy: '',
-    tags: [],
-    type: '',
-    file: '',
-    story: '',
-    review: '',
-  });
 
-  const { title, createdBy,  tags, type, file, story, review } = practice; //비구조화 할당
 
-  const onChange = (event) => {
-    const { value, name } = event.target;
+  // 글 작성하는 유저 정보
 
-    setPractice((prevPractice) => ({
-      ...prevPractice,
-      [name]: name === 'tags' ? value.split(',') : value,
-  }));
-    
-  };
+
+  // 작성 게시글 관련 상태값 
+  const [title, setTitle] = useState(''); //질문 제목
+  const [tags, setTags] = useState([]); //선택 태그
+  const [date, setDate] = useState(""); //작성일자
+  const [content, setContent]=useState(""); //팁 내용
+  const [files, setFiles] = useState([]); //파일
+
+  
+
+  
+
+  const tip ={
+    title : title,
+    tags : tags,
+    date: date,
+    content: content,
+    files : files,
+  }
 
   const saveTip = async () => {
-    console.log(practice)
+    console.log(tip)
     //detailedpractice로 가게 수정해야 함
+
+
     navigate(`/detailedtip`, {
-      state: practice, //전체 'practice'객체 전달
+      state: tip, //전체 'practice'객체 전달
     });
     //practice 객체를 보냄
     // await axios.post('/practicelist', practice).then((res) => {
@@ -85,6 +93,8 @@ function PostTip () {
     //   navigate('/practicelist/:idx'); 
     // });
   };
+
+
   //작성 취소
   const backToList = () => {
     navigate('/practicelist');
@@ -103,50 +113,90 @@ function PostTip () {
 
   return (
     <Container>
-
-      <Typography variant="h4" align="center" gutterBottom>
-        나눔터 팁&노하우 작성하기
-      </Typography>
-
-      <Box type='form'>
+      <Grid container  style={{padding:"1rem 5rem 4rem 5rem"}}>
+        {/* 제목 부분 */}
+        <Grid item xs={12} mt={6}>
+              <StyledPaper>
+                <Grid container>
+                  <Grid item xs={12}  mt={1}>
+                    
+                        <TextField 
+                            style={{background:"#FFFFFF"}}
+                            id="outlined-basic" 
+                            name='title' 
+                            sx={{width:'100%'}} variant="outlined" 
+                            value={title} 
+                            onChange={(e)=>setTitle(e.target.value)} 
+                            placeholder='팁 & 노하우 제목을 입력해주세요.'/>
         
-        <StyledContainer>
-          <Subtitle variant='subtitle1'>팁 제목</Subtitle>
-          <TextField 
-          variant="outlined" 
-          name='title' 
-          value={title} 
-          onChange={onChange} sx={{width:'100%'}} 
-          placeholder='제목을 입력해주세요.'/>
-        </StyledContainer>
-          
-        <StyledContainer>
-          <Subtitle variant='subtitle1'>태그</Subtitle>
-          <Tags programs={programs} tags={practice.tags} setPractice={setPractice}/>
-        </StyledContainer>
-        
-        <StyledContainer >
-          <Subtitle variant="subtitle1" >파일 업로드</Subtitle>
-          <Input type="file" ></Input>
-        </StyledContainer>
+                  </Grid>
+                  
+                        
+                  <Grid item xs={12} mt={2}>
+                          <Stack direction="row">
+                            <Avatar style={{marginRight:"1rem"}}>
+                              H
+                            </Avatar>
+                            <Typography style={{lineHeight:"40px"}}>
+                              글 작성하는 유저의 닉네임
+                            </Typography>
+                          </Stack>
+                  </Grid>
+                 
+                </Grid> 
+              </StyledPaper>
+            </Grid>
+
+
+            {/* 태그 선택 부분 */}
+            <Grid item xs={12} mt={3}>
+              <Typography variant="h6">태그 선택</Typography>
+            </Grid>
+            <Grid item xs={12} mt={1}>
+              <ContentField style={{padding:"2rem 3rem 2rem 3rem"}}>
+                <Tags programs={programs} value={tags} onChange={setTags}/>
+              </ContentField>
+            </Grid>
+            
+
+            {/* 파일 업로드 */}
+            <Grid item xs={12} mt={3}>
+              <Typography variant="h6">파일 업로드</Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <DragUploadFile  value={files} onChange={setFiles}/>  
+            </Grid>
+            
+            {/* 창작물 설명 콘텐츠 */}
+            <Grid item xs={12} mt={6}>
+              <Typography variant='h6'>창작물 소개</Typography>
+            </Grid>
+            <Grid item xs={12} mt={1}> 
+                <ContentField style={{padding:"2rem 3rem 2rem 3rem"}}>
+                  <TextField 
+                    multiline
+                    rows={8}
+                    inputProps={{
+                      maxLength: 2000,
+                    }}
+                    placeholder='팁 & 노하우 내용을 2000자 이내로 작성해주세요.'
+
+                    style={{width:"100%"}}
+                    name='content' 
+
+                    value={content} 
+                    onChange={(e)=>setContent(e.target.value)} 
+                    />
+
+                </ContentField>
+            </Grid>  
+            <Grid item xs={12} style={{textAlign:'right', margin:"3rem 0"}}>
+              <StyledButton type="submit" onClick={saveTip}>등록하기</StyledButton>
+              <StyledButton type="button" onClick={backToList}>취소하기</StyledButton>
+            </Grid>
 
         
-        <StyledContainer>
-          <Subtitle variant='subtitle1'>팁 내용</Subtitle>
-          {/* <Typography variant='subtitle2'>* 창작 스토리 {'('}계기, 과정, 의도{')'}</Typography>  */}
-            <TextField name='story' value={story} onChange={onChange} 
-            sx={{width:'100%'}} multiline rows={20} id="outlined-basic" variant="outlined" 
-            placeholder='팁&노하우를 2000자 이내로 작성해주세요. (파일은 최대 100M크기까지 업로드 가능합니다.)'/>
-
-        </StyledContainer>
-
-        <ButtonContainer>
-          <StyledButton type="submit" onClick={saveTip}>등록하기</StyledButton>
-          <StyledButton type="button" onClick={backToList}>취소하기</StyledButton>
-        </ButtonContainer>
-        
-        
-      </Box>
+      </Grid>
     </Container>
 
   );

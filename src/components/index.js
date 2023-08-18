@@ -49,3 +49,4 @@ export { default as QandATemplate } from "./Community/Agora/QandATemplate";
 // Playground
 export { default as PlaygroundNav } from "./Playground/PlaygroundNav";
 export { default as PlaygroundList } from "./Playground/PlaygroundList";
+export { default as PlayCommentsList } from "./Playground/PlayCommentsList";
