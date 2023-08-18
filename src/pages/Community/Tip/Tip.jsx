@@ -3,7 +3,7 @@ import {  useNavigate } from 'react-router-dom';
 import { Container, Grid , Box, Button, Typography} from '@mui/material';
 import { styled } from "@mui/material/styles";
 
-import {LeftList, Chips, Dropdown, TipList, Paginations,SearchBar, Footer} from '../../../components';
+import {CommunityNav, Chips, Dropdown, TipList, Paginations,SearchBar, Footer} from '../../../components';
 
 const options = ["제목+닉네임", "제목", "닉네임"]
 
@@ -37,7 +37,7 @@ function Tip (){
 
         {/* 왼쪽 메뉴바 */}
         <Grid item xs={4}>
-          <LeftList page={page}/>
+          <CommunityNav page={page}/>
         </Grid>
 
 
