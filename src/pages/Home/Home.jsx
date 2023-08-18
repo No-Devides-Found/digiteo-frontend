@@ -58,7 +58,7 @@ function Home() {
                 };
                 return (
                   <React.Fragment key={idx}>
-                    <Program {..._item} />
+                    <Program {..._item} maxWidth={200} />
                   </React.Fragment>
                 );
               })}
@@ -91,7 +91,7 @@ function Home() {
                 };
                 return (
                   <React.Fragment key={idx}>
-                    <Program {..._item} />
+                    <Program {..._item} maxWidth={200} />
                   </React.Fragment>
                 );
               })}
