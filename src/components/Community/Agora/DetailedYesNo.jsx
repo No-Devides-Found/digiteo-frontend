@@ -65,7 +65,7 @@ const ContentField = styled(Container)({
 
 
 
-const DetailedYesNo = ({type, post}) => {
+const DetailedYesNo = ({post}) => {
 
   const [choice, setChoice] = React.useState("yes");  //찬반 선택  //찬반 선택 댓글
 
@@ -133,19 +133,19 @@ const DetailedYesNo = ({type, post}) => {
             {/* 작성자가 선택한 입장에 따라 selected ,disabled 달라져야 함 */}
             <ToggleButtonGroup
               color="primary"
-              value={post.choice}
+              //value={post.choice}
               exclusive
+              defaultValue={post.choice}
               aria-label="Platform"  
               style={{width: '100%'}}    
             >
-              <ToggleButton value="yes" 
-                selected
+              <ToggleButton 
+                value="yes" 
                 style={{width: '50%'}}    
               >
                 찬성
               </ToggleButton>
               <ToggleButton value="no" 
-              disabled
               style={{width: '50%'}}    
               >
                 반대
