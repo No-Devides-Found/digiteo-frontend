@@ -17,7 +17,7 @@ function Mypage() {
   useEffect(() => {
     if (isAccessExpired()) {
       alert("로그인이 필요합니다.");
-      navigate("/signin");
+      navigate("/");
     }
     setPathname(window.location.pathname.split("/")[2]);
   }, []);
