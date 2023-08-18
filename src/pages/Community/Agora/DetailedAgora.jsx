@@ -103,19 +103,22 @@ const ContentField = styled(Container)({
 
 
 
+
+// 배움터(아고라) 글 상세 조회 페이지
 const DetailedAgora = () => {
   const navigate = useNavigate();
 
   const { state }  = useLocation();
   console.log(state)
   
+  // id 로 특정 글을 가져온다. 
 
   const post = {
     //post_id: 0, 
     thumbnail: "/img/video.png",  
     title: "제목", 
     date: "2021-02-10", 
-    type: "agora",   
+    type: "2",         //2:토의토론
     summary: "요약아ㅓㄹ ㅏ나ㅣㅇ", 
     my_opinion: "내ㅡ이견ㄴㄴㄴ",  
     no: "반대의견ㄴㄴ",  
@@ -177,10 +180,7 @@ const DetailedAgora = () => {
               </Grid>
             </Grid>
           </StyledPaper>
-
-
-        
-         
+          
         <Grid item xs={12}>
           {
             state === "1"
