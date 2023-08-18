@@ -40,7 +40,8 @@ const NavMenu = ({ data }) => {
               backgroundColor: isCurrentPath || isPathIn ? "#FFA000" : "#fff",
               margin: "2rem 0",
               width: "12vw",
-              height: "6vh"
+              height: "6vh",
+              whiteSpace:"nowrap",
             }}
             onClick={() => {
               onMenuClick(data.items.length, data.to);
@@ -66,7 +67,7 @@ const NavMenu = ({ data }) => {
                     navigate(`/${item.to}`);
                     
                   }}
-                  style={{ fontSize: '1rem', width:"12vw", display:"flex", alignItems: "center", justifyContent: "center"  }}
+                  style={{ fontSize: '1vw', width:"12vw",height:"2rem", display:"flex", alignItems: "center", justifyContent: "center"  }}
                 >
                   {item.title}
                 </MenuItem>
